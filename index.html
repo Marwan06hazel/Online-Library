@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home Page</title>
+    <title>Digital Library</title>
 </head>
 <body>
     
@@ -21,17 +21,22 @@
     </header>
 
     <main>
+
+        <!-- Home Page -->
+
         <h1>Your Digital Library</h1>
     
         <h2>Discover, Borrow & Explore Books</h2>
     
-        <p>Browse our curated collection of books. Search by title, author, or category — and borrow with a single click.
-        </p>
+        <p>Browse our curated collection of books. Search by title, author, or category — and borrow with a single click.</p>
     
         <div>
             <a href="#" class="button">Browse Library</a>
             <a href="Pages/signup.html" class="button">Create Account</a>
         </div>
+
+        <hr>
+        <!-- User&Admin Page -->
 
         <div class="features">
             <section>
@@ -42,11 +47,93 @@
                 <h3>Easy Borrowing</h3>
                 <p>Borrow available books with one click and track your loans.</p>
             </section>
+
             <section>
                 <h3>Admin Tools</h3>
                 <p>Admins can add, edit, and manage the entire catalog.</p>
             </section>
         </div>
+
+        <hr>
+        <!-- Signup Page -->
+
+        <div class="signup">
+        <h3>Sign Up</h3>
+        <div class="inputs">
+            <input type="text" name="username" placeholder="Username">
+            <input type="email" name="email" placeholder="Email">
+            <input type="password" name="pass" placeholder="Password">
+            <input type="password" name="confpass" placeholder="Confirm Password">
+            <button type="submit">Sign Up</button>
+            <p>Already have an account?  <a href="#login">Log in</a></p>
+            <p>Or</p>
+            <button type="button">Sign up with Google</button>
+        </div>
+
+        <hr>
+        <!-- User Dashboard -->
+
+        <div class="userDash">
+
+            <div class="borrowed">
+                <div class="cards">
+                    <a href="#book1" class="book1">
+                        <img src="./" alt="Book1">
+                        <h3>Book Name</h3>
+                        <p>Due Date: </p>
+                        <button type="submit">Return</button>
+                    </a>
+
+                    <a href="#book2" class="book2">
+                        <img src="./" alt="Book2">
+                        <h3>Book Name</h3>
+                        <p>Due Date: </p>
+                        <button type="submit">Return</button>
+                    </a>
+                </div>
+            </div>
+
+            <div class="history">
+                <div class="cards">
+                    <a href="#book1" class="book1">
+                        <img src="./" alt="Book1">
+                        <h3>Book Name</h3>
+                        <p>Category</p>
+                        <p>Last opened: </p>
+                    </a>
+
+                    <a href="#book2" class="book2">
+                        <img src="./" alt="Book2">
+                        <h3>Book Name</h3>
+                        <p>Category</p>
+                        <p>Last opened: </p>
+                    </a>
+                </div>
+            </div>
+
+            <div class="favourites">
+                <div class="cards">
+                    <a href="#book1" class="book1">
+                        <img src="./" alt="Book1">
+                        <h3>Book Name</h3>
+                        <button type="submit">Remove From favourites</button>
+                    </a>
+
+                    <a href="#book2" class="book2">
+                        <img src="./" alt="Book2">
+                        <h3>Book Name</h3>
+                        <button type="submit">Remove From favourites</button>
+                    </a>
+                </div>
+            </div>
+
+            <button type="submit">Borrow</button>
+            <button type="submit">Browse Books</button>
+        
+        </div>
+
+
+
     </main>
 
     <footer>
