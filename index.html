@@ -132,7 +132,100 @@
         
         </div>
 
+        <hr>  
+        <!-- View Books Page -->
 
+        <h2><ins>Available Books</ins></h2>
+
+        <table border="1" style="background-color: floralwhite;">
+
+            <tr>
+                <th>ID</th>
+                <th>Book Name</th>
+                <th>Author</th>
+                <th>Category</th>
+                <th>Status</th>
+                <th>Description</th>
+                <th>Image</th>
+            </tr>
+
+            <tr>
+                <td>101</td>
+                <td>Harry Potter and the Half-Blood Prince</td>
+                <td>J.K Rowling</td>
+                <td>Fantasy</td>
+                <td style="color: red;"><strong>Borrowed</strong></td>
+                <td><a href="bookDetails.html"><button>View Details</button></a></td>
+                <td><img src="OpenLibrary/HarryPotter.jpeg" width="140"></td>
+                
+            </tr>
+
+            <tr>
+                <td>102</td>
+                <td>Atomic Habits</td>
+                <td>James Clear</td>
+                <td>Self Development</td>
+                <td style="color: green;"><strong>Available</strong></td>
+                <td><a href="bookDetails.html"><button>View Details</button></a></td>
+                <td><img src="OpenLibrary/AtomicHabits.jpeg" width="140"></td>
+            </tr>
+
+            <tr>
+                <td>103</td>
+                <td>Pride and Prejudice</td>
+                <td>Jana Austen</td>
+                <td>Romance</td>
+                <td style="color: green;"><strong>Available</strong></td>
+                <td><a href="bookDetails.html"><button>View Details</button></a></td>
+                <td><img src="OpenLibrary/PrideAndPrejudice.jpeg" width="140"></td>
+            </tr>
+
+            <tr>
+                <td>104</td>
+                <td>1984</td>
+                <td>George Orwell</td>
+                <td>Dystopian/Science Fiction</td>
+                <td style="color: green;"><strong>Available</strong></td>
+                <td><a href="bookDetails.html"><button>View Details</button></a></td>
+                <td><img src="OpenLibrary/1984.jpeg" width="140"></td>
+            </tr>
+        </table>
+
+        <hr>
+        <!--Add Book Page-->
+  
+        <h2>Add New Book</h2>
+        
+        <form>
+
+            <label>Book ID:</label>
+            <input type="number" name="book-id" required>
+            <br>
+
+            <label>Book Name:</label>
+            <input type="text" name="book-name" required>
+            <br>
+
+            <label>Author:</label>
+            <input type="text" name="author" required>
+            <br>
+
+            <label>Category:</label>
+            <input type="text" name="category" required>
+            <br>
+
+            <label>Description:</label>
+            <textarea name="Description" rows="5" cols="40"></textarea>
+            <br>
+
+            <label>Image:</label>
+            <input type="image" name="image" required>
+            <br>
+
+            <button type="submit">Add Book</button>
+        </form>
+        
+        <hr>
 
     </main>
 
