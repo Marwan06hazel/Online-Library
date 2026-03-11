@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Library</title>
+</head>
+
+<body>
+
+    <header>
+        <a href="/" class="logo">
+            <img src="../book.svg" alt="Weblogo">
+        </a>
+        
+        <nav id="navbar">
+            <a href="../index.html">Home</a>
+            <a href="viewbooks.html">Books</a>
+            <a href="login.html" class="button">Login</a>
+            <a href="signup.html" class="button">SignUp</a>
+        </nav>
+    </header>
+
+    <main class="signup">
+        <h3>Create Acount</h3>
+        <p>Join our library community</p>
+
+        <form action="#" method="post">
+            <div>
+                <label for="username">Username</label><br>
+                <input type="text" id="username" name="username">
+            </div>
+        
+            <div>
+                <label for="email">Email</label><br>
+                <input type="email" id="email" name="email">
+            </div>
+        
+            <div>
+                <label for="password">Password</label><br>
+                <input type="password" id="password" name="password">
+            </div>
+        
+            <div>
+                <label for="confirm_password">Confirm Password</label><br>
+                <input type="password" id="confirm_password" name="confirm_password">
+            </div>
+        
+            <div>
+                <input type="checkbox" id="admin" name="admin">
+                <label for="admin">Register as Admin</label>
+            </div>
+        
+            <div>
+                <button type="submit">Sign Up</button>
+            </div>
+        </form>
+        
+        <div>
+            <p>Already have an account? <a href="login.html">Log in</a></p>
+        </div>
+
+    </main>
+
+
+</body>
+
+</html>

@@ -14,15 +14,13 @@
 
         <nav id="navbar">
             <a href="index.html">Home</a>
-            <a href="books.html">Books</a>
+            <a href="Pages/viewbooks.html">Books</a>
             <a href="Pages/login.html" class="button">Login</a>
             <a href="Pages/signup.html" class="button">SignUp</a>
         </nav>
     </header>
 
     <main>
-
-        <!-- Home Page -->
 
         <h1>Your Digital Library</h1>
     
@@ -36,7 +34,6 @@
         </div>
 
         <hr>
-        <!-- User&Admin Page -->
 
         <div class="features">
             <section>
@@ -54,177 +51,6 @@
             </section>
         </div>
 
-        <hr>
-        <!-- Signup Page -->
-
-        <div class="signup">
-        <h3>Sign Up</h3>
-        <div class="inputs">
-            <input type="text" name="username" placeholder="Username">
-            <input type="email" name="email" placeholder="Email">
-            <input type="password" name="pass" placeholder="Password">
-            <input type="password" name="confpass" placeholder="Confirm Password">
-            <button type="submit">Sign Up</button>
-            <p>Already have an account?  <a href="#login">Log in</a></p>
-            <p>Or</p>
-            <button type="button">Sign up with Google</button>
-        </div>
-
-        <hr>
-        <!-- User Dashboard -->
-
-        <div class="userDash">
-
-            <div class="borrowed">
-                <div class="cards">
-                    <a href="#book1" class="book1">
-                        <img src="./" alt="Book1">
-                        <h3>Book Name</h3>
-                        <p>Due Date: </p>
-                        <button type="submit">Return</button>
-                    </a>
-
-                    <a href="#book2" class="book2">
-                        <img src="./" alt="Book2">
-                        <h3>Book Name</h3>
-                        <p>Due Date: </p>
-                        <button type="submit">Return</button>
-                    </a>
-                </div>
-            </div>
-
-            <div class="history">
-                <div class="cards">
-                    <a href="#book1" class="book1">
-                        <img src="./" alt="Book1">
-                        <h3>Book Name</h3>
-                        <p>Category</p>
-                        <p>Last opened: </p>
-                    </a>
-
-                    <a href="#book2" class="book2">
-                        <img src="./" alt="Book2">
-                        <h3>Book Name</h3>
-                        <p>Category</p>
-                        <p>Last opened: </p>
-                    </a>
-                </div>
-            </div>
-
-            <div class="favourites">
-                <div class="cards">
-                    <a href="#book1" class="book1">
-                        <img src="./" alt="Book1">
-                        <h3>Book Name</h3>
-                        <button type="submit">Remove From favourites</button>
-                    </a>
-
-                    <a href="#book2" class="book2">
-                        <img src="./" alt="Book2">
-                        <h3>Book Name</h3>
-                        <button type="submit">Remove From favourites</button>
-                    </a>
-                </div>
-            </div>
-
-            <button type="submit">Borrow</button>
-            <button type="submit">Browse Books</button>
-        
-        </div>
-
-        <hr>  
-        <!-- View Books Page -->
-
-        <h2><ins>Available Books</ins></h2>
-
-        <table border="1" style="background-color: floralwhite;">
-
-            <tr>
-                <th>ID</th>
-                <th>Book Name</th>
-                <th>Author</th>
-                <th>Category</th>
-                <th>Status</th>
-                <th>Description</th>
-                <th>Image</th>
-            </tr>
-
-            <tr>
-                <td>101</td>
-                <td>Harry Potter and the Half-Blood Prince</td>
-                <td>J.K Rowling</td>
-                <td>Fantasy</td>
-                <td style="color: red;"><strong>Borrowed</strong></td>
-                <td><a href="bookDetails.html"><button>View Details</button></a></td>
-                <td><img src="OpenLibrary/HarryPotter.jpeg" width="140"></td>
-                
-            </tr>
-
-            <tr>
-                <td>102</td>
-                <td>Atomic Habits</td>
-                <td>James Clear</td>
-                <td>Self Development</td>
-                <td style="color: green;"><strong>Available</strong></td>
-                <td><a href="bookDetails.html"><button>View Details</button></a></td>
-                <td><img src="OpenLibrary/AtomicHabits.jpeg" width="140"></td>
-            </tr>
-
-            <tr>
-                <td>103</td>
-                <td>Pride and Prejudice</td>
-                <td>Jana Austen</td>
-                <td>Romance</td>
-                <td style="color: green;"><strong>Available</strong></td>
-                <td><a href="bookDetails.html"><button>View Details</button></a></td>
-                <td><img src="OpenLibrary/PrideAndPrejudice.jpeg" width="140"></td>
-            </tr>
-
-            <tr>
-                <td>104</td>
-                <td>1984</td>
-                <td>George Orwell</td>
-                <td>Dystopian/Science Fiction</td>
-                <td style="color: green;"><strong>Available</strong></td>
-                <td><a href="bookDetails.html"><button>View Details</button></a></td>
-                <td><img src="OpenLibrary/1984.jpeg" width="140"></td>
-            </tr>
-        </table>
-
-        <hr>
-        <!--Add Book Page-->
-  
-        <h2>Add New Book</h2>
-        
-        <form>
-
-            <label>Book ID:</label>
-            <input type="number" name="book-id" required>
-            <br>
-
-            <label>Book Name:</label>
-            <input type="text" name="book-name" required>
-            <br>
-
-            <label>Author:</label>
-            <input type="text" name="author" required>
-            <br>
-
-            <label>Category:</label>
-            <input type="text" name="category" required>
-            <br>
-
-            <label>Description:</label>
-            <textarea name="Description" rows="5" cols="40"></textarea>
-            <br>
-
-            <label>Image:</label>
-            <input type="image" name="image" required>
-            <br>
-
-            <button type="submit">Add Book</button>
-        </form>
-        
         <hr>
 
     </main>
