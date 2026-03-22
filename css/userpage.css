@@ -1,3 +1,10 @@
+:root {
+    --primary: 25 75% 47%;
+    --primary-color: hsl(var(--primary));
+    --primary-hover: 25 75% 42%;
+    --primary-light: 25 75% 92%;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -40,13 +47,6 @@ header {
 
 .logo:hover img {
     opacity: 0.85;
-}
-
-:root {
-    --primary: 25 75% 47%;
-    --primary-color: hsl(var(--primary));
-    --primary-hover: 25 75% 42%;
-    --primary-light: 25 75% 92%;
 }
 
 #navbar {
@@ -98,18 +98,6 @@ header {
     background-color: transparent;
     border: 1.5px solid #e2e8f0;
     color: #1e293b;
-}
-
-#navbar a.button:first-of-type {
-    background-color: transparent;
-    border-color: hsl(var(--primary));
-    color: hsl(var(--primary));
-}
-
-#navbar a.button:first-of-type:hover {
-    background-color: hsl(var(--primary) / 0.1);
-    border-color: hsl(var(--primary));
-    color: hsl(var(--primary));
 }
 
 #navbar a.button:last-of-type {
@@ -171,37 +159,16 @@ main div .button {
     transition: all 0.25s ease;
     display: inline-block;
     text-align: center;
-}
-
-main div .button:first-of-type {
-    background-color: transparent;
-    border: 1.5px solid hsl(var(--primary));
-    color: hsl(var(--primary));
-}
-
-main div .button:first-of-type:hover {
-    background-color: hsl(var(--primary) / 0.1);
-    transform: translateY(-2px);
-}
-
-main div .button:last-of-type {
     background-color: hsl(var(--primary));
     border: 1.5px solid hsl(var(--primary));
     color: white;
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
 }
 
-main div .button:last-of-type:hover {
+main div .button:hover {
     background-color: hsl(var(--primary) / 0.9);
     transform: translateY(-2px);
     box-shadow: 0 4px 8px hsl(var(--primary) / 0.2);
-}
-
-hr {
-    border: none;
-    height: 1px;
-    background: linear-gradient(to right, transparent, #e2e8f0, transparent);
-    margin: 3rem 0;
 }
 
 .features {
