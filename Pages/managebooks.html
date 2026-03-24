@@ -37,7 +37,7 @@
                      alt="Book cover of The Summer I Turned Pretty by Jenny Han"
                      width="100" height="150" />
 
-                <button type="reset">Remove</button>
+                <button type="button">Remove</button>
             </figure>
 
             <section class="edit-details">
@@ -50,7 +50,7 @@
                 <br /> <br />
 
                 <b>ISBN</b> <br />
-                <input type="text" name="edit-author" value="978-977-490-267-3">
+                <input type="text" name="edit-ISBN" value="978-977-490-267-3">
                 <br /> <br />
 
                 <b>Genre</b> <br />
@@ -83,22 +83,22 @@
                 <br /> <br />
 
                 <b>Description</b> <br />
-                <textarea name="edit-description" cols="100">Description of the Book</textarea>
+                <textarea name="edit-description" cols="30">Description of the Book</textarea>
             </section>
 
             <br /> <br />
 
             <section class="edit-publish-details">
                 <b>Total Copies</b> <br />
-                <input type="number" min="1" step="1" name="edit-copies">
+                <input type="number" min="0" step="1" name="edit-copies">
                 <br /> <br />
 
                 <b>Available Copies</b> <br />
-                <input type="number" min="1" step="1" name="edit-available-copies">
+                <input type="number" min="0" step="1" name="edit-available-copies">
                 <br /> <br />
 
                 <b>Year</b> <br />
-                <input type="date" min="1" step="1" name="edit-date">
+                <input type="date" step="1" name="edit-date">
                 <br /> <br />
 
                 <b>Pages</b> <br />
@@ -107,7 +107,7 @@
 
             <br /> <br />
 
-            <section class="borrow-btn">
+            <section class="Edit-btn">
                 <button type="submit">Save Changes</button>
             </section>
 
