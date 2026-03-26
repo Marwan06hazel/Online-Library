@@ -1,0 +1,185 @@
+:root {
+    --primary: 25 75% 47%;
+    --primary-color: hsl(var(--primary));
+    --primary-hover: 25 75% 42%;
+    --primary-light: 25 75% 92%;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI';
+    background: #f1f0e9;
+}
+.logo {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+}
+
+.logo span {
+    font-size: larger;
+    font-weight: bold;
+    padding-left: 0.5rem;
+}
+
+.logo img {
+    height: 38px;
+    width: auto;
+    transition: opacity 0.2s ease;
+}
+
+.logo:hover img {
+    opacity: 0.85;
+}
+
+header {
+    background-color: rgb(247, 243, 237);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.9rem 2.5rem;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.09);
+    border-bottom: 1px solid #eef2f6;
+    flex-wrap: wrap;
+}
+
+#navbar {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    font-weight: 500;
+}
+
+#navbar a:not(.button) {
+    text-decoration: none;
+    color: #1a2c3e;
+    font-size: 1rem;
+    font-weight: 500;
+    padding: 0.5rem 0;
+    transition: color 0.2s ease;
+    position: relative;
+}
+
+#navbar a:not(.button):hover {
+    color: hsl(var(--primary));
+}
+
+#navbar a:not(.button)::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: hsl(var(--primary));
+    transition: width 0.25s ease;
+    border-radius: 2px;
+}
+
+#navbar a:not(.button):hover::after {
+    width: 100%;
+}
+
+#navbar .button {
+    text-decoration: none;
+    padding: 0.5rem 1.25rem;
+    border-radius: 40px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: all 0.25s ease;
+    display: inline-block;
+    text-align: center;
+    background-color: transparent;
+    border: 1.5px solid #e2e8f0;
+    color: #1e293b;
+}
+
+#navbar a.button:last-of-type {
+    background-color: hsl(var(--primary));
+    border-color: hsl(var(--primary));
+    color: white;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+#navbar a.button:last-of-type:hover {
+    background-color: hsl(var(--primary) / 0.9);
+    border-color: hsl(var(--primary) / 0.9);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px hsl(var(--primary) / 0.2);
+}
+
+h1 {
+    text-align: center;
+    font-size: 32px;
+    color: #1a2c3e;
+    margin: 25px 0 0;
+    font-size: 32px;
+}
+
+body p {
+    font-size: 1.1rem;
+    color: #1a2c3e;
+    max-width: 600px;
+    line-height: 2;
+}
+
+form {
+    margin-top: 0;
+    padding: 25px;
+    border-radius: 12px;
+    
+}
+
+.container {
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+}
+
+.form-group {
+    margin-bottom: 18px;
+}
+
+input, textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 14px;
+}
+
+input:focus, textarea:focus {
+    border-color: #d97706;
+    box-shadow: 0 0 5px rgba(255, 107, 44, 0.2);
+}
+
+button {
+    display: block;
+    width: 40%;
+    margin: 20px auto 0;
+    padding: 12px;
+    background: hsl(var(--primary));
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-size: 16px;
+    transition: all 0.25s ease;
+    cursor: pointer;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+button:hover {
+    background-color: hsl(var(--primary));
+    transform: translateY(-3px);
+    box-shadow: 0 4px 8px hsl(var(--primary) / 0.2);
+}
+
+::placeholder {
+    font-size: 14px;
+    color: #6b7280;
+}
