@@ -158,6 +158,17 @@ input:focus, textarea:focus {
     box-shadow: 0 0 5px rgba(255, 107, 44, 0.2);
 }
 
+input[type="file"] {
+    padding: 10px;
+    background: white;
+    cursor: pointer;
+}
+
+input[type="file"]:focus {
+    border-color: #d97706;
+    box-shadow: 0 0 5px rgba(255, 107, 44, 0.2);
+}
+
 button {
     display: block;
     width: 40%;
