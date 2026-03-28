@@ -13,7 +13,7 @@
 
 body {
     font-family: 'Segoe UI';
-    background: #fffef8;
+    background: #f1f0e9;
 }
 .logo {
     display: flex;
@@ -130,7 +130,7 @@ body p {
 
 form {
     margin-top: 0;
-    padding: 1rem 3rem;
+    padding: 25px;
     border-radius: 12px;
     
 }
@@ -147,8 +147,8 @@ form {
 
 input, textarea {
     width: 100%;
-    padding: 16px;
-    margin-bottom: 20px;
+    padding: 12px;
+    margin-bottom: 10px;
     border: 1px solid #ddd;
     border-radius: 8px;
     font-size: 15px;
@@ -156,9 +156,9 @@ input, textarea {
 }
 
 input:focus, textarea:focus {
-    outline: none;        
-    border-color: #B45309;  
-    box-shadow: 0 0 0 3px rgba(180, 83, 9, 0.1);  
+    outline: none;
+    border-color: #d97706;  
+    box-shadow: 0 0 5px rgba(255, 107, 44, 0.2);      
 }
 
 input[type="file"] {
@@ -169,13 +169,13 @@ input[type="file"] {
 
 input[type="file"]:focus {
     outline: none;
-    border-color: #B45309;
-    box-shadow: 0 0 0 3px rgba(180, 83, 9, 0.1);
+    border-color: #d97706;
+    box-shadow: 0 0 0 3px rgba(255, 107, 44, 0.2);
 }
 
 button {
     display: block;
-    width: 28%;
+    width: 40%;
     height: 45px;
     margin: 20px auto 0;
     padding: 12px;
@@ -201,3 +201,4 @@ button:hover {
     font-size: 14px;
     color: #6b7280;
 }
+
