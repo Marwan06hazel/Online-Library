@@ -1,0 +1,165 @@
+:root {
+    --MasterColor: #fffef8;
+    --HeaderTextColor: #0f172a;
+    --TextColor: #6e859d;
+    --NotesColor: #d97706;
+    --BGNotesColor: #fffbeb;
+    --TimeIcon: #2563eb;
+    --BGTimeIcon: #eff6ff;
+    --PaymentIcon: #059669;
+    --BGPaymentIcon: #ecfdf5;
+    --InputBorderColor: #e2e8f0;
+}
+body {
+    font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+    background-color: var(--MasterColor);
+    margin-left: 25vw;
+}
+h1{
+    font-weight: bold;
+    color: var(--HeaderTextColor);
+    margin-bottom: -10px;
+}
+.duration h3 {
+    font-weight: bold;
+    color: var(--HeaderTextColor);
+    margin-bottom: -10px;
+    margin: 7px 0px;
+}
+.Back-Btn {
+    background: none;
+    border-width: 0px;
+    color: var(--TextColor);
+    cursor: pointer;
+    margin-top: 27px;
+}
+.Back-Btn:hover{
+    color: var(--HeaderTextColor);
+}
+p {
+    color: var(--TextColor);
+}
+.book-cover-pic {
+    border: solid 1px var(--InputBorderColor);
+    border-radius: 10px;
+    display: inline-block;
+    height: 140px;
+}
+.book-cover,
+.duration,
+.payment,
+.delivery-add {
+    display: grid;
+    background: white;
+    border: solid 1px var(--InputBorderColor);
+    border-radius: 40px;
+    padding: 25px;
+    margin-left: 0px;
+    margin-bottom: 40px;
+    width: 50vw;
+}
+.payment {
+    padding-bottom: 40px;
+}
+.book-cover .book-details {
+    margin-top: -142px;
+    position: relative;
+    right: -126px;
+    line-height: 0.5;
+}
+.book-cover .book-details .title {
+    color: var(--HeaderTextColor);
+    font-weight: bold;
+}
+.book-cover .book-details .author {
+    font-size: 14px;
+}
+.book-cover .book-details .genre {
+    font-size: 12px;
+    color: var(--NotesColor);
+}
+.duration .time-icon,
+.payment .payment-icon,
+.delivery-add .delivery-icon {
+    width: fit-content;
+    height: fit-content;
+    padding: 10px;
+    border-radius: 15px;
+}
+.duration .time-icon{
+    background-color: var(--BGTimeIcon);
+}
+.payment .payment-icon{
+    background-color: var(--BGPaymentIcon);
+}
+.delivery-add .delivery-icon {
+    background-color: var(--BGNotesColor);
+}
+.duration .duration-head,
+.payment .payment-head,
+.delivery-add .delivery-head {
+    margin-bottom: 15px;
+    position: relative;
+    right: -62px;
+}
+.duration .duration-head{
+    margin-top: -43px;
+    line-height: 0.5;
+}
+.payment .payment-head{
+    margin-top: -53px;
+    line-height: calc(0.5/2);
+}
+.delivery-add .delivery-head {
+    margin-top: -51px;
+    line-height: calc(0.5/4);
+}
+.duration .duration-text,
+.payment .payment-text,
+.delivery-add .delivery-text {
+    font-size: 12px;
+}
+.duration #duration,
+.duration #duration-unit,
+.payment #payment-method,
+textarea {
+    border: solid 2px var(--InputBorderColor);
+    padding: 10px;
+    border-radius: 15px;
+    color: var(--TextColor);
+    margin-bottom: -5px;
+}
+.duration #duration,
+input::placeholder {
+    width: 505px;
+    margin-right: 10px;
+    color: var(--TextColor);
+}
+.duration .due-date-text {
+    color: var(--TextColor);
+    font-size: 12px;
+}
+.borrow-btn {
+    background-color: var(--HeaderTextColor);
+    color: var(--MasterColor);
+    width: 73%;
+    border: solid 1px #ccc;
+    border-radius: 15px;
+    padding: 10px;
+    cursor: pointer;
+    transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+}
+.borrow-btn:hover {
+    transform: scale(1.02);
+
+    box-shadow:
+        0 0 0 6px var(--MasterColor),
+        0 12px 28px var(--MasterColor);
+}
+footer {
+    color: var(--TextColor);
+    font-size: 10px;
+    position: relative;
+    left: 0px;
+    padding-top: 10px;
+}
