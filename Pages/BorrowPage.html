@@ -5,6 +5,7 @@
     <meta name="author" content="Marwan">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Online Library</title>
+    <link rel="stylesheet" href="css/Borrow Page.css" />
 </head>
 
 <body>
@@ -25,18 +26,19 @@
     </header>
 
     <main>
+        <button type="button" class="Back-Btn">← Go Back</button>
         <h1>Borrow Book</h1>
         <p>Fill out the form below to borrow this book.</p>
 
         <figure class="book-cover">
-            <img src="Pics/The summer i turend pretty (Cover Page}.jpg"
+            <img class="book-cover-pic" src="Pics/The summer i turend pretty (Cover Page}.jpg"
                  alt="Book cover of The Summer I Turned Pretty by Jenny Han"
                  width="100" height="150" />
 
             <figcaption class="book-details">
-                <b>The Summer I turned pretty [Book Title]</b>
-                <p>by Jenny Han [Book Author]</p>
-                <p style="color: #d97706;">Romance [Book Genre]</p>
+                <p class="title">The Summer I turned pretty</p>
+                <p class="author">by Jenny Han</p>
+                <p class="genre">Romance</p>
             </figcaption>
         </figure>
 
@@ -44,25 +46,33 @@
 
             <!-- Duration -->
             <section class="duration">
-                <p><b><big>Borrow Duration</big></b></p>
-                <p>For how long would you like to borrow this book?</p>
+                <img class="time-icon" src="Pics/Time Icon.svg" alt="Time Icon" />
 
-                <input type="number" id="duration" name="duration" min="1" step="1"
-                       placeholder="Enter Duration..." required>
+                <div class="duration-head">
+                    <h3>Borrow Duration</h3>
+                    <p class="duration-text" >For how long would you like to borrow this book?</p>
+                </div>
+                <div>
+                    <input type="number" id="duration" name="duration" min="1" step="1"
+                           placeholder="Enter Duration..." required>
 
-                <select id="duration-unit" name="duration_unit">
-                    <option value="days" selected>Days</option>
-                    <option value="weeks">Weeks</option>
-                    <option value="months">Months</option>
-                </select>
-
-                <p>Due date: [date]</p>
+                    <select id="duration-unit" name="duration_unit">
+                        <option value="days" selected>Days</option>
+                        <option value="weeks">Weeks</option>
+                        <option value="months">Months</option>
+                    </select>
+                </div>
+                <p class="due-date-text">Due date: [date]</p>
             </section>
 
             <!-- Payment Method -->
             <section class="payment">
-                <p><b><big>Payment Method</big></b></p>
-                <p>Select how you'd like to pay</p>
+                <img class="payment-icon" src="Pics/Payment Method.svg" alt="Payment Icon" />
+
+                <div class="payment-head">
+                    <h3>Payment Method</h3>
+                    <p class="payment-text">Select how you'd like to pay</p>
+                </div>
 
                 <select id="payment-method" name="payment_method" required>
                     <option value="cash">Cash on Delivery</option>
@@ -74,8 +84,12 @@
 
             <!-- Delivery Address -->
             <section class="delivery-add">
-                <p><b><big>Delivery Address</big></b></p>
-                <p>Where would you like your book delivered?</p>
+                <img class="delivery-icon" src="Pics/Delivery Icon.svg" alt="Delivery Icon" />
+
+                <div class="delivery-head">
+                    <h3>Delivery Address</h3>
+                    <p class="delivery-text">Where would you like your book delivered?</p>
+                </div>
 
                 <textarea id="delivery-address" name="delivery_address"
                           placeholder="Enter your full address..."
@@ -83,8 +97,8 @@
             </section>
 
             <!-- Submit Button -->
-            <section class="borrow-btn">
-                <button type="submit">Confirm & Borrow</button>
+            <section>
+                <button class="borrow-btn" type="submit">Confirm & Borrow</button>
             </section>
 
         </form>
