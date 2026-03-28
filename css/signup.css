@@ -141,6 +141,7 @@ label{
     display: block;
     font-size: 17px;
     color: #64748B;
+    cursor: pointer;
 }
 
 h2{
@@ -154,19 +155,23 @@ h2{
 .inputs input{
     width: 350px;
     height: 35px;
+    padding: 8px 10px;
     border: 1px solid;
     border-color: rgba(192, 182, 182, 0.63);
     border-radius: 5px;
+    transition: all 0.2s ease;
 }
 
 .inputs input:focus{
     outline: none;    /*to remove the deafult black ouline*/
     border-color: #B45309;
+    box-shadow: 0 0 0 3px rgba(180, 83, 9, 0.1);
 }
 
 .box input{
     width: 15px;
     height: 15px;
+    cursor: pointer;
 }
 
 .but1{
@@ -186,12 +191,13 @@ h2{
     border-radius: 20px; 
     background-color: #FEF3C799;
     color: #B45309;
+    transition: transform 0.5s ease;
+    cursor: pointer;
 }
 
 .but1 button:hover{
     background-color: #fff1b7a2;
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.147);;
-    transition: transform 0.5s ease;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.147);
     transform: translateY(-1px);  
 }
 
@@ -201,4 +207,3 @@ h2{
 .footer a{
     text-decoration: none;
 }
-
