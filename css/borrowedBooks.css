@@ -135,33 +135,17 @@ h2{
     width: 100%;
 }
 
-@media screen and (max-width:640px) {
-    .card{
-        width: 100%; 
-
-    }
-}
-@media screen and (min-width:641px) {
-    .card{
-        width: 50%;
-    }
-}
-@media screen and (min-width:768px) {
-    .card{
-        width: 33.333%;
-    }
-}
-@media screen and (min-width:1024px) {
-    .card{
-        width: 25%;
-    }
-}
-
 .card{
+    padding: 30px;
     border: 1px solid rgb(233, 224, 224);
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05); 
     border-radius: 10px;
-    padding: 30px;
+    transition: all 0.3s ease; 
+}
+
+.card:hover {
+    transform: translateY(-1.5px);  
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);  
 }
 
 .card a{
@@ -180,6 +164,11 @@ h2{
     font-size: 17px;
 }
 
+
+.card button {
+    cursor: pointer;  /* ADDED */
+}
+
 .borrowed button{
     width:70px;
     padding: 5px;
@@ -188,6 +177,8 @@ h2{
     border-radius: 10px;
     background-color: #fffef8;
     color: #047857;
+    transition: all 0.3s ease; 
+    cursor: pointer;  
 }
 
 .favourites button{
@@ -197,18 +188,18 @@ h2{
     border-radius: 10px;
     background-color: #fffef8;
     color: #741313; 
+    transition: all 0.3s ease; 
+    cursor: pointer; 
 }
 
 .borrowed button:hover{
     background-color: #b0ffde3e;
     color: black;
-    transition: all 0.3s ease;
 }
 
 .favourites button:hover{
     background-color: #ff646427;
     color: black;
-    transition: all 0.3s ease;
 }
 
 
@@ -222,6 +213,8 @@ h2{
     margin-right: 25px;
     margin-top: 40px;
     margin-bottom: 35px;
+    transition: all 0.3s ease; 
+    cursor: pointer; 
 }
 .but1{
     color: #ffffff;
@@ -236,15 +229,76 @@ h2{
 }
 .but1:hover{
     transform: translateY(-3px);
-    transition: transform 0.5s ease;
     background-color: #dd7c0c;
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
 }
 .but2:hover{
     transform: translateY(-3px);
-    transition: transform 0.5s ease;
     box-shadow: 0 6px 12px #D97706;
 }
 
 
+/* responsive page and visual separation  */
 
+.buttons {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1.5rem;                      /* space between two buttons */
+    margin-bottom: 3rem;
+    padding-top: 2rem;
+    margin-top: 4rem;                 /* for yop separation */
+    border-top: 2px solid #eef2f6;  /* separation line */
+    position: relative;               /* crucial for position: absolute */
+}
+
+.buttons::before {                    /* element "2nd gradient line" */
+    content: '';
+    position: absolute;               /* to determine the elemnt place top, left, right, its height*/
+    top: -20px;
+    left: 0;
+    right: 0;
+    height: 1px; 
+    background: linear-gradient(90deg, transparent, rgb(232, 230, 253), transparent); 
+}
+
+@media screen and (max-width: 640px) {
+    .card {
+        width: 100%;
+        padding: 20px;  /* card size for mobile spacing*/
+    }
+
+    .cards {
+        margin-left: 1rem;  
+        margin-right: 1rem;
+    }
+
+    h2 {
+        padding: 1.5rem;  
+    }
+
+    .but1, .but2 {
+        width: 160px;   
+        height: 55px;
+        font-size: 18px;
+        margin-right: 0; 
+    }
+}
+
+@media screen and (min-width: 641px) {
+    .card {
+        width: 50%;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .card {
+        width: 33.333%;
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    .card {
+        width: 25%;
+    }
+}
