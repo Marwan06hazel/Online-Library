@@ -4,14 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Page</title>
-    <link rel="stylesheet" href="../css/Manage Books Page.css" />
+    <link rel="stylesheet" href="../css/Manage_Books_Page.css" />
 </head>
 
 <body>
 
     <header>
         <a href="/" class="logo">
-            <img src="../book.svg" alt="Weblogo">
+            <img src="../Pics/book.svg" alt="Weblogo">
             <span>Libraria</span>
         </a>
 
@@ -36,7 +36,7 @@
                 <b>Book Cover</b>
 
                 <img class="edit-book-cover-pic"
-                     src="../Pics/The summer i turend pretty (Cover Page}.jpg"
+                     src="../Pics/The_summer_i_turend_pretty.jpg"
                      alt="Book cover of The Summer I Turned Pretty by Jenny Han"
                      width="100" height="150" />
 
@@ -91,33 +91,30 @@
             </section>
 
             <br /> <br />
-
             <section class="edit-publish-details">
                 <div class="copies">
-                    <div class="copies-txt">
-                        <b>Total Copies</b> <br />
-                        <b>Available Copies</b> <br />
+                    <div class="copy-item">
+                        <b>Total Copies</b>
+                        <input type="number" min="0" step="1" name="edit-copies" placeholder="Enter total copies">
                     </div>
-                    <div class="copies-inputs">
-                        <input type="number" min="0" step="1" name="edit-copies">
-                        <br /> <br />
-                        <input type="number" min="0" step="1" name="edit-available-copies">
-                        <br /> <br />
+                    <div class="copy-item">
+                        <b>Available Copies</b>
+                        <input type="number" min="0" step="1" name="edit-available-copies" placeholder="Enter available copies">
                     </div>
                 </div>
 
                 <div class="dates">
-                    <div class="dates-txt">
-                        <b>Publisher</b> <br />
-                        <b class="year-txt">Year</b> <br />
-                        <b class="pages-txt">Pages</b> <br />
+                    <div class="date-item">
+                        <b>Publisher</b>
+                        <input type="text" name="edit-publisher" placeholder="Enter publisher name">
                     </div>
-                    <div class="dates-inputs">
-                        <input type="text" min="0" step="1" name="edit-available-copies">
-                        <br /> <br />
-                        <input type="date" step="1" name="edit-date">
-                        <br /> <br />
-                        <input type="number" min="1" step="1" name="edit-pages-num">
+                    <div class="date-item">
+                        <b>Year</b>
+                        <input type="date" name="edit-date">
+                    </div>
+                    <div class="date-item">
+                        <b>Pages</b>
+                        <input type="number" min="1" step="1" name="edit-pages-num" placeholder="Enter number of pages">
                     </div>
                 </div>
             </section>
