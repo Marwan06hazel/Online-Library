@@ -1,4 +1,23 @@
+/* ========== RESET & BASE STYLES ========== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background-color: var(--MasterColor);
+    margin: 0;
+    padding: 0;
+}
+
+/* ========== CSS VARIABLES ========== */
 :root {
+    --primary: 25 75% 47%;
+    --primary-color: hsl(var(--primary));
+    --primary-hover: 25 75% 42%;
+    --primary-light: 25 75% 92%;
     --MasterColor: #fffef8;
     --HeaderTextColor: #0f172a;
     --TextColor: #6e859d;
@@ -10,156 +29,315 @@
     --BGPaymentIcon: #ecfdf5;
     --InputBorderColor: #e2e8f0;
 }
-body {
-    font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-    background-color: var(--MasterColor);
-    margin-left: 25vw;
+
+/* ========== HEADER & NAVBAR STYLES ========== */
+header {
+    background-color: rgb(247, 243, 237);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.9rem 2.5rem;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.09);
+    border-bottom: 1px solid #eef2f6;
+    flex-wrap: wrap;
 }
-h1{
+
+.logo {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+}
+
+.logo span {
+    font-size: larger;
     font-weight: bold;
-    color: var(--HeaderTextColor);
-    margin-bottom: -10px;
+    padding-left: 0.5rem;
+    color: #1a2c3e;
 }
-.duration h3 {
-    font-weight: bold;
-    color: var(--HeaderTextColor);
-    margin-bottom: -10px;
-    margin: 7px 0px;
+
+.logo img {
+    height: 38px;
+    width: auto;
+    transition: opacity 0.2s ease;
 }
-.Back-Btn {
-    background: none;
-    border-width: 0px;
-    color: var(--TextColor);
-    cursor: pointer;
-    margin-top: 27px;
+
+.logo:hover img {
+    opacity: 0.85;
 }
-.Back-Btn:hover{
-    color: var(--HeaderTextColor);
+
+#navbar {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    font-weight: 500;
 }
-p {
-    color: var(--TextColor);
+
+#navbar a:not(.button) {
+    text-decoration: none;
+    color: #1a2c3e;
+    font-size: 1rem;
+    font-weight: 500;
+    padding: 0.5rem 0;
+    transition: color 0.2s ease;
+    position: relative;
 }
-.book-cover-pic {
-    border: solid 1px var(--InputBorderColor);
-    border-radius: 10px;
+
+#navbar a:not(.button):hover {
+    color: hsl(var(--primary));
+}
+
+#navbar a:not(.button)::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: hsl(var(--primary));
+    transition: width 0.25s ease;
+    border-radius: 2px;
+}
+
+#navbar a:not(.button):hover::after {
+    width: 100%;
+}
+
+#navbar .button {
+    text-decoration: none;
+    padding: 0.5rem 1.25rem;
+    border-radius: 40px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: all 0.25s ease;
     display: inline-block;
-    height: 140px;
+    text-align: center;
+    background-color: transparent;
+    border: 1.5px solid #e2e8f0;
+    color: #1e293b;
 }
-.book-cover,
+
+#navbar a.button:first-of-type {
+    background-color: transparent;
+    border-color: hsl(var(--primary));
+    color: hsl(var(--primary));
+}
+
+#navbar a.button:first-of-type:hover {
+    background-color: hsl(var(--primary) / 0.1);
+    border-color: hsl(var(--primary));
+    color: hsl(var(--primary));
+}
+
+#navbar a.button:last-of-type {
+    background-color: hsl(var(--primary));
+    border-color: hsl(var(--primary));
+    color: white;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+#navbar a.button:last-of-type:hover {
+    background-color: hsl(var(--primary) / 0.9);
+    border-color: hsl(var(--primary) / 0.9);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px hsl(var(--primary) / 0.2);
+}
+
+/* ========== MAIN CONTENT LAYOUT ========== */
+main {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+h1 {
+    font-weight: bold;
+    color: var(--HeaderTextColor);
+    margin-bottom: 0.5rem;
+    font-size: 2rem;
+}
+
+main>p {
+    color: var(--TextColor);
+    margin-bottom: 2rem;
+    font-size: 1rem;
+}
+
+/* ========== BOOK COVER SECTION ========== */
+.book-cover {
+    display: flex;
+    gap: 2rem;
+    background: white;
+    border: solid 1px var(--InputBorderColor);
+    border-radius: 20px;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    align-items: center;
+}
+
+.book-cover img {
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.book-cover .book-details {
+    flex: 1;
+}
+
+.book-cover .book-details b {
+    font-size: 1.25rem;
+    color: var(--HeaderTextColor);
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.book-cover .book-details p {
+    margin: 0.25rem 0;
+}
+
+.book-cover .book-details p:last-of-type {
+    color: var(--NotesColor);
+    font-weight: 500;
+}
+
+/* ========== FORM SECTIONS ========== */
 .duration,
 .payment,
 .delivery-add {
-    display: grid;
     background: white;
     border: solid 1px var(--InputBorderColor);
-    border-radius: 40px;
-    padding: 25px;
-    margin-left: 0px;
-    margin-bottom: 40px;
-    width: 50vw;
+    border-radius: 20px;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
 }
-.payment {
-    padding-bottom: 40px;
-}
-.book-cover .book-details {
-    margin-top: -142px;
-    position: relative;
-    right: -126px;
-    line-height: 0.5;
-}
-.book-cover .book-details .title {
-    color: var(--HeaderTextColor);
-    font-weight: bold;
-}
-.book-cover .book-details .author {
-    font-size: 14px;
-}
-.book-cover .book-details .genre {
-    font-size: 12px;
-    color: var(--NotesColor);
-}
-.duration .time-icon,
-.payment .payment-icon,
-.delivery-add .delivery-icon {
-    width: fit-content;
-    height: fit-content;
-    padding: 10px;
-    border-radius: 15px;
-}
-.duration .time-icon{
-    background-color: var(--BGTimeIcon);
-}
-.payment .payment-icon{
-    background-color: var(--BGPaymentIcon);
-}
-.delivery-add .delivery-icon {
-    background-color: var(--BGNotesColor);
-}
-.duration .duration-head,
-.payment .payment-head,
-.delivery-add .delivery-head {
-    margin-bottom: 15px;
-    position: relative;
-    right: -62px;
-}
-.duration .duration-head{
-    margin-top: -43px;
-    line-height: 0.5;
-}
-.payment .payment-head{
-    margin-top: -53px;
-    line-height: calc(0.5/2);
-}
-.delivery-add .delivery-head {
-    margin-top: -51px;
-    line-height: calc(0.5/4);
-}
-.duration .duration-text,
-.payment .payment-text,
-.delivery-add .delivery-text {
-    font-size: 12px;
-}
-.duration #duration,
-.duration #duration-unit,
-.payment #payment-method,
-textarea {
-    border: solid 2px var(--InputBorderColor);
-    padding: 10px;
-    border-radius: 15px;
-    color: var(--TextColor);
-    margin-bottom: -5px;
-}
-.duration #duration,
-input::placeholder {
-    width: 505px;
-    margin-right: 10px;
-    color: var(--TextColor);
-}
-.duration .due-date-text {
-    color: var(--TextColor);
-    font-size: 12px;
-}
-.borrow-btn {
-    background-color: var(--HeaderTextColor);
-    color: var(--MasterColor);
-    width: 73%;
-    border: solid 1px #ccc;
-    border-radius: 15px;
-    padding: 10px;
-    cursor: pointer;
-    transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
-}
-.borrow-btn:hover {
-    transform: scale(1.02);
 
-    box-shadow:
-        0 0 0 6px var(--MasterColor),
-        0 12px 28px var(--MasterColor);
+.duration p:first-of-type,
+.payment p:first-of-type,
+.delivery-add p:first-of-type {
+    font-weight: bold;
+    font-size: 1.1rem;
+    color: var(--HeaderTextColor);
+    margin-bottom: 0.5rem;
 }
+
+.duration p:first-of-type big,
+.payment p:first-of-type big,
+.delivery-add p:first-of-type big {
+    font-size: 1.1rem;
+}
+
+.duration p:nth-of-type(2),
+.payment p:nth-of-type(2),
+.delivery-add p:nth-of-type(2) {
+    color: var(--TextColor);
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+}
+
+/* Input group for duration */
+.duration {
+    display: flex;
+    flex-direction: column;
+}
+
+.duration .input-group {
+    display: flex;
+    gap: 0.75rem;
+    margin: 0.75rem 0;
+    align-items: center;
+}
+
+#duration {
+    flex: 1;
+    border: solid 2px var(--InputBorderColor);
+    padding: 0.75rem;
+    border-radius: 12px;
+    font-size: 1rem;
+    transition: border-color 0.2s;
+}
+
+#duration:focus {
+    outline: none;
+    border-color: hsl(var(--primary));
+}
+
+#duration-unit {
+    padding: 0.75rem;
+    border: solid 2px var(--InputBorderColor);
+    border-radius: 12px;
+    background: white;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.duration p:last-of-type {
+    margin-top: 0.75rem;
+    font-size: 0.85rem;
+    color: var(--TextColor);
+}
+
+/* Payment select */
+#payment-method {
+    width: 100%;
+    padding: 0.75rem;
+    border: solid 2px var(--InputBorderColor);
+    border-radius: 12px;
+    font-size: 1rem;
+    background: white;
+    cursor: pointer;
+    margin-top: 0.5rem;
+}
+
+#payment-method:focus {
+    outline: none;
+    border-color: hsl(var(--primary));
+}
+
+#delivery-address {
+    width: 100%;
+    padding: 0.75rem;
+    border: solid 2px var(--InputBorderColor);
+    border-radius: 12px;
+    font-size: 1rem;
+    font-family: inherit;
+    resize: vertical;
+    margin-top: 0.5rem;
+}
+
+#delivery-address:focus {
+    outline: none;
+    border-color: hsl(var(--primary));
+}
+
+.borrow-btn {
+    margin-top: 1rem;
+    text-align: center;
+}
+
+.borrow-btn button {
+    background-color: var(--HeaderTextColor);
+    color: white;
+    width: 100%;
+    max-width: 300px;
+    border: none;
+    border-radius: 40px;
+    padding: 1rem 2rem;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.25s ease;
+}
+
+.borrow-btn button:hover {
+    background-color: hsl(var(--primary));
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
 footer {
     color: var(--TextColor);
-    font-size: 10px;
-    position: relative;
-    left: 0px;
-    padding-top: 10px;
+    font-size: 0.85rem;
+    text-align: center;
+    padding: 2rem;
+    margin-top: 2rem;
+    border-top: 1px solid var(--InputBorderColor);
 }
