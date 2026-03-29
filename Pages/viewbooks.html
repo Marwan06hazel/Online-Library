@@ -3,47 +3,107 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Browse Books</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Browse Books - Online Library</title>
+    <link rel="stylesheet" href="../css/viewbooks.css">
 </head>
 
 <body>
 
+    <header>
+        <a href="/" class="logo">
+            <img src="../Pics/book.svg" alt="Weblogo">
+            <span>Libraria</span>
+        </a>
+
+        <nav id="navbar">
+            <a href="userpage.html">Home</a>
+            <a href="viewbooks.html">Books</a>
+            <a href="listofborrowedbooks.html">My Borrowed Books</a>
+            <a href="../index.html" class="button">Log out</a>
+        </nav>
+    </header>
+
     <main>
-    <h1>Browse Books</h1>
-    <p>Search by title or author...</p>
+        <h1>Browse Our Collection</h1>
+        <p>Discover your next favorite book from our curated library</p>
 
-    <h2>The Great Gatsby</h2>
-    <p>by F. Scott Fitzgerald<br><strong>Fiction</strong><br>A portrait of the Jazz Age and the American Dream through
-        the eyes of Nick Carraway.</p>
-    <hr>
+        <div class="search-section">
+            <input type="text" id="searchInput" placeholder="Search by title, author, or category..."
+                class="search-input">
+            <select id="categoryFilter" class="category-filter">
+                <option value="all">All Categories</option>
+                <option value="romance">Romance</option>
+                <option value="science">Science</option>
+                <option value="fiction">Fiction</option>
+                <option value="nonfiction">Non-Fiction</option>
+                <option value="mystery">Mystery</option>
+                <option value="thriller">Thriller</option>
+                <option value="fantasy">Fantasy</option>
+                <option value="horror">Horror</option>
+                <option value="biography">Biography</option>
+                <option value="history">History</option>
+                <option value="poetry">Poetry</option>
+                <option value="selfhelp">Self-Help</option>
+                <option value="philosophy">Philosophy</option>
+                <option value="adventure">Adventure</option>
+                <option value="children">Children's</option>
+                <option value="youngadult">Young Adult</option>
+                <option value="comics">Comics / Graphic Novels</option>
+                <option value="religion">Religion / Spirituality</option>
+                <option value="sciencefiction">Science Fiction</option>
+                <option value="travel">Travel</option>
+                <option value="cookbook">Cookbook</option>
+                <option value="art">Art / Photography</option>
+                <option value="health">Health / Fitness</option>
+            </select>
+        </div>
 
-    <h2>Clean Code</h2>
-    <p>by Robert C. Martin<br><strong>Technology</strong><br>A handbook of agile software craftsmanship and best coding
-        practices.</p>
-    <hr>
+        <div class="books-grid" id="booksGrid">
+            <div class="book-card" data-category="romance">
+                <img src="../Pics/The_summer_i_turend_pretty.jpg" alt="Book Cover" class="book-cover-img">
+                <div class="book-info">
+                    <h3>The Summer I Turned Pretty</h3>
+                    <p class="author">by Jenny Han</p>
+                    <p class="category">Romance</p>
+                    <div class="book-actions">
+                        <button class="details-btn" onclick="showDetails('The Summer I Turned Pretty')">Details</button>
+                        <a href="borrowpage.html" class="borrow-btn">Borrow</a> 
+                    </div>
+                </div>
+            </div>
 
-    <h2>Dune</h2>
-    <p>by Frank Herbert<br><strong>Science Fiction</strong><br>An epic saga of politics, religion, and ecology on the
-        desert planet Arrakis.</p>
-    <hr>
+            <div class="book-card" data-category="fiction">
+                <img src="../Pics/it-ends-with-us.jpg" alt="Book Cover" class="book-cover-img">
+                <div class="book-info">
+                    <h3>It Ends With Us</h3>
+                    <p class="author">by Colleen Hoover</p>
+                    <p class="category">Fiction</p>
+                    <div class="book-actions">
+                        <button class="details-btn" onclick="showDetails('It Ends With Us')">Details</button>
+                        <a href="borrowpage.html" class="borrow-btn">Borrow</a>
+                    </div>
+                </div>
+            </div>
 
-    <h2>The Art of War</h2>
-    <p>by Sun Tzu<br><strong>Philosophy</strong><br>Ancient Chinese military treatise on strategy and tactics still
-        relevant today.</p>
-    <hr>
-
-    <h2>Pride and Prejudice</h2>
-    <p>by Jane Austen<br><strong>Fiction</strong><br>A witty exploration of love, class, and social expectations in
-        Regency England.</p>
-    <hr>
-
-    <h2>A Brief History of Time</h2>
-    <p>by Stephen Hawking<br><strong>Science</strong><br>An exploration of cosmology, black holes, and the nature of
-        time itself.</p>
-
+            <div class="book-card" data-category="fantasy">
+                <img src="../Pics/Harry_Potter.jpg" alt="Book Cover" class="book-cover-img">
+                <div class="book-info">
+                    <h3>Harry Potter and the Sorcerer's Stone</h3>
+                    <p class="author">by J.K. Rowling</p>
+                    <p class="category">Fantasy</p>
+                    <div class="book-actions">
+                        <button class="details-btn" onclick="showDetails('Harry Potter and the Sorcerer\'s Stone')">Details</button>
+                        <a href="borrowpage.html" class="borrow-btn">Borrow</a> 
+                    </div>
+                </div>
+            </div>
+        </div>
     </main>
 
-
+    <footer>
+        <p>&copy; 2026 All rights reserved.</p>
+    </footer>
 
 </body>
 
