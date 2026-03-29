@@ -308,7 +308,7 @@ b {
 }
 
 .Edit-btn {
-    background-color: var(--HeaderTextColor);
+    background-color: var(--NotesColor);
     color: white;
     width: 100%;
     max-width: 300px;
