@@ -1,3 +1,11 @@
+:root {
+    --primary: 25 75% 47%;
+    --primary-color: hsl(var(--primary));
+    --primary-hover: 25 75% 42%;
+    --primary-light: 25 75% 92%;
+    --MasterColor: #f1f0e9
+}
+
 * {
     margin: 0;  
     padding: 0;
@@ -7,17 +15,7 @@
 body {
     font-family: 'Segoe UI';
     background: #f1f0e9;
-}
-
-header {
-    background-color: rgb(247, 243, 237);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 0.9rem 2.5rem;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.09);
-    border-bottom: 1px solid #eef2f6;
-    flex-wrap: wrap;
+    background-color: var(--MasterColor);
 }
 
 .logo {
@@ -42,12 +40,6 @@ header {
     opacity: 0.85;
 }
 
-:root {
-    --primary: 25 75% 47%;
-    --primary-color: hsl(var(--primary));
-    --primary-hover: 25 75% 42%;
-    --primary-light: 25 75% 92%;
-}
 
 #navbar {
     display: flex;
@@ -125,6 +117,19 @@ header {
     transform: translateY(-1px);
     box-shadow: 0 4px 8px hsl(var(--primary) / 0.2);
 }
+
+header {
+    background-color: rgb(247, 243, 237);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.9rem 2.5rem;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.09);
+    border-bottom: 1px solid #eef2f6;
+    flex-wrap: wrap;
+}
+
+
 
 /* ---------------- */
 
