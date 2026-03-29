@@ -2,6 +2,8 @@
 <html lang="en">
 
 <head>
+    <link rel="stylesheet" type="text/css" href="AddBook.css" /> 
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Page</title>
@@ -23,28 +25,35 @@
             <a href="../index.html" class="button">Log out</a>
         </nav>
     </header>
-
+    
     <h1>Add New Book</h1>
 
-    <form>
+    <form id="AddBookForm">
         <p><strong>Book Title</strong></p>
-        <input type="text" placeholder="Enter book title">
+        <input type="text" id= "title" placeholder="Enter book title" required>
 
         <p><strong>Book ID</strong></p>
-        <input type="number" placeholder="Enter book ID">
+        <input type="number" id= "bookId" min="1" placeholder="Enter book ID" required>
 
         <p><strong>Author</strong></p>
-        <input type="text" placeholder="Author name">
+        <input type="text" id= "author" placeholder="Author name" required>
 
         <p><strong>Category</strong></p>
-        <input type="text" placeholder="e.g. Fiction, Science, History">
+        <input type="text" id= "category" placeholder="e.g. Fiction, Science, History" required>
 
         <p><strong>Description</strong></p>
-        <textarea rows="4" cols="50" placeholder="Brief book description..."></textarea>
+        <textarea id= "description" rows="4" cols="50" placeholder="Brief book description..."></textarea>
+
+        <p><strong>Book Cover</strong></p>
+        <input type="file" id= "cover" accept="image/*"> 
+        
 
         <br><br>
-        <button type="button">Add Book</button>
+        <button type="button" onclick="addBook()">Add Book</button>
     </form>
+
+<script src="AddBook.js"></script>
+    
 </body>
 
 </html>

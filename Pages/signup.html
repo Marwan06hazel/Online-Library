@@ -4,7 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Digital Library</title>
+    <link rel="stylesheet" href="../css/signup.css">
+    <title>SignUp Page</title>
 </head>
 
 <body>
@@ -24,46 +25,46 @@
     </header>
 
     <main class="signup">
-        <h3>Create Acount</h3>
-        <p>Join our library community</p>
+
+        <h2>Create an Account</h2>
 
         <form action="#" method="post">
-            <div>
-                <label for="username">Username</label><br>
+            <div class="inputs">
+                <label for="username">Username</label>
                 <input type="text" id="username" name="username">
             </div>
         
-            <div>
-                <label for="email">Email</label><br>
+            <div class="inputs">
+                <label for="email">Email</label>
                 <input type="email" id="email" name="email">
             </div>
         
-            <div>
-                <label for="password">Password</label><br>
+            <div class="inputs">
+                <label for="password">Password</label>
                 <input type="password" id="password" name="password">
             </div>
         
-            <div>
-                <label for="confirm_password">Confirm Password</label><br>
+            <div class="inputs">
+                <label for="confirm_password">Confirm Password</label>
                 <input type="password" id="confirm_password" name="confirm_password">
             </div>
         
-            <div>
-                <input type="checkbox" id="admin" name="admin">
-                <label for="admin">Register as Admin</label>
+            <div class="box">
+                <label for="admin">
+                <input type="checkbox" id="admin" name="admin">  Register as Admin
+                </label>
             </div>
         
-            <div>
+            <div class="but1">
                 <button type="submit">Sign Up</button>
             </div>
         </form>
         
-        <div>
+        <div class="footer">
             <p>Already have an account? <a href="login.html">Log in</a></p>
         </div>
 
     </main>
-
 
 </body>
 

@@ -1,0 +1,90 @@
+:root {
+    --MasterColor: #fffef8;
+    --HeaderTextColor: #0f172a;
+    --TextColor: #6e859d;
+    --NotesColor: #d97706;
+    --BGNotesColor: #fffbeb;
+    --TimeIcon: #2563eb;
+    --BGTimeIcon: #eff6ff;
+    --PaymentIcon: #059669;
+    --BGPaymentIcon: #ecfdf5;
+    --InputBorderColor: #e2e8f0;
+}
+body {
+    font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+    background-color: var(--MasterColor);
+    margin: 0px;
+    margin-left: 0vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+main {
+    max-width: 450px;
+    padding: 60px 20px;
+}
+h1 {
+    color: var(--HeaderTextColor);
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+main > p {
+    color: var(--TextColor);
+    margin-bottom: 40px;
+}
+form div {
+    margin-bottom: 20px;
+}
+label {
+    display: block;
+    color: var(--TextColor);
+    font-size: 0.9rem;
+    font-weight: 500;
+    margin-bottom: 8px;
+}
+input[type="email"],
+input[type="password"],
+input[type="text"] {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid var(--InputBorderColor);
+    border-radius: 8px;
+    font-size: 1rem;
+    background-color: #ffffff;
+    transition: border-color 0.2s;
+}
+button[type="submit"] {
+    display: block;
+    width: fit-content;
+    min-width: 140px;
+    margin: 30px auto 0 auto;
+    background-color: var(--BGNotesColor);
+    color: var(--NotesColor);
+    border: none;
+    padding: 12px 30px;
+    border-radius: 50px;
+    font-weight: 700;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: transform 0.1s ease;
+}
+button[type="submit"]:active {
+    transform: scale(0.98);
+}
+main div:last-child {
+    margin-top: 25px;
+    text-align: center;
+    color: var(--HeaderTextColor);
+    font-size: 0.95rem;
+}
+a {
+    color: var(--TimeIcon);
+    text-decoration: none;
+    font-weight: 600;
+}
+a:hover {
+    text-decoration: underline;
+}

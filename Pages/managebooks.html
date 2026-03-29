@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Page</title>
+    <link rel="stylesheet" href="../css/Manage Books Page.css" />
 </head>
 
 <body>
@@ -25,19 +25,22 @@
     </header>
 
     <main>
+        <button type="button" class="Back-Btn">← Go Back</button>
         <h1>Edit Book</h1>
+        <p>Select a book to edit its details.</p>
         <br />
 
         <form action="" method="post">
 
             <figure class="edit-book-cover">
-                <p><b>Book Cover</b></p>
+                <b>Book Cover</b>
 
-                <img src="Pics/The summer i turend pretty (Cover Page}.jpg"
+                <img class="edit-book-cover-pic"
+                     src="../Pics/The summer i turend pretty (Cover Page}.jpg"
                      alt="Book cover of The Summer I Turned Pretty by Jenny Han"
                      width="100" height="150" />
 
-                <button type="button">Remove</button>
+                <button type="button" class="Remove-Btn">Remove</button>
             </figure>
 
             <section class="edit-details">
@@ -48,38 +51,39 @@
                 <b>Author *</b> <br />
                 <input type="text" name="edit-author" value="Jenny Han" required>
                 <br /> <br />
+                    
+                    <div class="Id-cat">
+                        <b>ID</b> <br />
+                        <input  class="id-input" type="text" name="edit-ID" value="978-977-490-267-3">
+                        <br /> <br />
 
-                <b>ID</b> <br />
-                <input type="text" name="edit-ID" value="978-977-490-267-3">
-                <br /> <br />
-
-                <b>Category</b> <br />
-                <select id="edit-genre" name="edit_genre">
-                    <option value="romance">Romance</option>
-                    <option value="science">Science</option>
-                    <option value="fiction">Fiction</option>
-                    <option value="nonfiction">Non-Fiction</option>
-                    <option value="mystery">Mystery</option>
-                    <option value="thriller">Thriller</option>
-                    <option value="fantasy">Fantasy</option>
-                    <option value="horror">Horror</option>
-                    <option value="biography">Biography</option>
-                    <option value="history">History</option>
-                    <option value="poetry">Poetry</option>
-                    <option value="selfhelp">Self-Help</option>
-                    <option value="philosophy">Philosophy</option>
-                    <option value="adventure">Adventure</option>
-                    <option value="children">Children's</option>
-                    <option value="youngadult">Young Adult</option>
-                    <option value="comics">Comics / Graphic Novels</option>
-                    <option value="religion">Religion / Spirituality</option>
-                    <option value="sciencefiction">Science Fiction</option>
-                    <option value="travel">Travel</option>
-                    <option value="cookbook">Cookbook</option>
-                    <option value="art">Art / Photography</option>
-                    <option value="health">Health / Fitness</option>
-                </select>
-
+                        <b class="cat-txt">Category</b> <br />
+                        <select class="cat-select" id="edit-genre" name="edit_genre">
+                              <option value="romance">Romance</option>
+                              <option value="science">Science</option>
+                              <option value="fiction">Fiction</option>
+                              <option value="nonfiction">Non-Fiction</option>
+                              <option value="mystery">Mystery</option>
+                              <option value="thriller">Thriller</option>
+                              <option value="fantasy">Fantasy</option>
+                              <option value="horror">Horror</option>
+                              <option value="biography">Biography</option>
+                              <option value="history">History</option>
+                              <option value="poetry">Poetry</option>
+                              <option value="selfhelp">Self-Help</option>
+                              <option value="philosophy">Philosophy</option>
+                              <option value="adventure">Adventure</option>
+                              <option value="children">Children's</option>
+                              <option value="youngadult">Young Adult</option>
+                              <option value="comics">Comics / Graphic Novels</option>
+                              <option value="religion">Religion / Spirituality</option>
+                              <option value="sciencefiction">Science Fiction</option>
+                              <option value="travel">Travel</option>
+                              <option value="cookbook">Cookbook</option>
+                              <option value="art">Art / Photography</option>
+                              <option value="health">Health / Fitness</option>
+                           </select>
+                    </div>
                 <br /> <br />
 
                 <b>Description</b> <br />
@@ -89,26 +93,39 @@
             <br /> <br />
 
             <section class="edit-publish-details">
-                <b>Total Copies</b> <br />
-                <input type="number" min="0" step="1" name="edit-copies">
-                <br /> <br />
+                <div class="copies">
+                    <div class="copies-txt">
+                        <b>Total Copies</b> <br />
+                        <b>Available Copies</b> <br />
+                    </div>
+                    <div class="copies-inputs">
+                        <input type="number" min="0" step="1" name="edit-copies">
+                        <br /> <br />
+                        <input type="number" min="0" step="1" name="edit-available-copies">
+                        <br /> <br />
+                    </div>
+                </div>
 
-                <b>Available Copies</b> <br />
-                <input type="number" min="0" step="1" name="edit-available-copies">
-                <br /> <br />
-
-                <b>Year</b> <br />
-                <input type="date" step="1" name="edit-date">
-                <br /> <br />
-
-                <b>Pages</b> <br />
-                <input type="number" min="1" step="1" name="edit-pages-num">
+                <div class="dates">
+                    <div class="dates-txt">
+                        <b>Publisher</b> <br />
+                        <b class="year-txt">Year</b> <br />
+                        <b class="pages-txt">Pages</b> <br />
+                    </div>
+                    <div class="dates-inputs">
+                        <input type="text" min="0" step="1" name="edit-available-copies">
+                        <br /> <br />
+                        <input type="date" step="1" name="edit-date">
+                        <br /> <br />
+                        <input type="number" min="1" step="1" name="edit-pages-num">
+                    </div>
+                </div>
             </section>
 
             <br /> <br />
 
-            <section class="Edit-btn">
-                <button type="submit">Save Changes</button>
+            <section>
+                <button class="Edit-btn" type="submit">Save Changes</button>
             </section>
 
         </form>
