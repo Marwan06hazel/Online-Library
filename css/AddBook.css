@@ -3,6 +3,7 @@
     --primary-color: hsl(var(--primary));
     --primary-hover: 25 75% 42%;
     --primary-light: 25 75% 92%;
+    --MasterColor: #fffef8
 }
 
 * {
@@ -14,6 +15,7 @@
 body {
     font-family: 'Segoe UI';
     background: #f1f0e9;
+    background-color: var(--MasterColor);
 }
 .logo {
     display: flex;
