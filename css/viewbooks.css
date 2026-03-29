@@ -16,7 +16,7 @@ body {
     --primary-color: hsl(var(--primary));
     --primary-hover: 25 75% 42%;
     --primary-light: 25 75% 92%;
-    --MasterColor: #fffef8;
+    --MasterColor: #f1f0e9;
     --HeaderTextColor: #0f172a;
     --TextColor: #6e859d;
     --NotesColor: #d97706;
