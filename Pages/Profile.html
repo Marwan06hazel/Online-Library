@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" type="text/css" href="Profile.css" /> 
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile Page</title>
+</head>
+
+<body>
+
+    <header>
+        <a href="/" class="logo">
+            <img src="../Pics/book.svg" alt="Weblogo">
+            <span>Libraria</span>
+        </a>
+
+        <nav id="navbar">
+            <a href="Profile.html">My Profile</a>
+            <a href="adminpage.html">Home</a>
+            <a href="viewbooks.html">Books</a>
+            <a href="addbook.html">Add Book</a>
+            <a href="managebooks.html">Manage Books</a>
+            <a href="../index.html" class="button">Log out</a>
+        </nav>
+    </header>
+
+    <h1>My Profile</h1>
+    
+
+    <div class="profile-container">
+
+    <div class="profile-header">
+
+
+        <div class="profile-img">
+            <img id="profileImage" src="../Pics/Profile-icon.png" alt="Profile Image">
+        </div>
+
+        <h2 id="username">Your Name</h2>
+
+        <button type="button" onclick="openEdit()"> Edit Profile</button>
+
+
+    </div>
+
+</div>
+
+
+<div class="edit-profile" id="editBox">
+
+    <h3>Edit Profile</h3>
+
+    <label>Name</label>
+    <input type="text" id="nameInput">
+
+    <label>Email</label>
+    <input type="email" id="emailInput">
+
+    <label>Password</label>
+    <input type="password" id="passInput">
+
+    <label>Profile Image</label>
+    <input type="file" id="imgInput">
+
+    <button type="button" onclick="saveChanges()">Save</button>
+    <button type="button" onclick="closeEdit()"> Cancel</button>
+
+</div>
+
+    <script src="Profile.js"></script>
+
+</body>
+
+</html>    
