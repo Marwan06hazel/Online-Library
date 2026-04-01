@@ -28,7 +28,7 @@ main {
     padding: 2rem;
 }
 
-.Back-Btn {
+.back-btn {
     background: none;
     border: none;
     color: var(--TextColor);
@@ -36,16 +36,17 @@ main {
     margin-bottom: 1rem;
     font-size: 1rem;
     padding: 0.5rem 0;
-    transition: color 0.2s ease;
+    transition: color 0.2s ease, transform 0.2s ease;
 }
 
-.Back-Btn:hover {
+.back-btn:hover {
     color: var(--HeaderTextColor);
+    transform: translateX(-2px); /* effect صغير للـ hover */
 }
 .container{
     display: grid;
     grid-template-columns: 33.333% 66.6666%; /* 2 columns */
-    gap: 10px;
+    gap: 20px;
     
 }
 .container1 {
