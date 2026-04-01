@@ -1,0 +1,117 @@
+body{
+    margin: 55px 200px 0px 200px;
+    padding: 0px 110px 10px 110px;
+    font-family: 'Segoe UI';
+}
+.back-btn{
+    background-color: white;
+    border: white;
+    color: #878e99;
+    cursor: pointer;
+}
+.back-btn:hover{
+    color: #343a49;
+}
+.container{
+    display: grid;
+    grid-template-columns: 33.333% 66.6666%; /* 2 columns */
+    gap: 30px;
+    
+}
+.container1 {
+    display: grid;
+    grid-template-columns:repeat(2, 40%); /* 2 columns */
+    gap: 10px;
+    font-weight: 600;
+    margin-top: 16px;
+}
+.container2{
+    display: grid;
+    grid-template-columns:repeat(2, 50%); /* 2 columns */
+    gap: 17px;
+    margin: 10px 0;
+    padding-right: 45px;
+}
+#container2{
+    border: 1px solid #f1f5f9;
+    margin: 0px;
+    padding: 17px;
+    border-radius: 15px;
+}
+img{
+    margin-top: 31px;
+    margin-bottom: 100px;
+    width: 96%;
+    border-radius: 20px;
+}
+.container1{
+    font-size: 14px;
+    text-align: center;
+    width: 40%;
+}
+.box1 {
+    padding: 4px;
+    border-radius: 6px;
+    border: 1px solid #bbf5da;
+    background-color: #ecfdf5;
+    color: #047857;
+    box-shadow: 1.5px 1.5px 1.5px rgba(210, 211, 210, 0.4);
+}
+.box2 {
+    padding: 4px;
+    border-radius: 6px;
+    border: 1px solid #fde68a;
+    background-color: #fffbeb;
+    color: #b45309;
+    box-shadow: 1.5px 1.5px 1.5px rgba(210, 211, 210, 0.4);
+}
+.box1:hover,.box2:hover{
+    background-color: #454544;
+    transition: 70ms ;
+}
+h1,h2,h3,h4,h5,h6{margin: 0;}
+h1{
+    margin-bottom: 10px;
+}
+h3{
+    margin-bottom: 20px;
+    color: #64748b;
+    font-weight: 450;
+}
+h4{
+    color: #0f172a;
+    margin-top: 10px;
+    font-weight: 600;
+}
+h5{
+    color: #95a0af;
+    font-weight: 450;
+}
+.description{
+    color: #95a0af;
+    font-weight: 600;
+}
+p{
+    color: #475569;
+}
+.p{
+    margin-bottom: 20px;
+}
+.borrow-btn{
+    background-color: #0f172a;
+    color: white;
+    border-radius: 15px;
+    margin-top: 20px;
+    padding: 15px;
+    font-weight: 700;
+    width: 210px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    text-align: center;
+}
+.borrow:hover{
+    background-color: white;
+    color: #0f172a;
+}
