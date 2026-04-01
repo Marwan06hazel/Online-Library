@@ -1,21 +1,51 @@
-body{
-    margin: 55px 200px 0px 200px;
-    padding: 0px 110px 10px 110px;
-    font-family: 'Segoe UI';
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
-.back-btn{
-    background-color: white;
-    border: white;
-    color: #878e99;
+
+body {
+    font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background-color: var(--MasterColor);
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --primary: 25 75% 47%;
+    --primary-color: hsl(var(--primary));
+    --primary-hover: 25 75% 42%;
+    --primary-light: 25 75% 92%;
+    --MasterColor: #f1f0e9;
+    --HeaderTextColor: #0f172a;
+    --TextColor: #6e859d;
+}
+
+
+main {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.Back-Btn {
+    background: none;
+    border: none;
+    color: var(--TextColor);
     cursor: pointer;
+    margin-bottom: 1rem;
+    font-size: 1rem;
+    padding: 0.5rem 0;
+    transition: color 0.2s ease;
 }
-.back-btn:hover{
-    color: #343a49;
+
+.Back-Btn:hover {
+    color: var(--HeaderTextColor);
 }
 .container{
     display: grid;
     grid-template-columns: 33.333% 66.6666%; /* 2 columns */
-    gap: 30px;
+    gap: 10px;
     
 }
 .container1 {
@@ -24,6 +54,9 @@ body{
     gap: 10px;
     font-weight: 600;
     margin-top: 16px;
+    font-size: 14px;
+    text-align: center;
+    width: 40%;
 }
 .container2{
     display: grid;
@@ -31,9 +64,10 @@ body{
     gap: 17px;
     margin: 10px 0;
     padding-right: 45px;
+    padding-bottom: 50px;
 }
 #container2{
-    border: 1px solid #f1f5f9;
+    border: 1px solid #7f858c;
     margin: 0px;
     padding: 17px;
     border-radius: 15px;
@@ -41,13 +75,8 @@ body{
 img{
     margin-top: 31px;
     margin-bottom: 100px;
-    width: 96%;
+    width: 80%;
     border-radius: 20px;
-}
-.container1{
-    font-size: 14px;
-    text-align: center;
-    width: 40%;
 }
 .box1 {
     padding: 4px;
@@ -97,21 +126,25 @@ p{
 .p{
     margin-bottom: 20px;
 }
-.borrow-btn{
-    background-color: #0f172a;
+.borrow-btn {
+    background-color: hsl(var(--primary));
     color: white;
+    text-decoration: none;
+    display: inline-block;
+    text-align: center;
+    transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
     border-radius: 15px;
-    margin-top: 20px;
     padding: 15px;
     font-weight: 700;
     width: 210px;
     cursor: pointer;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    text-align: center;
 }
-.borrow:hover{
-    background-color: white;
-    color: #0f172a;
+
+.borrow-btn:hover {
+    background-color: hsl(var(--primary) / 0.9);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px hsl(var(--primary) / 0.2);
+    text-decoration: none;
+
 }
