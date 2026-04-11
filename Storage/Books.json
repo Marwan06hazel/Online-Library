@@ -1,0 +1,25 @@
+{
+  "books": [
+    {
+      "id": 1,
+      "title": "The Summer I Turned Pretty",
+      "author": "Jenny Han",
+      "cover": "../Pics/The_summer_i_turend_pretty.jpg",
+      "Category": "Romance"
+    },
+    {
+      "id": 2,
+      "title": "It Ends With Us",
+      "author": "Colleen Hoover",
+      "cover": "../Pics/it-ends-with-us.jpg",
+      "Category": "Fiction"
+    },
+    {
+      "id": 3,
+      "title": "Harry Potter",
+      "author": "J.K. Rowling",
+      "cover": "../Pics/Harry_Potter.jpg",
+      "Category": "Fantasy"
+    }
+  ]
+}
