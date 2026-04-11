@@ -155,6 +155,7 @@ h2{
 
 .inputs, .box{
     margin-bottom: 1.5rem;
+    position: relative;  /* for placing the icon inside the input */
 }
 
 .inputs input{
@@ -171,6 +172,13 @@ h2{
     outline: none;    /*to remove the deafult black ouline*/
     border-color: #B45309;
     box-shadow: 0 0 0 3px rgba(180, 83, 9, 0.1);
+}
+
+.inputs i {
+    position: absolute;
+    right: 10px;
+    top: 33px;
+    cursor: pointer;
 }
 
 .box input{
@@ -207,8 +215,13 @@ h2{
 }
 
 .footer{
-    font-size: 19px;
+    font-size: 18px;
 }
 .footer a{
+    color: hsl(var(--primary));
     text-decoration: none;
+    font-weight: 600;
+}
+.footer a:hover{
+    text-decoration: underline;
 }
