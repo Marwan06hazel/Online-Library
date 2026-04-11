@@ -129,8 +129,6 @@ header {
     flex-wrap: wrap;
 }
 
-
-
 /* ---------------- */
 
 .signup{
@@ -138,8 +136,12 @@ header {
     flex-direction: column;
     align-items: center;
     background-color: #fffef8;
-    padding: 3rem;
-    gap: 2.5rem;
+    padding: 2rem;
+    gap: 1.5rem;
+
+    max-width: 500px;      /* makes it a box (limited width from right & left) */
+    margin: 1.5rem auto;   /* centers it (top spacing) */
+    border-radius: 10px;   
 }
 
 label{
@@ -155,7 +157,6 @@ h2{
 
 .inputs, .box{
     margin-bottom: 1.5rem;
-    position: relative;  /* for placing the icon inside the input */
 }
 
 .inputs input{
@@ -174,10 +175,18 @@ h2{
     box-shadow: 0 0 0 3px rgba(180, 83, 9, 0.1);
 }
 
-.inputs i {
+.input-box { /* for placing the icon inside the input */
+    position: relative;
+}
+
+.input-box input {
+    width: 100%;
+}
+
+.input-box i {
     position: absolute;
     right: 10px;
-    top: 33px;
+    top: 10px;
     cursor: pointer;
 }
 

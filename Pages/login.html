@@ -4,8 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/login.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <title>Login Page</title>
-    <link rel="stylesheet" href="../css/login.css" />
 </head>
 
 <body>
@@ -24,24 +25,24 @@
         </nav>
     </header>
 
-
     <main>
         <h1>Welcome Back</h1>
         <p>Sign in to your library account</p>
 
         <form action="#" method="post">
             <div>
-                <label for="email">Email</label><br>
+                <label for="email">Email</label>
                 <input type="email" id="email" name="email">
             </div>
 
-            <div>
-                <label for="password">Password</label><br>
+            <div class="inputs">
+                <label for="password">Password</label>
                 <input type="password" id="password" name="password">
+                <i class="fa-solid fa-eye" style="color: rgb(228, 220, 183);" id="togglePass"></i>
             </div>
 
             <div>
-                <button type="submit">Sign In</button>
+                <button type="submit">Log In</button>
             </div>
         </form>
 
@@ -49,6 +50,8 @@
             <p>Don't have an account? <a href="signup.html">Sign up</a></p>
         </div>
     </main>
+
+    <script src="../js/login.js"></script>
 </body>
 
 </html>
