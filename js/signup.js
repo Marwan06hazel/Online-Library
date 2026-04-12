@@ -114,15 +114,14 @@ form.addEventListener("submit", (e) => {
 
         users.push(newUser);
         localStorage.setItem("users", JSON.stringify(users));
+
+        // Upadted: adding the same upadted feature 
+        localStorage.setItem("role", newUser.role);
+        localStorage.setItem("currentUser", JSON.stringify(newUser));
     
         // redirect to the corresponding home page
-        if (Admin) {
-            localStorage.setItem("role", "admin");
-            window.location.href = "adminpage.html";
-        } else {
-            localStorage.setItem("role", "user");
-            window.location.href = "userpage.html";
-        }
+        if (newUser.role === "admin") window.location.href = "adminpage.html";
+        else window.location.href = "userpage.html";
     }
 
 })
