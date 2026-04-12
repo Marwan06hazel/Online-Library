@@ -79,7 +79,6 @@ function setupNavbar() {
     if (userRole === "admin") {
         // Admin Navbar
         navbar.innerHTML = `
-            <a href="adminpage.html">Dashboard</a>
             <a href="viewbooks.html">Manage Books</a>
             <a href="addbook.html">Add New Book</a>
             <a href="../index.html" class="button" onclick="logout()">Log out</a>
