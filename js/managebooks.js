@@ -4,6 +4,14 @@ const BOOK_ID = Number(urlParams.get("id"));
 const books = JSON.parse(localStorage.getItem("books")) || [];
 const book = books.find(b => b.id === BOOK_ID);
 
+if (!localStorage.getItem("books")) {
+    fetch("../Storage/Books.json")
+        .then(res => res.json())
+        .then(data => {
+            localStorage.setItem("books", JSON.stringify(data.books));
+        });
+}
+
 if (book) {
     fillForm(book);
 }
