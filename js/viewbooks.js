@@ -58,7 +58,7 @@ function setupNavbar() {
             <a href="adminpage.html">Dashboard</a>
             <a href="viewbooks.html">Manage Books</a>
             <a href="addbook.html">Add New Book</a>
-            <a href="../index.html" class="button" onclick="logout()">Log out</a>
+           <a href="#" class="button" onclick="logout()">Log out</a>
         `;
     } else {
         // User Navbar
@@ -66,7 +66,7 @@ function setupNavbar() {
             <a href="userpage.html">Home</a>
             <a href="viewbooks.html">Books</a>
             <a href="listofborrowedbooks.html">My Borrowed Books</a>
-            <a href="../index.html" class="button" onclick="logout()">Log out</a>
+            <a href="#" class="button" onclick="logout()">Log out</a>
         `;
     }
 }
