@@ -91,7 +91,8 @@ document.querySelector(".borrow-btn button").addEventListener("click", function 
 
     const newEntry = {
         id: CURRENT_BOOK_ID,
-        date: dueDateText.replace("Due date: ", ""),
+        borrowDate: new Date().toLocaleDateString(),
+        dueDate: dueDateText.replace("Due date: ", ""),
         address: addressInput.value.trim()
     };
 
