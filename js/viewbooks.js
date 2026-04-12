@@ -1,7 +1,7 @@
 const booksGrid = document.getElementById("booksGrid");
 const searchInput = document.getElementById("searchInput");
 const categoryFilter = document.getElementById("categoryFilter");
-
+ 
 function loadLibrary() {
     let books = JSON.parse(localStorage.getItem("books"));
 
