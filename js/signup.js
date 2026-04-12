@@ -116,8 +116,13 @@ form.addEventListener("submit", (e) => {
         localStorage.setItem("users", JSON.stringify(users));
     
         // redirect to the corresponding home page
-        if (Admin) window.location.href = "adminpage.html";
-        else window.location.href = "userpage.html";
+        if (Admin) {
+            localStorage.setItem("role", "admin");
+            window.location.href = "adminpage.html";
+        } else {
+            localStorage.setItem("role", "user");
+            window.location.href = "userpage.html";
+        }
     }
 
 })
