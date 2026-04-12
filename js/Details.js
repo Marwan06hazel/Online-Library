@@ -1,16 +1,20 @@
 const urlParams = new URLSearchParams(window.location.search);
 const CURRENT_BOOK_ID = Number(urlParams.get('id'));
 
-fetch('../Storage/Books.json')
-    .then(response => response.json())
-    .then(data => {
-        const book = data.books.find(b => b.id === CURRENT_BOOK_ID);
+const books = JSON.parse(localStorage.getItem("books")) || [];
+const book = books.find(b => b.id === CURRENT_BOOK_ID);
 
-        if (book) {
-            updatePageContent(book);
-        }
-    })
+if (book) {
+    updatePageContent(book);
+}
 
+if (!localStorage.getItem("books")) {
+    fetch("../Storage/Books.json")
+        .then(res => res.json())
+        .then(data => {
+            localStorage.setItem("books", JSON.stringify(data.books));
+        });
+}
 function updatePageContent(book) {
 
     const imgElement = document.querySelector(".book-cover-img");
