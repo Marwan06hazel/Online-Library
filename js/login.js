@@ -40,26 +40,6 @@ function showErrors(errors){
     }
 } 
 
-// global failure errors
-function showGlobalError(message) {
-
-    // remove old global errors
-    document.querySelectorAll(".global-error").forEach(el => el.remove());
-
-    const globalError = document.createElement("div");
-
-    globalError.classList.add("global-error");
-    globalError.textContent = message;
-    globalError.style.color = "red";
-    globalError.style.fontSize = "14px";
-    globalError.style.marginBottom = "10px";
-
-    const form = document.querySelector("form");
-
-    // insert the <div> at the top of the form 
-    form.prepend(globalError);
-}
-
 // handle submit
 form.addEventListener("submit", (e) => {
     e.preventDefault();
@@ -89,15 +69,23 @@ form.addEventListener("submit", (e) => {
     }
 
     // store current user session
-    localStorage.setItem("currentUser", JSON.stringify(userFound));
+    localStorage.setItem("currentUser", JSON.stringify(userFound)); // this's for storing the current acc itself
+    localStorage.setItem("currentUserId", userFound.id); //this's for storing the current user's data individually instead of global data
+    
+    // Updated: store role separately for other pages' logic
+    localStorage.setItem("role", userFound.role);
 
-    // redirect
-    if (Admin) {
-        localStorage.setItem("role", "admin");
-        window.location.href = "adminpage.html";
-    } else {
-        localStorage.setItem("role", "user");
-        window.location.href = "userpage.html";
+    // initialize user storage if first login
+    const uid = userFound.id;
+
+    if (!localStorage.getItem(`${uid}_borrowedBooks`)) {
+        localStorage.setItem(`${uid}_borrowedBooks`, "[]");
+        localStorage.setItem(`${uid}_historyBooks`, "[]");
+        localStorage.setItem(`${uid}_favoriteBooks`, "[]");
     }
+    
+    // redirect
+    if (userFound.role === "admin") window.location.href = "adminpage.html";
+    else window.location.href = "userpage.html";
     
 });
