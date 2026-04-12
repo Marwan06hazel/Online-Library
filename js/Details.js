@@ -45,9 +45,43 @@ function displayBookDetails(books) {
         details[5].textContent = book["Total-Copies"];
     }
 
-    const borrowBtn = document.querySelector(".borrow-btn");
-    if (borrowBtn) {
-        borrowBtn.href = `borrowpage.html?id=${book.id}`;
+    const navbar = document.getElementById("navbar");
+    const userRole = localStorage.getItem("role");
+
+    let actionButton = "";
+    if (userRole === "admin") {
+        actionButton = `
+        <a href="managebooks.html?id=${book.id}" class="borrow-btn" style="margin-left: -70px;">Edit This Book</a>
+        <a href="#" class="borrow-btn"
+       onclick="removeBook(${book.id})" 
+       style="background-color: #dc2626; border-color: #dc2626; margin-left: 15px;">
+       Remove This Book
+    </a>
+    `;
+    } else {
+        actionButton = `
+        <a href="borrowpage.html?id=${book.id}" class="borrow-btn">Borrow This Book</a>
+    `;
+    }
+
+    const actionContainer = document.querySelector(".action-container");
+    if (actionContainer) {
+        actionContainer.innerHTML = actionButton;
+    }
+}
+
+function removeBook(id) {
+    const confirmDelete = confirm("Are you sure you want to delete this book? This cannot be undone.");
+
+    if (confirmDelete) {
+        let books = JSON.parse(localStorage.getItem("books")) || [];
+
+        const updatedBooks = books.filter(b => Number(b.id) !== Number(id));
+
+        localStorage.setItem("books", JSON.stringify(updatedBooks));
+
+        alert("Book removed successfully!");
+        window.location.href = "viewbooks.html";
     }
 }
 
