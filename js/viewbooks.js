@@ -13,7 +13,6 @@ function loadLibrary() {
     }
 
     renderBooks(books);
-    setupFilters(books);
 }
 
 function renderBooks(booksToDisplay) {
@@ -45,23 +44,6 @@ function renderBooks(booksToDisplay) {
         `;
         booksGrid.appendChild(card);
     });
-}
-function setupFilters(allBooks) {
-    const filterAction = () => {
-        const query = searchInput.value.toLowerCase();
-        const cat = categoryFilter.value.toLowerCase();
-
-        const filtered = allBooks.filter(b => {
-            const matchesSearch = b.title.toLowerCase().includes(query) ||
-                b.author.toLowerCase().includes(query);
-            const matchesCat = cat === "all" || b.Category.toLowerCase() === cat;
-            return matchesSearch && matchesCat;
-        });
-        renderBooks(filtered);
-    };
-
-    searchInput.addEventListener("input", filterAction);
-    categoryFilter.addEventListener("change", filterAction);
 }
 
 loadLibrary();
