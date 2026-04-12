@@ -13,6 +13,30 @@ function loadLibrary() {
     }
 
     renderBooks(books);
+    search(books);
+}
+
+function search(books) {
+    const performFilter = () => {
+        const textValue = searchInput.value.toLowerCase();
+        const selectedCategory = categoryFilter.value.toLowerCase();
+
+        const filteredBooks = books.filter(book => {
+            const matchesText = book.title.toLowerCase().includes(textValue) ||
+                book.author.toLowerCase().includes(textValue) ||
+                book.Category.toLowerCase().includes(textValue);
+
+            const matchesCategory = selectedCategory === "all" ||
+                book.Category.toLowerCase() === selectedCategory;
+
+            return matchesText && matchesCategory;
+        });
+
+        renderBooks(filteredBooks);
+    };
+
+    searchInput.addEventListener("input", performFilter);
+    categoryFilter.addEventListener("change", performFilter);
 }
 
 function renderBooks(booksToDisplay) {
@@ -58,7 +82,7 @@ function setupNavbar() {
             <a href="adminpage.html">Dashboard</a>
             <a href="viewbooks.html">Manage Books</a>
             <a href="addbook.html">Add New Book</a>
-           <a href="#" class="button" onclick="logout()">Log out</a>
+            <a href="../index.html" class="button" onclick="logout()">Log out</a>
         `;
     } else {
         // User Navbar
@@ -66,7 +90,7 @@ function setupNavbar() {
             <a href="userpage.html">Home</a>
             <a href="viewbooks.html">Books</a>
             <a href="listofborrowedbooks.html">My Borrowed Books</a>
-            <a href="#" class="button" onclick="logout()">Log out</a>
+            <a href="../index.html" class="button" onclick="logout()">Log out</a>
         `;
     }
 }
