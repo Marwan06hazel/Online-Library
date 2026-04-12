@@ -38,7 +38,28 @@ function showErrors(errors){
         // insert the <div> after/under each input 
         inputField.insertAdjacentElement("afterend", errorDiv);
     }
-} 
+}
+
+// global failure errors
+function showGlobalError(message) {
+
+    // remove old global errors
+    document.querySelectorAll(".global-error").forEach(el => el.remove());
+
+    const globalError = document.createElement("div");
+
+    globalError.classList.add("global-error");
+    globalError.textContent = message;
+
+    globalError.style.color = "red";
+    globalError.style.fontSize = "14px";
+    globalError.style.marginBottom = "10px";
+
+    const form = document.querySelector("form");
+
+    // insert the <div> at the top of the form 
+    if (form) form.prepend(globalError);
+}
 
 // handle submit
 form.addEventListener("submit", (e) => {
