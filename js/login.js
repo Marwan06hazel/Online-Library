@@ -47,6 +47,7 @@ function showGlobalError(message) {
     document.querySelectorAll(".global-error").forEach(el => el.remove());
 
     const globalError = document.createElement("div");
+
     globalError.classList.add("global-error");
     globalError.textContent = message;
     globalError.style.color = "red";
@@ -59,7 +60,7 @@ function showGlobalError(message) {
     form.prepend(globalError);
 }
 
-
+// handle submit
 form.addEventListener("submit", (e) => {
     e.preventDefault();
 
@@ -72,38 +73,26 @@ form.addEventListener("submit", (e) => {
     if( Password.trim() === "" ) errors.password = "This field is required";
     
     showErrors(errors);
+    if (Object.keys(errors).length > 0) return;
+
 
     // authentication
-    const storedEmail = localStorage.getItem("email");
-    const storedPassword = localStorage.getItem("password");
-    const storedRole = localStorage.getItem("role");
+    let users = JSON.parse(localStorage.getItem("users")) || [];
 
-    if (Email != storedEmail || Password != storedPassword) showGlobalError("Login failed! Invalid email or password");
-    else if (Email === storedEmail && Password === storedPassword) {
+    const userFound = users.find(
+        user => user.email === Email && user.password === Password
+    );
 
-        if (storedRole === "admin") window.location.href = "adminpage.html";
-        else window.location.href = "userpage.html";
-
+    if (!userFound) {
+        showGlobalError("Login failed! Invalid email or password");
+        return;
     }
+
+    // store current user session
+    localStorage.setItem("currentUser", JSON.stringify(userFound));
+
+    // redirect
+    if (userFound.role === "admin") window.location.href = "adminpage.html";
+    else window.location.href = "userpage.html";
     
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -78,7 +78,10 @@ form.addEventListener("submit", (e) => {
     let errors = {};  
     const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*?&]).{8,}$/;
 
+    // prevent default reload
     e.preventDefault()
+
+    // validations
     isEmpty(Username, "username", errors);
     isEmpty(Email, "email", errors);
     isEmpty(Password, "password", errors);
@@ -88,15 +91,30 @@ form.addEventListener("submit", (e) => {
     if(Password && !passwordRegex.test(Password)) errors.password = "Password must contain at least 8 characters, including letters, numbers, and special characters"
     if(Confirm && Confirm != Password) errors.confirm = "Password doesn't match, Please try again."
 
+    // load existing users & check duplicate email
+    let users = JSON.parse(localStorage.getItem("users")) || [];
+    const exists = users.some(user => user.email === Email);
+    if (exists) errors.email = "Email already exists";
+    
     showErrors(errors);
 
     if (Object.keys(errors).length === 0){
 
         // store user data
-        localStorage.setItem("email", Email);
-        localStorage.setItem("password", Password);
-        localStorage.setItem("role", Admin ? "admin" : "user");
-       
+        const newUser = {
+            id: Date.now(),
+            username: Username,
+            email: Email,
+            password: Password,
+            role: Admin ? "admin" : "user",
+            borrowedBooks: [],
+            favorites: [],
+            history: []
+        };
+
+        users.push(newUser);
+        localStorage.setItem("users", JSON.stringify(users));
+    
         // redirect to the corresponding home page
         if (Admin) window.location.href = "adminpage.html";
         else window.location.href = "userpage.html";

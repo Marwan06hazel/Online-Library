@@ -42,7 +42,7 @@ header {
     font-size: larger;
     font-weight: bold;
     padding-left: 0.5rem;
-    color: #1a2c3e;
+    color: hsl(var(--primary));
 }
 
 .logo img {

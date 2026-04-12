@@ -13,7 +13,7 @@
 
 body {
     font-family: 'Segoe UI';
-    background: #f1f0e9;
+    background: #fffef8;
 }
 
 header {
@@ -37,6 +37,7 @@ header {
     font-size: larger;
     font-weight: bold;
     padding-left: 0.5rem;
+    color: hsl(var(--primary));
 }
 
 .logo img {
