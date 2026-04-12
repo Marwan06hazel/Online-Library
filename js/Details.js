@@ -1,55 +1,48 @@
 const urlParams = new URLSearchParams(window.location.search);
-const CURRENT_BOOK_ID = Number(urlParams.get('id'));
+const CURRENT_BOOK_ID = Number(urlParams.get("id"));
 
-const books = JSON.parse(localStorage.getItem("books")) || [];
-const book = books.find(b => b.id === CURRENT_BOOK_ID);
+async function init() {
+    setupNavbar();
 
-if (!localStorage.getItem("books")) {
-    fetch("../Storage/Books.json")
-        .then(res => res.json())
-        .then(data => {
-            localStorage.setItem("books", JSON.stringify(data.books));
-        });
+    let books = JSON.parse(localStorage.getItem("books"));
+
+    if (!books || books.length === 0) {
+         const res = await fetch("../Storage/Books.json");
+         const data = await res.json();
+         localStorage.setItem("books", JSON.stringify(data.books));
+         books = data.books;
+        
+    }
+
+    if (books) {
+        displayBookDetails(books);
+    }
 }
 
-if (book) {
-    updatePageContent(book);
-}
+function displayBookDetails(books) {
+    const book = books.find(b => Number(b.id) === CURRENT_BOOK_ID);
 
-if (!localStorage.getItem("books")) {
-    fetch("../Storage/Books.json")
-        .then(res => res.json())
-        .then(data => {
-            localStorage.setItem("books", JSON.stringify(data.books));
-        });
-}
-function updatePageContent(book) {
+    if (!book) {
+        console.error("Book not found!");
+        return;
+    }
 
-    const imgElement = document.querySelector(".book-cover-img");
-    if (imgElement) imgElement.src = book.cover;
+    document.querySelector(".book-cover-img").src = book.cover;
+    document.querySelector(".box1").textContent = `${book["available-copies"]} Available`;
+    document.querySelector(".box2").textContent = book.Category;
+    document.querySelector("h1").textContent = book.title;
+    document.querySelector("h3").textContent = book.author;
+    document.querySelector(".p").textContent = book.Description;
 
-    const box1 = document.querySelector(".box1");
-    const box2 = document.querySelector(".box2");
-    if (box1) box1.textContent = `${book["available-copies"]} Available`;
-    if (box2) box2.textContent = book.Category;
-    
-    const title = document.querySelector("h1");
-    const authorTop = document.querySelector("h3");
-    if (title) title.textContent = book.title;
-    if (authorTop) authorTop.textContent = book.author;
+    const details = document.querySelectorAll(".container2 h4");
 
-    const desc = document.querySelector(".p");
-    if (desc) desc.textContent = book.Description;
-
-    const details = document.querySelectorAll(".container2-item h4");
-
-    if (details.length === 6) {
-        details[0].textContent = book.author;            // Author
-        details[1].textContent = book.id;                // ID
-        details[2].textContent = book["Publish-Date"];   // Publish Date
-        details[3].textContent = book.pages;             // Pages
-        details[4].textContent = book.Publisher;         // Publisher Name
-        details[5].textContent = book["Total-Copies"];   // Total Copies
+    if (details.length >= 6) {
+        details[0].textContent = book.author;
+        details[1].textContent = book.id;
+        details[2].textContent = book["Publish-Date"];
+        details[3].textContent = book.pages;
+        details[4].textContent = book.Publisher;
+        details[5].textContent = book["Total-Copies"];
     }
 
     const borrowBtn = document.querySelector(".borrow-btn");
@@ -57,3 +50,27 @@ function updatePageContent(book) {
         borrowBtn.href = `borrowpage.html?id=${book.id}`;
     }
 }
+
+function setupNavbar() {
+    const navbar = document.getElementById("navbar");
+    const userRole = localStorage.getItem("role");
+
+    if (userRole === "admin") {
+        navbar.innerHTML = `
+            <a href="adminpage.html">Dashboard</a>
+            <a href="viewbooks.html">Manage Books</a>
+            <a href="addbook.html">Add New Book</a>
+            <a href="../index.html" class="button">Log out</a>
+        `;
+    } else {
+        navbar.innerHTML = `
+            <a href="userpage.html">Home</a>
+            <a href="viewbooks.html">Books</a>
+            <a href="listofborrowedbooks.html">My Borrowed Books</a>
+            <a href="../index.html" class="button">Log out</a>
+        `;
+    }
+}
+
+
+init();
