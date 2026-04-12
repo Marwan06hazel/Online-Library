@@ -1,6 +1,14 @@
 const urlParams = new URLSearchParams(window.location.search);
 const CURRENT_BOOK_ID = Number(urlParams.get("id"));
 
+if (!localStorage.getItem("books")) {
+    fetch("../Storage/Books.json")
+        .then(res => res.json())
+        .then(data => {
+            localStorage.setItem("books", JSON.stringify(data.books));
+        });
+}
+
 function loadBook() {
     const books = JSON.parse(localStorage.getItem("books")) || [];
 
