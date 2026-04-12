@@ -2,76 +2,101 @@
 <html lang="en">
 
 <head>
-    <link rel="stylesheet" type="text/css" href="../css/Profile.css" /> 
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Profile Page</title>
+    <title>Profile</title>
+    <link rel="stylesheet" href="../css/Profile.css">
 </head>
 
 <body>
 
     <header>
         <a href="/" class="logo">
-            <img src="../Pics/book.svg" alt="Weblogo">
+            <img src="../Pics/book.svg">
             <span>Libraria</span>
         </a>
 
         <nav id="navbar">
             <a href="Profile.html">My Profile</a>
             <a href="adminpage.html">Home</a>
-            <a href="viewbooks.html">Books</a>
-            <a href="addbook.html">Add Book</a>
-            <a href="managebooks.html">Manage Books</a>
             <a href="../index.html" class="button">Log out</a>
         </nav>
     </header>
 
     <h1>My Profile</h1>
-    
 
     <div class="profile-container">
 
-    <div class="profile-header">
+        <div class="profile-header">
 
+            <img id="profileImage" src="../Pics/Profile-icon.png">
+            <h2 id="username">Your Name</h2>
+            <p id="email">email@email.com</p>
 
-        <div class="profile-img">
-            <img id="profileImage" src="../Pics/Profile-icon.png" alt="Profile Image">
+            <span id="role" class="role-badge">User</span>
+
+            <div class="profile-actions">
+                <div class="action-buttons">
+                    <button onclick="openEdit()">Edit Profile</button>
+                    <button onclick="logout()">Logout</button>
+                </div>
+            </div>
+
         </div>
-
-        <h2 id="username">Your Name</h2>
-
-        <button type="button" onclick="openEdit()"> Edit Profile</button>
-
 
     </div>
 
-</div>
+
+    <!-- ACCOUNT INFO -->
+    <div class="profile-info">
+        <h3>Account Info</h3>
+
+        <p><strong>Username:</strong> <span id="infoUsername"></span></p>
+        <p><strong>Email:</strong> <span id="infoEmail"></span></p>
+        <p><strong>Role:</strong> <span id="infoRole"></span></p>
+    </div>
 
 
-<div class="edit-profile" id="editBox">
+    <!-- EDIT BOX -->
+    <div class="edit-profile" id="editBox">
+      <div>
+        <h3>Edit Profile</h3>
 
-    <h3>Edit Profile</h3>
+        <label>Name</label>
+        <input type="text" id="nameInput">
 
-    <label>Name</label>
-    <input type="text" id="nameInput">
+        <label>Email</label>
+        <input type="email" id="emailInput">
 
-    <label>Email</label>
-    <input type="email" id="emailInput">
+        <label>Password</label>
+        <input type="password" id="passInput">
 
-    <label>Password</label>
-    <input type="password" id="passInput">
+        <label>Profile Image</label>
+        <input type="file" id="imgInput">
 
-    <label>Profile Image</label>
-    <input type="file" id="imgInput">
-
-    <button type="button" onclick="saveChanges()">Save</button>
-    <button type="button" onclick="closeEdit()"> Cancel</button>
-
-</div>
+        <button onclick="saveChanges()">Save</button>
+        <button onclick="closeEdit()">Cancel</button>
+       </div>
+    </div>
 
     <script src="../js/Profile.js"></script>
-
+    <script src="../js/logout.js"></script>
 </body>
+</html>
 
-</html>    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
