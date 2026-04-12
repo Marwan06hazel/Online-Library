@@ -27,6 +27,7 @@ body {
     font-size: larger;
     font-weight: bold;
     padding-left: 0.5rem;
+    color: hsl(var(--primary));
 }
 
 .logo img {
