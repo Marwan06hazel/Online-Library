@@ -33,7 +33,8 @@ header {
     text-decoration: none;
 }
 
-.logo span {
+header .logo span {
+    color: hsl(var(--primary));
     font-size: larger;
     font-weight: bold;
     padding-left: 0.5rem;
