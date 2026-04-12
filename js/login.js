@@ -92,7 +92,12 @@ form.addEventListener("submit", (e) => {
     localStorage.setItem("currentUser", JSON.stringify(userFound));
 
     // redirect
-    if (userFound.role === "admin") window.location.href = "adminpage.html";
-    else window.location.href = "userpage.html";
+    if (Admin) {
+        localStorage.setItem("role", "admin");
+        window.location.href = "adminpage.html";
+    } else {
+        localStorage.setItem("role", "user");
+        window.location.href = "userpage.html";
+    }
     
 });
