@@ -1,3 +1,12 @@
+//--- User Account Setup
+
+const uid = localStorage.getItem("currentUserId");
+function getKey(key) {
+    return `${uid}_${key}`;
+}
+
+//--- Load Book Data 
+
 const urlParams = new URLSearchParams(window.location.search);
 const CURRENT_BOOK_ID = Number(urlParams.get("id"));
 
@@ -72,7 +81,9 @@ document.querySelector(".borrow-btn button").addEventListener("click", function 
     }
 
     let books = JSON.parse(localStorage.getItem("books")) || [];
-    let borrowedBooks = JSON.parse(localStorage.getItem("borrowedBooks")) || [];
+
+    // for making user-specified borrowed list
+    let borrowedBooks = JSON.parse(localStorage.getItem(getKey("borrowedBooks"))) || [];
 
     let bookIndex = books.findIndex(b => Number(b.id) === CURRENT_BOOK_ID);
     let book = books[bookIndex];
@@ -100,7 +111,8 @@ document.querySelector(".borrow-btn button").addEventListener("click", function 
 
     books[bookIndex].availableCopies -= 1;
 
-    localStorage.setItem("borrowedBooks", JSON.stringify(borrowedBooks));
+    // saving also to the user-specified list (array)
+    localStorage.setItem(getKey("borrowedBooks"),JSON.stringify(borrowedBooks));
     localStorage.setItem("books", JSON.stringify(books));
 
     alert("Book borrowed successfully!");
