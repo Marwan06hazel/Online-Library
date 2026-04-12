@@ -1,90 +1,75 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../CSS/Details.css">
-    <title>Book Details</title>
-</head>
-<body>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../CSS/Details.css">
+        <title>Book Details</title>
+    </head>
+    <body>
+        <header>
+            <a href="/" class="logo">
+                <img src="../Pics/book.svg" alt="Weblogo">
+                <span>Libraria</span>
+            </a>
 
-    <header>
-        <a href="/" class="logo">
-            <img src="../Pics/book.svg" alt="Weblogo">
-            <span>Libraria</span>
-        </a>
+            <nav id="navbar">
+                <a href="userpage.html">Home</a>
+                <a href="viewbooks.html">Books</a>
+                <a href="listofborrowedbooks.html">My Borrowed Books</a>
+                <a href="../index.html" class="button">Log out</a>
+            </nav>
+        </header>
 
-        <nav id="navbar">
-            <a href="Profile.html">My Profile</a>
-            <a href="adminpage.html">Home</a>
-            <a href="viewbooks.html">Books</a>
-            <a href="addbook.html">Add Book</a>
-            <a href="managebooks.html">Manage Books</a>
-            <a href="../index.html" class="button">Log out</a>
-        </nav>
-    </header>
-
-    <main>
+        <main>
         <button class="back-btn" onclick="history.back()">← Go back</button>
-
-        <div class="container">
-            <div class="img">
-                <img src="" alt="Book Cover" class="book-cover-img">
-            </div>
-
-            <div>
-                <div class="container1">
-                    <p class="box1">[No.Available]</p>
-                    <p class="box2">[Book Type]</p>
+            <div class="container">
+                <div class="img">
+                    <img src="" alt="Book Cover" class="book-cover-img">
                 </div>
-
-                <h1>[Book Name]</h1>
-                <h3>[Author Name]</h3>
-
-                <h4 class="description">DESCRIPTION</h4>
-                <p class="p">[Book Description]</p>
-
-                <div class="container2">
-                    <div class="container2-item">
-                        <h5>AUTHOR</h5>
-                        <h4>[Author Name]</h4>
+                <div>
+                    <div class="container1">
+                        <p class="box1">[No.Available]</p>
+                        <p class="box2">[Book Type]</p>
                     </div>
-
-                    <div class="container2-item">
-                        <h5># ID</h5>
-                        <h4>[ID NO]</h4>
+                    <h1>[Book Name]</h1>
+                    <h3>[Author Name]</h3>
+                    <h4 class="description">DESCRIPTION</h4>
+                    <p class="p">[Book Description]</p>
+                    <div class="container2">
+                        <div id="container2">
+                            <h5>AUTHOR</h5>
+                            <h4>[Author Name]</h6>
+                        </div>
+                        <div id="container2">
+                            <h5># ISBN</h5>
+                            <h4>[ISBN NO]</h6>
+                        </div>
+                        <div id="container2">
+                            <h5>PUBLISHER</h5>
+                            <h4>[Publisher Date]</h6>
+                        </div>
+                        <div id="container2">
+                            <h5>PAGES</h5>
+                            <h4>[No. Pages]</h6>
+                        </div>
+                        <div id="container2">
+                            <h5>PUBLISHER</h5>
+                            <h4>[Publisher Name]</h6>
+                        </div>
+                        <div id="container2">
+                            <h5>TOTAL COPIES</h5>
+                            <h4>[Copies No.]</h6>
+                        </div>
                     </div>
-
-                    <div class="container2-item">
-                        <h5>PUBLISHER</h5>
-                        <h4>[Publisher Date]</h4>
-                    </div>
-
-                    <div class="container2-item">
-                        <h5>PAGES</h5>
-                        <h4>[No. Pages]</h4>
-                    </div>
-
-                    <div class="container2-item">
-                        <h5>PUBLISHER</h5>
-                        <h4>[Publisher Name]</h4>
-                    </div>
-
-                    <div class="container2-item">
-                        <h5>TOTAL COPIES</h5>
-                        <h4>[Copies No.]</h4>
-                    </div>
+                    <a href="borrowpage.html" class="borrow-btn">Borrow This Book</a>
                 </div>
-
-                <a href="borrowpage.html" class="borrow-btn">Borrow This Book</a>
+                <script src="../js/Details.js"></script>
             </div>
-        </div>
-    </main>
+        </main>
+        <footer>
+            <p>&copy; 2026 All rights reserved.</p>
+        </footer>
 
-    <footer>
-        <p>&copy; 2026 All rights reserved.</p>
-    </footer>
-
-    <script src="../js/Details.js"></script>
-</body>
+    </body>
 </html>
