@@ -30,23 +30,48 @@
 
     <form id="AddBookForm">
         <p><strong>Book Title</strong></p>
-        <input type="text" id= "title" placeholder="Enter book title" required>
+        <input type="text" id="title" placeholder="Enter book title" required>
 
         <p><strong>Book ID</strong></p>
-        <input type="number" id= "bookId" min="1" placeholder="Enter book ID" required>
+        <input type="number" id="bookId" min="1" placeholder="Enter book ID" required>
 
         <p><strong>Author</strong></p>
-        <input type="text" id= "author" placeholder="Author name" required>
+        <input type="text" id="author" placeholder="Author name" required>
 
         <p><strong>Category</strong></p>
-        <input type="text" id= "category" placeholder="e.g. Fiction, Science, History" required>
+        <select id="category" required style="appearance: none; width: 100%; padding: 12px; margin-bottom: 10px; border: 1px solid #ddd; border-radius: 8px; transition: all 0.2s ease; ">
+            <option value="all">All Categories</option>
+            <option value="romance">Romance</option>
+            <option value="science">Science</option>
+            <option value="fiction">Fiction</option>
+            <option value="nonfiction">Non-Fiction</option>
+            <option value="mystery">Mystery</option>
+            <option value="thriller">Thriller</option>
+            <option value="fantasy">Fantasy</option>
+            <option value="horror">Horror</option>
+            <option value="biography">Biography</option>
+            <option value="history">History</option>
+            <option value="poetry">Poetry</option>
+            <option value="selfhelp">Self-Help</option>
+            <option value="philosophy">Philosophy</option>
+            <option value="adventure">Adventure</option>
+            <option value="children">Children's</option>
+            <option value="youngadult">Young Adult</option>
+            <option value="comics">Comics / Graphic Novels</option>
+            <option value="religion">Religion / Spirituality</option>
+            <option value="sciencefiction">Science Fiction</option>
+            <option value="travel">Travel</option>
+            <option value="cookbook">Cookbook</option>
+            <option value="art">Art / Photography</option>
+            <option value="health">Health / Fitness</option>
+        </select>
 
         <p><strong>Description</strong></p>
-        <textarea id= "description" rows="4" cols="50" placeholder="Brief book description..."></textarea>
+        <textarea id="description" rows="4" cols="50" placeholder="Brief book description..."></textarea>
 
         <p><strong>Book Cover</strong></p>
-        <input type="file" id= "cover" accept="image/*"> 
-        
+        <input type="file" id="cover" accept="image/*">
+
 
         <br><br>
         <button type="button" onclick="addBook()">Add Book</button>
