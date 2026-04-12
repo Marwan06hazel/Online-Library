@@ -30,16 +30,16 @@ function addBook() {
     let reader = new FileReader();
 
     reader.onload = function () {
-        let book = {
+        let books = JSON.parse(localStorage.getItem("books"));
+        books.push({
             title: title,
             id: idNumber,
             author: author,
-            category: category,
-            description: description,
-            cover: reader.result 
-        };
+            cover: reader.result,
+            Category: category,
+            Description: description
+        });
 
-        books.push(book);
         localStorage.setItem("books", JSON.stringify(books));
 
         alert("Book added successfully!");
