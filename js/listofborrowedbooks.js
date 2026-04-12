@@ -135,7 +135,6 @@ renderCards(
         <p>Category: ${book.Category}</p>
         <p>Borrow Date: ${item.borrowDate}</p>
         <p>Returned on: ${item.returnDate}</p>
-        <p>Rating:</p>
         <i 
             class="fa-heart ${isFavorite(book.id) ? "fa-solid" : "fa-regular"}" 
             style="cursor:pointer; font-size:28px; color: rgb(143, 8, 46);"
@@ -148,7 +147,6 @@ renderCards(
     ".favourites .cards", "favoriteBooks", "No books are added to favorite.", 
     (book, item) => `
         <p>Category: ${book.Category}</p>
-        <p>Rating:</p>
         <i 
             class="fa-heart fa-solid"
             style="cursor:pointer; font-size:28px; color: rgb(143, 8, 46);"
