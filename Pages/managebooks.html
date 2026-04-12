@@ -25,104 +25,109 @@
     </header>
 
     <main>
-        <button type="button" class="Back-Btn">← Go Back</button>
+        <button type="button" class="Back-Btn" onclick="history.back()">← Go Back</button>
         <h1>Edit Book</h1>
         <p>Select a book to edit its details.</p>
-        <br />
 
-        <form action="" method="post">
+        <form>
 
             <figure class="edit-book-cover">
                 <b>Book Cover</b>
 
                 <img class="edit-book-cover-pic"
-                     src="../Pics/The_summer_i_turend_pretty.jpg"
-                     alt="Book cover of The Summer I Turned Pretty by Jenny Han"
+                     src=""
+                     alt="Book cover"
                      width="100" height="150" />
 
-                <button type="button" class="Remove-Btn">Remove</button>
+                <button type="button" class="Remove-Btn" onclick="triggerNewImage()">Remove & Upload</button>
             </figure>
 
             <section class="edit-details">
-                <b>Title *</b> <br />
-                <input type="text" name="edit-title" value="The Summer I Turned Pretty" required>
-                <br /> <br />
+                <b>Title *</b><br />
+                <input type="text" name="edit-title" required>
 
-                <b>Author *</b> <br />
-                <input type="text" name="edit-author" value="Jenny Han" required>
-                <br /> <br />
-                    
-                    <div class="Id-cat">
-                        <b>ID</b> <br />
-                        <input  class="id-input" type="text" name="edit-ID" value="978-977-490-267-3">
-                        <br /> <br />
+                <br /><br />
 
-                        <b class="cat-txt">Category</b> <br />
-                        <select class="cat-select" id="edit-genre" name="edit_genre">
-                              <option value="romance">Romance</option>
-                              <option value="science">Science</option>
-                              <option value="fiction">Fiction</option>
-                              <option value="nonfiction">Non-Fiction</option>
-                              <option value="mystery">Mystery</option>
-                              <option value="thriller">Thriller</option>
-                              <option value="fantasy">Fantasy</option>
-                              <option value="horror">Horror</option>
-                              <option value="biography">Biography</option>
-                              <option value="history">History</option>
-                              <option value="poetry">Poetry</option>
-                              <option value="selfhelp">Self-Help</option>
-                              <option value="philosophy">Philosophy</option>
-                              <option value="adventure">Adventure</option>
-                              <option value="children">Children's</option>
-                              <option value="youngadult">Young Adult</option>
-                              <option value="comics">Comics / Graphic Novels</option>
-                              <option value="religion">Religion / Spirituality</option>
-                              <option value="sciencefiction">Science Fiction</option>
-                              <option value="travel">Travel</option>
-                              <option value="cookbook">Cookbook</option>
-                              <option value="art">Art / Photography</option>
-                              <option value="health">Health / Fitness</option>
-                           </select>
-                    </div>
-                <br /> <br />
+                <b>Author *</b><br />
+                <input type="text" name="edit-author" required>
 
-                <b>Description</b> <br />
-                <textarea name="edit-description" cols="30">Description of the Book</textarea>
+                <br /><br />
+
+                <div class="Id-cat">
+                    <b>ID</b><br />
+                    <input class="id-input" type="text" name="edit-ID">
+
+                    <br /><br />
+
+                    <b class="cat-txt">Category</b><br />
+                    <select class="cat-select" name="edit_genre">
+                        <option value="All">All Categories</option>
+                        <option value="Romance">Romance</option>
+                        <option value="Science">Science</option>
+                        <option value="Fiction">Fiction</option>
+                        <option value="Nonfiction">Non-Fiction</option>
+                        <option value="Mystery">Mystery</option>
+                        <option value="Thriller">Thriller</option>
+                        <option value="Fantasy">Fantasy</option>
+                        <option value="Horror">Horror</option>
+                        <option value="Biography">Biography</option>
+                        <option value="History">History</option>
+                        <option value="Poetry">Poetry</option>
+                        <option value="Selfhelp">Self-Help</option>
+                        <option value="Philosophy">Philosophy</option>
+                        <option value="Adventure">Adventure</option>
+                        <option value="Children">Children's</option>
+                        <option value="Youngadult">Young Adult</option>
+                        <option value="Comics">Comics / Graphic Novels</option>
+                        <option value="Religion">Religion / Spirituality</option>
+                        <option value="Sciencefiction">Science Fiction</option>
+                        <option value="Travel">Travel</option>
+                        <option value="Cookbook">Cookbook</option>
+                        <option value="Art">Art / Photography</option>
+                        <option value="Health">Health / Fitness</option>
+                    </select>
+                </div>
+
+                <br /><br />
+
+                <b>Description</b><br />
+                <textarea name="edit-description" cols="30"></textarea>
             </section>
 
-            <br /> <br />
+            <br /><br />
+
             <section class="edit-publish-details">
                 <div class="copies">
                     <div class="copy-item">
                         <b>Total Copies</b>
-                        <input type="number" min="0" step="1" name="edit-copies" placeholder="Enter total copies">
+                        <input type="number" name="edit-copies">
                     </div>
                     <div class="copy-item">
                         <b>Available Copies</b>
-                        <input type="number" min="0" step="1" name="edit-available-copies" placeholder="Enter available copies">
+                        <input type="number" name="edit-available-copies">
                     </div>
                 </div>
 
                 <div class="dates">
                     <div class="date-item">
                         <b>Publisher</b>
-                        <input type="text" name="edit-publisher" placeholder="Enter publisher name">
+                        <input type="text" name="edit-publisher">
                     </div>
                     <div class="date-item">
                         <b>Year</b>
-                        <input type="date" name="edit-date">
+                        <input type="text" name="edit-date">
                     </div>
                     <div class="date-item">
                         <b>Pages</b>
-                        <input type="number" min="1" step="1" name="edit-pages-num" placeholder="Enter number of pages">
+                        <input type="number" name="edit-pages-num">
                     </div>
                 </div>
             </section>
 
-            <br /> <br />
+            <br /><br />
 
             <section>
-                <button class="Edit-btn" type="submit">Save Changes</button>
+                <button class="Edit-btn" type="button">Save Changes</button>
             </section>
 
         </form>
@@ -132,6 +137,6 @@
         <p>&copy; 2026 All rights reserved.</p>
     </footer>
 
+    <script src="../js/managebooks.js"></script>
 </body>
-
 </html>
