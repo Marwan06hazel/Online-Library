@@ -53,7 +53,7 @@ document.querySelector(".borrow-btn button").addEventListener("click", function 
 
     if (!dueDateText) {
         alert("Please select a borrow duration first!");
-        duration.focus();
+        durationInput.focus();
         return;
     }
 
@@ -63,7 +63,18 @@ document.querySelector(".borrow-btn button").addEventListener("click", function 
         return;
     }
 
+    let books = JSON.parse(localStorage.getItem("books")) || [];
     let borrowedBooks = JSON.parse(localStorage.getItem("borrowedBooks")) || [];
+
+    let bookIndex = books.findIndex(b => Number(b.id) === CURRENT_BOOK_ID);
+    let book = books[bookIndex];
+
+    if (!book) return;
+
+    if (book["available-copies"] <= 0) {
+        alert("Sorry, no available copies left for this book!");
+        return;
+    }
 
     if (borrowedBooks.some(b => b.id === CURRENT_BOOK_ID)) {
         alert("This book is already borrowed!");
@@ -78,7 +89,10 @@ document.querySelector(".borrow-btn button").addEventListener("click", function 
 
     borrowedBooks.push(newEntry);
 
+    books[bookIndex].availableCopies -= 1;
+
     localStorage.setItem("borrowedBooks", JSON.stringify(borrowedBooks));
+    localStorage.setItem("books", JSON.stringify(books));
 
     alert("Book borrowed successfully!");
 });
