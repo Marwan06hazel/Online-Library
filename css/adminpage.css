@@ -126,6 +126,20 @@ main h1 {
     color: #1a2c3e;
     margin-bottom: 1rem;
     font-weight: 700;
+
+    position: relative;
+}
+
+#profileImg {
+    cursor: pointer;
+    object-fit: cover;
+    border-radius: 50px;
+    width: 55px;
+    height: 55px;
+
+    position: absolute;
+    right: 55px;
+    top: 15%;
 }
 
 main h2 {
