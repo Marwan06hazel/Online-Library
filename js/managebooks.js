@@ -78,4 +78,6 @@ function saveChanges() {
     localStorage.setItem("books", JSON.stringify(books));
 
     alert("Book updated successfully!");
+
+    window.location.href = "adminpage.html";
 }
