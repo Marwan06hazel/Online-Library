@@ -91,6 +91,15 @@ function loadProfile() {
     if (currentUser.image) {
         document.getElementById("profileImage").src = currentUser.image;
     }
+
+    // home routing logic
+    const homeLink = document.getElementById("homeLink");
+
+    if (currentUser.role === "admin") {
+        homeLink.href = "adminpage.html";
+    } else {
+        homeLink.href = "userpage.html";
+    }
 }
 
 // keeps data displayed after refresh
