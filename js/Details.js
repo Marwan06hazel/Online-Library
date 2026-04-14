@@ -7,10 +7,10 @@ async function init() {
     let books = JSON.parse(localStorage.getItem("books"));
 
     if (!books || books.length === 0) {
-         const res = await fetch("../Storage/Books.json");
-         const data = await res.json();
-         localStorage.setItem("books", JSON.stringify(data.books));
-         books = data.books;
+        const res = await fetch("../Storage/Books.json");
+        const data = await res.json();
+        localStorage.setItem("books", JSON.stringify(data.books));
+        books = data.books;
         
     }
 
@@ -91,8 +91,9 @@ function setupNavbar() {
 
     if (userRole === "admin") {
         navbar.innerHTML = `
-            <a href="viewbooks.html">Manage Books</a>
-            <a href="addbook.html">Add New Book</a>
+            <a href="userpage.html">Home</a>
+            <a href="viewbooks.html">Books</a>
+            <a href="addbook.html">Add Book</a>
             <a href="../index.html" class="button" onclick="logout()">Log out</a>
         `;
     } else {
