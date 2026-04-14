@@ -116,4 +116,6 @@ document.querySelector(".borrow-btn button").addEventListener("click", function 
     localStorage.setItem("books", JSON.stringify(books));
 
     alert("Book borrowed successfully!");
+
+    window.location.href = "listofborrowedbooks.html";
 });
