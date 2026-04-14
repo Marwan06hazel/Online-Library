@@ -45,6 +45,8 @@ function addBook() {
         alert("Book added successfully!");
 
         document.getElementById("AddBookForm").reset();
+
+        window.location.href = "viewbooks.html";
     };
 
     if (cover) {
