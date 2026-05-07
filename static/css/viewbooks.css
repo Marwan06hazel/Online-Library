@@ -278,8 +278,7 @@ main > p {
     gap: 1rem;
 }
 
-.details-btn,
-.borrow-btn {
+.details-btn, .borrow-btn {
     flex: 1;
     padding: 0.6rem 1rem;
     border-radius: 40px;
@@ -313,6 +312,10 @@ main > p {
     box-shadow: 0 4px 8px hsl(var(--primary) / 0.2);
 }
 
+.disabled-btn {
+    opacity: 0.7;
+    cursor: not-allowed;
+} 
 /* ================= FOOTER ================= */
 
 footer {

@@ -2,109 +2,142 @@
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <link rel="stylesheet" href="{% static 'css/Details.css' %}">
-
-    <title>Book Details</title>
+    <title>{{ book.title }}</title>
 </head>
 
 <body>
 
     <header>
         <a href="/" class="logo">
-            <img src="{% static 'images/book.svg' %}" alt="Weblogo">
+            <img src="{% static 'Pics/book.svg' %}" alt="Weblogo">
             <span style="color: #0f172a;">Libraria</span>
         </a>
 
         <nav id="navbar">
-            <a href="userpage.html">Home</a>
-            <a href="viewbooks.html">Books</a>
-            <a href="listofborrowedbooks.html">My Borrowed Books</a>
-            <a href="../index.html" class="button" onclick="logout()">Log out</a>
+            <a href="/">Home</a>
+            <a href="{% url 'view_books' %}">Books</a>
+
+            {% if request.user.is_authenticated %}
+                {% if request.user.is_admin %}
+
+                    <a href="#">Add Book</a>
+
+                {% else %}
+                    <a href="#">My Borrowed Books</a>
+
+                {% endif %}
+
+                <a href="{% url 'logout' %}" class="button"> Log out </a>
+
+            {% else %}
+                <a href="{% url 'login' %}" class="button"> Login </a>
+            {% endif %}
         </nav>
+
     </header>
 
     <main>
 
-        <button class="back-btn" onclick="history.back()">
-            ← Go back
-        </button>
+        <button class="back-btn" onclick="history.back()">← Go back</button>
 
         <div class="container">
-
             <div class="img">
-                <img src="" alt="Book Cover" class="book-cover-img">
+
+                {% if book.cover %}
+                    <img src="{{ book.cover.url }}" alt="{{ book.title }}" class="book-cover-img">
+
+                {% else %}
+                    <img src="{% static 'Pics/default-book.jpeg' %}" alt="Default Book Cover" class="book-cover-img">
+                {% endif %}
+
             </div>
 
             <div>
-
                 <div class="container1">
-                    <p class="box1">[No.Available]</p>
-                    <p class="box2">[Book Type]</p>
+                    {% if book.available_copies > 0 %}
+                        <p class="box1"> {{ book.available_copies }} Available</p>
+
+                    {% else %}
+                        <p class="box1"> Not Available</p>
+
+                    {% endif %}
+                    <p class="box2"> {{ book.get_category_display }} </p>
+
                 </div>
+                <h1>{{ book.title }}</h1>
 
-                <h1>[Book Name]</h1>
+                <h3>{{ book.author }}</h3>
 
-                <h3>[Author Name]</h3>
+                <h4 class="description"> DESCRIPTION </h4>
 
-                <h4 class="description">DESCRIPTION</h4>
-
-                <p class="p">[Book Description]</p>
+                <p class="p"> {{ book.description }} </p>
 
                 <div class="container2">
-
-                    <div id="container2">
+                    <div class="container2-box">
                         <h5>AUTHOR</h5>
-                        <h4>[Author Name]</h4>
+                        <h4>{{ book.author }}</h4>
                     </div>
 
-                    <div id="container2">
+                    <div class="container2-box">
                         <h5># ID</h5>
-                        <h4>[ISBN NO]</h4>
+                        <h4> {{ book.id }}</h4>
                     </div>
 
-                    <div id="container2">
-                        <h5>PUBLISHER</h5>
-                        <h4>[Publisher Date]</h4>
+                    <div class="container2-box">
+                        <h5>PUBLISH DATE</h5>
+
+                        <h4>{{ book.publish_date }}</h4>
                     </div>
 
-                    <div id="container2">
+                    <div class="container2-box">
                         <h5>PAGES</h5>
-                        <h4>[No. Pages]</h4>
+
+                        <h4> {{ book.pages }}</h4>
                     </div>
 
-                    <div id="container2">
+                    <div class="container2-box">
                         <h5>PUBLISHER</h5>
-                        <h4>[Publisher Name]</h4>
+
+                        <h4> {{ book.publisher }}</h4>
                     </div>
 
-                    <div id="container2">
+                    <div class="container2-box">
                         <h5>TOTAL COPIES</h5>
-                        <h4>[Copies No.]</h4>
+
+                        <h4> {{ book.total_copies }}</h4>
                     </div>
 
                 </div>
 
                 <div class="action-container">
-                    <a href="borrowpage.html" class="borrow-btn">
-                        Borrow This Book
-                    </a>
+                    {% if book.available_copies > 0 %}
+                        <a href="#" class="borrow-btn"> Borrow This Book </a>
+
+                    {% else %}
+                        <button class="borrow-btn" disabled> Unavailable </button>
+
+                    {% endif %}
                 </div>
-
             </div>
-
         </div>
 
     </main>
 
     <footer>
-        <p>&copy; 2026 All rights reserved.</p>
+
+        <p>
+            &copy; 2026 All rights reserved.
+        </p>
+
     </footer>
 
     <script src="{% static 'js/Details.js' %}"></script>
-
+ 
 </body>
+
 </html>

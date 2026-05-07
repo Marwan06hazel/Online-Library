@@ -8,10 +8,8 @@ def view_books(request):
 
 
 def details(request, id):
-
     book = get_object_or_404(Book, id=id)
-
-    return render(request, 'library/details.html', { 'book': book })
+    return render(request, 'details.html', { 'book': book })
 
 
 

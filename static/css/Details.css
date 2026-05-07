@@ -227,7 +227,7 @@ h3 {
     margin-bottom: 2rem;
 }
 
-#container2 {
+.container2-box {
     border: 1px solid #dbe2ea;
     padding: 1rem;
     border-radius: 16px;
@@ -235,19 +235,19 @@ h3 {
     transition: 0.25s ease;
 }
 
-#container2:hover {
+.container2-box:hover {
     transform: translateY(-2px);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
 }
 
-#container2 h5 {
+.container2-box h5 {
     color: #94a3b8;
     font-size: 0.85rem;
     margin-bottom: 0.4rem;
     font-weight: 600;
 }
 
-#container2 h4 {
+.container2-box h4 {
     color: #0f172a;
     font-size: 1rem;
     font-weight: 600;
