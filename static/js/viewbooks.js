@@ -8,20 +8,11 @@ function searchBooks() {
         const selectedCategory = categoryFilter.value.toLowerCase();
 
         cards.forEach(card => {
-            const title =
-                card.dataset.title.toLowerCase();
-            const author =
-                card.dataset.author.toLowerCase();
-            const category =
-                card.dataset.category.toLowerCase();
-            const matchesText =
-                title.includes(textValue) ||
-                author.includes(textValue) ||
-                category.includes(textValue);
-            const matchesCategory =
-                selectedCategory === "all" ||
-                category === selectedCategory;
-
+            const title = card.dataset.title.toLowerCase();
+            const author = card.dataset.author.toLowerCase();
+            const category = card.dataset.category.toLowerCase();
+            const matchesText = title.includes(textValue) || author.includes(textValue) || category.includes(textValue);
+            const matchesCategory = selectedCategory === "all" || category === selectedCategory;
             if (matchesText && matchesCategory) {
                 card.style.display = "block";
             } else {
