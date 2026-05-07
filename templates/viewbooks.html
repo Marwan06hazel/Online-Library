@@ -1,0 +1,144 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Browse Books - Online Library</title>
+    <link rel="stylesheet" href="{% static 'css/viewbooks.css' %}">
+
+</head>
+
+<body>
+
+    <header>
+        <a href="/" class="logo">
+            <img src="{% static 'Pics/book.svg' %}" alt="Weblogo">
+            <span>Libraria</span>
+        </a>
+
+        <nav id="navbar">
+            <a href="/">Home</a>
+            <a href="{% url 'view_books' %}"> Books</a>
+            <a href="{% url 'logout' %}"class="button">Log out</a>
+        </nav>
+
+    </header>
+
+    <main>
+
+        <h1>
+            Browse Our Collection
+        </h1>
+
+        <p>
+            Discover your next favorite book from our curated library
+        </p>
+
+        <div class="search-section">
+            <input type="text" id="searchInput" placeholder="Search by title, author, or category..." class="search-input" >
+
+            <select id="categoryFilter" class="category-filter">
+                <option value="all"> All Categories </option>
+                <option value="romance">Romance</option>
+                <option value="science">Science</option>
+                <option value="fiction">Fiction</option>
+                <option value="nonfiction">Non-Fiction</option>
+                <option value="mystery">Mystery</option>
+                <option value="thriller">Thriller</option>
+                <option value="fantasy">Fantasy</option>
+                <option value="horror">Horror</option>
+                <option value="biography">Biography</option>
+                <option value="history">History</option>
+                <option value="poetry">Poetry</option>
+                <option value="selfhelp">Self-Help</option>
+                <option value="philosophy">Philosophy</option>
+                <option value="adventure">Adventure</option>
+                <option value="children">Children's</option>
+                <option value="youngadult">Young Adult</option>
+                <option value="comics">Comics / Graphic Novels</option>
+                <option value="religion">Religion / Spirituality</option>
+                <option value="sciencefiction">Science Fiction</option>
+                <option value="travel">Travel</option>
+                <option value="cookbook">Cookbook</option>
+                <option value="art">Art / Photography</option>
+                <option value="health">Health / Fitness</option>
+            </select>
+        </div>
+
+        <div class="books-grid" id="booksGrid">
+
+            {% for book in books %}
+            <div class="book-card" data-category="{{ book.category|lower }}">
+
+                {% if book.cover %}
+                <img src="{{ book.cover.url }}" alt="{{ book.title }}" class="book-cover-img">
+
+                {% else %}
+                <img src="{% static 'Pics/default-book.jpeg' %}" alt="Default Book Cover" class="book-cover-img">
+                {% endif %}
+
+                <div class="book-info">
+                    <h3>
+                        {{ book.title }}
+                    </h3>
+
+                    <p class="author">
+                        by {{ book.author }}
+                    </p>
+
+                    <p class="category">
+                        {{ book.category }}
+                    </p>
+
+                    {% if book.available_copies > 0 %}
+                        <p class="available">
+                            Available ({{ book.available_copies }})
+                        </p>
+
+                    {% else %}
+
+                        <p class="not-available">
+                            Not Available
+                        </p>
+
+                    {% endif %}
+
+                    <div class="book-actions">
+                        <a href="{% url 'book_details' book.id %}" class="details-btn"> Details </a>
+
+                        {% if book.available_copies > 0 %}
+                        <a href="#" class="borrow-btn"> Borrow</a>
+                        {% else %}
+
+                        <button class="borrow-btn disabled-btn" disabled>  Unavailable </button>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+
+            {% empty %}
+
+            <p class="empty-message">
+                No books available.
+            </p>
+
+            {% endfor %}
+        </div>
+    </main>
+
+    <footer>
+        <p>
+            &copy; 2026 All rights reserved.
+        </p>
+    </footer>
+
+    <script src="{% static 'js/viewbooks.js' %}"></script>
+
+</body>
+
+</html>

@@ -1,98 +1,37 @@
-const booksGrid = document.getElementById("booksGrid");
 const searchInput = document.getElementById("searchInput");
 const categoryFilter = document.getElementById("categoryFilter");
- 
-function loadLibrary() {
-    let books = JSON.parse(localStorage.getItem("books"));
 
-    if (!books || books.length === 0) {
-        const res = fetch("../Storage/Books.json");
-        const data = res.json();
-        books = data.books;
-        localStorage.setItem("books", JSON.stringify(books));
-    }
-
-    renderBooks(books);
-    search(books);
-}
-
-function search(books) {
+function searchBooks() {
+    const cards = document.querySelectorAll(".book-card");
     const performFilter = () => {
         const textValue = searchInput.value.toLowerCase();
         const selectedCategory = categoryFilter.value.toLowerCase();
 
-        const filteredBooks = books.filter(book => {
-            const matchesText = book.title.toLowerCase().includes(textValue) ||
-                book.author.toLowerCase().includes(textValue) ||
-                book.Category.toLowerCase().includes(textValue);
+        cards.forEach(card => {
+            const title =
+                card.dataset.title.toLowerCase();
+            const author =
+                card.dataset.author.toLowerCase();
+            const category =
+                card.dataset.category.toLowerCase();
+            const matchesText =
+                title.includes(textValue) ||
+                author.includes(textValue) ||
+                category.includes(textValue);
+            const matchesCategory =
+                selectedCategory === "all" ||
+                category === selectedCategory;
 
-            const matchesCategory = selectedCategory === "all" ||
-                book.Category.toLowerCase() === selectedCategory;
-
-            return matchesText && matchesCategory;
+            if (matchesText && matchesCategory) {
+                card.style.display = "block";
+            } else {
+                card.style.display = "none";
+            }
         });
-
-        renderBooks(filteredBooks);
     };
 
     searchInput.addEventListener("input", performFilter);
     categoryFilter.addEventListener("change", performFilter);
 }
 
-function renderBooks(booksToDisplay) {
-    booksGrid.innerHTML = "";
-    const userRole = localStorage.getItem("role");
-
-    booksToDisplay.forEach(book => {
-        const card = document.createElement("div");
-        card.className = "book-card";
-
-        let actionButton = "";
-        if (userRole === "admin") {
-            actionButton = `<a href="managebooks.html?id=${book.id}" class="borrow-btn">Edit</a>`;
-        } else {
-            actionButton = `<a href="borrowpage.html?id=${book.id}" class="borrow-btn">Borrow</a>`;
-        }
-
-        card.innerHTML = `
-            <img src="${book.cover}" alt="Book Cover" class="book-cover-img">
-            <div class="book-info">
-                <h3>${book.title}</h3>
-                <p class="author">by ${book.author}</p>
-                <p class="category">${book.Category}</p>
-                <div class="book-actions">
-                    <a href="Details.html?id=${book.id}" class="details-btn">Details</a>
-                    ${actionButton}
-                </div>
-            </div>
-        `;
-        booksGrid.appendChild(card);
-    });
-}
-
-loadLibrary();
-
-function setupNavbar() {
-    const navbar = document.getElementById("navbar");
-    const userRole = localStorage.getItem("role");
-
-    if (userRole === "admin") {
-        // Admin Navbar
-        navbar.innerHTML = `
-            <a href="userpage.html">Home</a>
-            <a href="viewbooks.html">Books</a>
-            <a href="addbook.html">Add Book</a>
-            <a href="../index.html" class="button" onclick="logout()">Log out</a>
-        `;
-    } else {
-        // User Navbar
-        navbar.innerHTML = `
-            <a href="userpage.html">Home</a>
-            <a href="viewbooks.html">Books</a>
-            <a href="listofborrowedbooks.html">My Borrowed Books</a>
-            <a href="../index.html" class="button" onclick="logout()">Log out</a>
-        `;
-    }
-}
-
-setupNavbar();
+searchBooks();
