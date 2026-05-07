@@ -1,0 +1,110 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="{% static 'css/Details.css' %}">
+
+    <title>Book Details</title>
+</head>
+
+<body>
+
+    <header>
+        <a href="/" class="logo">
+            <img src="{% static 'images/book.svg' %}" alt="Weblogo">
+            <span style="color: #0f172a;">Libraria</span>
+        </a>
+
+        <nav id="navbar">
+            <a href="userpage.html">Home</a>
+            <a href="viewbooks.html">Books</a>
+            <a href="listofborrowedbooks.html">My Borrowed Books</a>
+            <a href="../index.html" class="button" onclick="logout()">Log out</a>
+        </nav>
+    </header>
+
+    <main>
+
+        <button class="back-btn" onclick="history.back()">
+            ← Go back
+        </button>
+
+        <div class="container">
+
+            <div class="img">
+                <img src="" alt="Book Cover" class="book-cover-img">
+            </div>
+
+            <div>
+
+                <div class="container1">
+                    <p class="box1">[No.Available]</p>
+                    <p class="box2">[Book Type]</p>
+                </div>
+
+                <h1>[Book Name]</h1>
+
+                <h3>[Author Name]</h3>
+
+                <h4 class="description">DESCRIPTION</h4>
+
+                <p class="p">[Book Description]</p>
+
+                <div class="container2">
+
+                    <div id="container2">
+                        <h5>AUTHOR</h5>
+                        <h4>[Author Name]</h4>
+                    </div>
+
+                    <div id="container2">
+                        <h5># ID</h5>
+                        <h4>[ISBN NO]</h4>
+                    </div>
+
+                    <div id="container2">
+                        <h5>PUBLISHER</h5>
+                        <h4>[Publisher Date]</h4>
+                    </div>
+
+                    <div id="container2">
+                        <h5>PAGES</h5>
+                        <h4>[No. Pages]</h4>
+                    </div>
+
+                    <div id="container2">
+                        <h5>PUBLISHER</h5>
+                        <h4>[Publisher Name]</h4>
+                    </div>
+
+                    <div id="container2">
+                        <h5>TOTAL COPIES</h5>
+                        <h4>[Copies No.]</h4>
+                    </div>
+
+                </div>
+
+                <div class="action-container">
+                    <a href="borrowpage.html" class="borrow-btn">
+                        Borrow This Book
+                    </a>
+                </div>
+
+            </div>
+
+        </div>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2026 All rights reserved.</p>
+    </footer>
+
+    <script src="{% static 'js/Details.js' %}"></script>
+
+</body>
+</html>
