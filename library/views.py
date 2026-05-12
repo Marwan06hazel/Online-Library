@@ -1,6 +1,7 @@
-from django.shortcuts import render, get_object_or_404, redirect
+from django.shortcuts import render , redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
-from .models import Book
+from .models import Book, BorrowRecord, ReadingRecord, FavRecord
+from django.contrib import messages
 
 
 @login_required
@@ -78,14 +79,110 @@ def delete_book(request, book_id):
         book.delete()
     return redirect('viewbooks')
 
-@login_required
-def borrowed_books(request):
-    return render(request, 'listofborrowedbooks.html')
 
-@login_required
-def borrow_book(request, book_id):
-    book = get_object_or_404(Book, id=book_id)
-    return render(request, 'BorrowPage.html', {'book': book})
+# @login_required
+def borrow(request, id):
+
+    book = get_object_or_404(Book, id=id)
+
+    if request.method == "POST":
+
+        duration = int(request.POST.get('duration')) 
+        paymentMethod = request.POST.get('payment_method')
+        address = request.POST.get('delivery_address')
+        # unit = request.POST.get("duration_unit")
+
+        # if unit == "days":
+        #     delta = timedelta(days=duration)
+
+        # elif unit == "weeks":
+        #     delta = timedelta(weeks=duration)
+
+        # else:
+        #     delta = timedelta(days=30 * duration)
+
+        if book.available_copies <= 0:
+            messages.error(request, "No copies available.")
+            return redirect('borrowbook', id=book.id)
+
+        if BorrowRecord.objects.filter(
+            user=request.user, book=book,
+            is_returned=False
+        ).exists():
+            messages.error(request, "This book is already borrowed!")
+            return redirect('borrowbook', id=book.id)
+            
+        if not duration or duration <= 0:
+            messages.error(request, "Enter a valid duration.")
+
+        if not address.strip():
+            messages.error(request, "Delivery address is required.")
+        
+        
+        BorrowRecord.objects.create(
+            user=request.user,
+            book=book
+        )
+
+        book.available_copies -= 1
+        book.save()
+
+        messages.success(request, "Book borrowed successfully!")
+        messages.success(request, "THIS IS FROM BORROW VIEW")
+        return redirect('borrowed')
+        
+    # show page initially    
+    return render(request, 'BorrowPage.html', { 'book': book })
+# @login_required
+def borrowed(request):
+    currUser = request.user
+    borrowed = BorrowRecord.objects.filter(user=currUser, is_returned=False)
+    reading = ReadingRecord.objects.filter(user=request.user)
+    favorites = FavRecord.objects.filter(user=request.user)
+
+    return render(request, 'listofborrowedbooks.html', {'borrow_records': borrowed, 'reading_records': reading, 'fav_records': favorites})
+
+def returnbook(request, id):
+
+    borrow_record = get_object_or_404(BorrowRecord, id=id, user=request.user)
+
+    if request.method == "POST":
+
+        if borrow_record.is_returned == False: 
+            borrow_record.is_returned = True
+            borrow_record.book.available_copies += 1
+
+            borrow_record.save()
+            borrow_record.book.save()
+
+            ReadingRecord.objects.create(
+                user=request.user,
+                book=borrow_record.book
+            )
+
+            return redirect('borrowed')
+    
+    return redirect('borrowed')         
+
+def favToggle(request, id):
+
+    book = get_object_or_404(Book, id=id)
+
+    if request.method == "POST":
+
+        fav_book = FavRecord.objects.filter(
+            user=request.user,
+            book=book
+        )
+
+        if fav_book.exists():
+            fav_book.delete()
+        else:
+            FavRecord.objects.create(
+                user=request.user,
+                book=book
+            )
+    return redirect('borrowed') 
 
 def home(request):
     return render(request, 'index.html')
