@@ -21,7 +21,7 @@
         <nav id="navbar">
             <a href="{% url 'userpage' %}">Home</a>
             <a href="{% url 'viewbooks' %}">Books</a>
-            <a href="{% url 'borrowed_books' %}">My Borrowed Books</a>
+            <a href="{% url 'borrowed' %}">My Borrowed Books</a>
             <a href="{% url 'logout' %}" class="button">Log out</a>
         </nav>
     </header>
@@ -29,54 +29,100 @@
     <main class="userBooks">
 
         <h2>Currently Borrowed</h2>
+
         <div class="borrowed">
             <div class="cards">
-                {% for record in borrowed %}
-                    <div class="card">
-                        {% if record.book.cover %}
-                            <img src="{{ record.book.cover.url }}" alt="{{ record.book.title }}">
-                        {% else %}
-                            <img src="{% static 'Pics/default-book.jpeg' %}" alt="Default Cover">
+
+                {% for borrowed in borrow_records %}
+
+                <div class="card">
+                    <div class="card-content">
+                        {% if borrowed.book.cover %}
+                        <img src="{{ borrowed.book.cover.url }}" alt="{{ borrowed.book.title }}">
                         {% endif %}
-                        <h3>{{ record.book.title }}</h3>
-                        <p>{{ record.book.author }}</p>
-                        <p>Borrowed: {{ record.borrowed_at|date:"Y-m-d" }}</p>
-                        <a href="{% url 'book_details' record.book.id %}">Details</a>
+                        <h3>{{ borrowed.book.title }}</h3>
+                        <p>Borrow Date: {{ borrowed.borrowed_at|date:"d M Y - H:i" }}</p>
+                        <!-- <p>Due Date: {{ dueDate }}</p> -->
+                        <form action="{% url 'returnbook' borrowed.id %}" method="post">
+                            {% csrf_token %}
+                            <button type="submit">Return</button>
+                        </form>
+                        <form action="{% url 'favtoggle' borrowed.book.id %}" method="post">
+                            {% csrf_token %}
+                            <button type="submit">Fav</button>
+                        </form>
                     </div>
-                {% empty %}
-                    <p>No books currently borrowed.</p>
+                </div>
+                        {% empty %}
+                        <p>No borrowed books to show.</p>
+
                 {% endfor %}
             </div>
         </div>
 
+        
+
         <h2>Reading History</h2>
+
         <div class="history">
             <div class="cards">
-                {% for record in history %}
-                    <div class="card">
-                        {% if record.book.cover %}
-                            <img src="{{ record.book.cover.url }}" alt="{{ record.book.title }}">
-                        {% else %}
-                            <img src="{% static 'Pics/default-book.jpeg' %}" alt="Default Cover">
+
+                {% for read in reading_records %}
+
+                <div class="card">
+                    <div class="card-content">
+                        {% if read.book.cover %}
+                        <img src="{{ read.book.cover.url }}" alt="{{ read.book.title }}">
                         {% endif %}
-                        <h3>{{ record.book.title }}</h3>
-                        <p>{{ record.book.author }}</p>
-                        <p>Borrowed: {{ record.borrowed_at|date:"Y-m-d" }}</p>
-                        <a href="{% url 'book_details' record.book.id %}">Details</a>
+                        <h3>{{ read.book.title }}</h3>
+                        <p>Borrow Date: {{ read.borrowed_at|date:"d M Y - H:i" }}</p>
+                        <!-- <p>Category: ${book.Category}</p>
+                        <p>Borrow Date: ${item.borrowDate}</p>
+                        <p>Returned on: ${item.returnDate}</p>  -->
+                        <form action="{% url 'favtoggle' read.book.id %}" method="post">
+                            {% csrf_token %}
+                            <button type="submit">Fav</button>
+                        </form>
                     </div>
-                {% empty %}
-                    <p>No reading history yet.</p>
+                </div>
+                        {% empty %}
+                        <p>No reading history yet.</p>
+
                 {% endfor %}
             </div>
         </div>
 
         <h2>Favorites</h2>
+
         <div class="favourites">
             <div class="cards">
-                <p>Coming soon.</p>
+
+                {% for fav in fav_records %}
+
+                <div class="card">
+                    <div class="card-content">
+                        {% if fav.book.cover %}
+                        <img src="{{ fav.book.cover.url }}" alt="{{ fav.book.title }}">
+                        {% endif %}
+                        <h3>{{ fav.book.title }}</h3>
+                        <p>Added At: {{ fav.added_at|date:"d M Y - H:i" }}</p>
+                        <!-- <p>Category: ${book.Category}</p> -->
+                        <!--<p>Borrow Date: ${item.borrowDate}</p>
+                        <p>Returned on: ${item.returnDate}</p>  -->
+                        <form action="{% url 'favtoggle' fav.book.id %}" method="post">
+                            {% csrf_token %}
+                            <button type="submit">Fav</button>
+                        </form>
+                    </div>
+                </div>
+
+                        {% empty %}
+                        <p>No books are added to favorites.</p>
+
+                {% endfor %}                
             </div>
         </div>
-
+        
     </main>
 
     <script src="{% static 'js/listofborrowedbooks.js' %}"></script>
