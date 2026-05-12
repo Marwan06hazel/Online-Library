@@ -40,15 +40,15 @@ def add_book(request):
         total_copies = request.POST.get('total_copies') or 1
         cover = request.FILES.get('cover')
         Book.objects.create(
-            title=title,
-            author=author,
-            category=category,
-            description=description,
-            publisher=publisher,
-            publish_date=publish_date,
-            pages=int(pages),
-            total_copies=int(total_copies),
-            available_copies=int(total_copies),
+            title = title,
+            author = author,
+            category = category,
+            description = description,
+            publisher = publisher,
+            publish_date = publish_date,
+            pages = int(pages),
+            total_copies = int(total_copies),
+            available_copies = int(total_copies),
             cover=cover
         )
         return redirect('viewbooks')
@@ -73,7 +73,7 @@ def edit_book(request, book_id):
     return render(request, 'managebooks.html', {'book': book})
 
 def delete_book(request, book_id):
-    book = get_object_or_404(Book, id=book_id)
+    book = get_object_or_404(Book, id = book_id)
     if request.method == 'POST':
         book.delete()
     return redirect('viewbooks')
