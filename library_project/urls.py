@@ -28,8 +28,10 @@ urlpatterns = [
     # User Pages
     path('userpage/', views.userpage, name='userpage'),
     path('viewbooks/', views.viewbooks, name='viewbooks'),
-    path('borrowed/', views.borrowed_books, name='borrowed_books'),
-    path('borrow/<int:book_id>/', views.borrow_book, name='borrow_book'),
+    path('BorrowPage/<int:id>/', views.borrow, name='borrowbook'),
+    path('listofborrowedbooks/', views.borrowed, name='borrowed'),
+    path('return/<int:id>/', views.returnbook, name='returnbook'),
+    path('fav/<int:id>/', views.favToggle, name='favtoggle'),
 
     # Book Details
     path('details/<int:id>/', views.details, name='book_details'),
