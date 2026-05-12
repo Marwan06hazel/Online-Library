@@ -64,3 +64,21 @@ class BorrowRecord(models.Model):
 
     def __str__(self):
         return f"{self.user.username} - {self.book.title}"
+
+
+class ReadingRecord(models.Model):
+    user = models.ForeignKey(User, on_delete = models.CASCADE, related_name = 'reading_records')
+    book = models.ForeignKey(Book, on_delete = models.CASCADE, related_name = 'reading_records')
+    borrowed_at = models.DateTimeField(auto_now_add = True)
+
+    def __str__(self):
+        return f"{self.user.username} - {self.book.title}"
+    
+
+class FavRecord(models.Model):
+    user = models.ForeignKey(User, on_delete = models.CASCADE, related_name = 'fav_records')
+    book = models.ForeignKey(Book, on_delete = models.CASCADE, related_name = 'fav_records')
+    added_at = models.DateTimeField(auto_now_add = True)
+
+    def __str__(self):
+        return f"{self.user.username} - {self.book.title}"
