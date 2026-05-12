@@ -1,0 +1,97 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Book</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/AddBook.css' %}">
+</head>
+
+<body>
+
+    <header>
+        <a href="{% url 'adminpage' %}" class="logo">
+            <img src="{% static 'Pics/book.svg' %}" alt="Weblogo">
+            <span style="color: #0f172a;">Libraria</span>
+        </a>
+
+        <nav id="navbar">
+            <a href="{% url 'adminpage' %}">Home</a>
+            <a href="{% url 'viewbooks' %}">Books</a>
+            <a href="{% url 'add_book' %}">Add Book</a>
+            <a href="{% url 'logout' %}" class="button">Log out</a>
+        </nav>
+    </header>
+
+    <h1>Add New Book</h1>
+
+    {% if messages %}
+        {% for message in messages %}
+            <p style="color: red;">{{ message }}</p>
+        {% endfor %}
+    {% endif %}
+
+    <form method="POST" enctype="multipart/form-data" id="AddBookForm">
+        {% csrf_token %}
+
+        <p><strong>Book Title</strong></p>
+        <input type="text" name="title" placeholder="Enter book title" required>
+
+        <p><strong>Author</strong></p>
+        <input type="text" name="author" placeholder="Author name" required>
+
+        <p><strong>Category</strong></p>
+        <select name="category" required style="appearance: none; width: 100%; padding: 12px; margin-bottom: 10px; border: 1px solid #ddd; border-radius: 8px; transition: all 0.2s ease;">
+            <option value="">-- Select Category --</option>
+            <option value="romance">Romance</option>
+            <option value="science">Science</option>
+            <option value="fiction">Fiction</option>
+            <option value="nonfiction">Non-Fiction</option>
+            <option value="mystery">Mystery</option>
+            <option value="thriller">Thriller</option>
+            <option value="fantasy">Fantasy</option>
+            <option value="horror">Horror</option>
+            <option value="biography">Biography</option>
+            <option value="history">History</option>
+            <option value="poetry">Poetry</option>
+            <option value="selfhelp">Self-Help</option>
+            <option value="philosophy">Philosophy</option>
+            <option value="adventure">Adventure</option>
+            <option value="children">Children's</option>
+            <option value="youngadult">Young Adult</option>
+            <option value="comics">Comics / Graphic Novels</option>
+            <option value="religion">Religion / Spirituality</option>
+            <option value="sciencefiction">Science Fiction</option>
+            <option value="travel">Travel</option>
+            <option value="cookbook">Cookbook</option>
+            <option value="art">Art / Photography</option>
+            <option value="health">Health / Fitness</option>
+        </select>
+
+        <p><strong>Description</strong></p>
+        <textarea name="description" rows="4" cols="50" placeholder="Brief book description..."></textarea>
+
+        <p><strong>Publisher</strong></p>
+        <input type="text" name="publisher" placeholder="Publisher name">
+
+        <p><strong>Publish Date</strong></p>
+        <input type="text" name="publish_date" placeholder="e.g. 2023-01-01">
+
+        <p><strong>Number of Pages</strong></p>
+        <input type="number" name="pages" placeholder="Enter number of pages" min="1">
+
+        <p><strong>Total Copies</strong></p>
+        <input type="number" name="total_copies" placeholder="Enter total copies" min="1" value="1">
+
+        <p><strong>Book Cover</strong></p>
+        <input type="file" name="cover" accept="image/*">
+
+        <br><br>
+        <button type="submit">Add Book</button>
+    </form>
+
+</body>
+
+</html>

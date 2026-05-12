@@ -1,15 +1,6 @@
-function loadProfileImage() {
-    const currentUser = JSON.parse(localStorage.getItem("currentUser"));
-
-    if (!currentUser) return;
-
+document.addEventListener("DOMContentLoaded", function() {
     const img = document.getElementById("profileImg");
-
-    if (currentUser.image) {
-        img.src = currentUser.image;
-    } else {
-        img.src = "../Pics/Profile-icon.png";
+    if (!img.src || img.src === "") {
+        img.src = "/static/Pics/Profile-icon.png";
     }
-}
-
-document.addEventListener("DOMContentLoaded", loadProfileImage);
+});

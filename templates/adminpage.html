@@ -1,41 +1,46 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Digital Library</title>
-    <link rel="stylesheet" href="css/index.css">
+    <title>Admin Page</title>
+    <link rel="stylesheet" href="{% static 'css/adminpage.css' %}">
 </head>
+
 <body>
-    
+
     <header>
-        <a href="/" class="logo">
-            <img src="Pics/book.svg" alt="Weblogo">
-            <span style="color: #0f172a; ">Libraria</span>
+        <a href="{% url 'adminpage' %}" class="logo">
+            <img src="{% static 'Pics/book.svg' %}" alt="Weblogo">
+            <span style="color: #0f172a;">Libraria</span>
         </a>
 
         <nav id="navbar">
-            <a href="index.html">Home</a>
-            <a href="Pages/viewbooks.html">Books</a>
-            <a href="Pages/login.html" class="button">Login</a>
-            <a href="Pages/signup.html" class="button">SignUp</a>
+            <a href="{% url 'adminpage' %}">Home</a>
+            <a href="{% url 'viewbooks' %}">Books</a>
+            <a href="{% url 'add_book' %}">Add Book</a>
+            <a href="{% url 'logout' %}" class="button">Log out</a>
         </nav>
     </header>
 
     <main>
 
+        <a href="{% url 'profile' %}">
+            <img id="profileImg" src="{% static 'Pics/Profile-icon.png' %}">
+        </a>
+
         <h1>Your Digital Library</h1>
-    
+
         <h2>Discover, Borrow & Explore Books</h2>
-    
-        <p>Browse our curated collection of books. Search by title, author, or category — and borrow with a single click.</p>
+
+        <p>Browse our curated collection of books. Search by title, author, or category — and borrow with a single
+            click.</p>
 
         <div>
-            <a href="Pages/viewbooks.html" class="button">Browse Library</a>
-            <a href="Pages/signup.html" class="button">Create Account</a>
+            <a href="{% url 'viewbooks' %}" class="button">Browse Library</a>
         </div>
-
-        <hr>
 
         <div class="features">
             <section>
@@ -46,14 +51,11 @@
                 <h3>Easy Borrowing</h3>
                 <p>Borrow available books with one click and track your loans.</p>
             </section>
-
             <section>
                 <h3>Admin Tools</h3>
                 <p>Admins can add, edit, and manage the entire catalog.</p>
             </section>
         </div>
-
-        <hr>
 
     </main>
 
@@ -61,5 +63,7 @@
         <p>&copy; 2026 All rights reserved.</p>
     </footer>
 
+    <script src="{% static 'js/profileIcon.js' %}"></script>
 </body>
+
 </html>

@@ -21,8 +21,6 @@ body {
     line-height: 1.6;
 }
 
-/* ================= HEADER ================= */
-
 header {
     background-color: rgb(247, 243, 237);
     display: flex;
@@ -56,8 +54,6 @@ header {
 .logo:hover img {
     opacity: 0.85;
 }
-
-/* ================= NAVBAR ================= */
 
 #navbar {
     display: flex;
@@ -109,8 +105,6 @@ header {
     transform: translateY(-2px);
 }
 
-/* ================= MAIN ================= */
-
 main {
     max-width: 1150px;
     margin: auto;
@@ -132,16 +126,12 @@ main {
     transform: translateX(-3px);
 }
 
-/* ================= CONTAINER ================= */
-
 .container {
     display: grid;
     grid-template-columns: 35% 65%;
     gap: 2.5rem;
     align-items: start;
 }
-
-/* ================= IMAGE ================= */
 
 .img {
     display: flex;
@@ -155,8 +145,6 @@ main {
     object-fit: cover;
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
 }
-
-/* ================= TAGS ================= */
 
 .container1 {
     display: flex;
@@ -191,8 +179,6 @@ main {
     transform: translateY(-1px);
 }
 
-/* ================= TEXT ================= */
-
 h1 {
     font-size: 2.3rem;
     margin-bottom: 0.6rem;
@@ -217,8 +203,6 @@ h3 {
     color: #475569;
     line-height: 1.8;
 }
-
-/* ================= INFO BOXES ================= */
 
 .container2 {
     display: grid;
@@ -253,8 +237,6 @@ h3 {
     font-weight: 600;
 }
 
-/* ================= BUTTON ================= */
-
 .borrow-btn {
     background-color: hsl(var(--primary));
     color: white;
@@ -273,7 +255,31 @@ h3 {
     box-shadow: 0 6px 15px rgba(0, 0, 0, 0.12);
 }
 
-/* ================= FOOTER ================= */
+.action-container form {
+    display: inline;
+}
+
+.delete-btn {
+    all: unset;
+    background-color: #dc2626;
+    color: white;
+    padding: 15px 28px;
+    border-radius: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: 0.3s ease;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+    margin-left: 10px;
+    font-family: inherit;
+    font-size: 1rem;
+    display: inline-block;
+}
+
+.delete-btn:hover {
+    background-color: #b91c1c;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.12);
+}
 
 footer {
     background-color: rgb(247, 243, 237);
@@ -287,8 +293,6 @@ footer p {
     color: var(--TextColor);
     font-size: 0.9rem;
 }
-
-/* ================= RESPONSIVE ================= */
 
 @media (max-width: 900px) {
     .container {

@@ -3,8 +3,9 @@ from django.contrib.auth.models import AbstractUser
 
 
 class User(AbstractUser):
-    is_admin = models.BooleanField(default=False)
-    email = models.EmailField(unique=True)
+    is_admin = models.BooleanField(default = False)
+    email = models.EmailField(unique = True)
+    profile_image = models.ImageField(upload_to = 'profiles/', blank = True, null = True)
 
     def __str__(self):
         return self.username

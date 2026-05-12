@@ -1,51 +1,65 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="utf-8" />
+    <meta charset="utf-8">
     <meta name="author" content="Marwan">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/Borrow_Page.css">
+    <link rel="stylesheet" href="{% static 'css/Borrow_Page.css' %}">
     <title>Online Library</title>
 </head>
 
 <body>
 
     <header>
-        <a href="/" class="logo">
-            <img src="../Pics/book.svg" alt="Weblogo">
-            <span style="color: #0f172a; ">Libraria</span>
+        <a href="{% url 'userpage' %}" class="logo">
+            <img src="{% static 'Pics/book.svg' %}" alt="Weblogo">
+            <span style="color: #0f172a;">Libraria</span>
         </a>
 
         <nav id="navbar">
-            <a href="userpage.html">Home</a>
-            <a href="viewbooks.html">Books</a>
-            <a href="listofborrowedbooks.html">My Borrowed Books</a>
-            <a href="../index.html" class="button" onclick="logout()">Log out</a>
+            <a href="{% url 'userpage' %}">Home</a>
+            <a href="{% url 'viewbooks' %}">Books</a>
+            <a href="{% url 'borrowed_books' %}">My Borrowed Books</a>
+            <a href="{% url 'logout' %}" class="button">Log out</a>
         </nav>
     </header>
 
     <main>
-        <button onclick="history.back()" 
+
+        <button onclick="history.back()"
                 onmouseover="this.style.color='#004467';"
-                style="background: none; border: none; color: #5a88a5; cursor: pointer; font-size: 18px; display: flex; align-items: center; gap: 8px; font-family: inherit; padding: 10px 0; ">
+                style="background: none; border: none; color: #5a88a5; cursor: pointer; font-size: 18px; display: flex; align-items: center; gap: 8px; font-family: inherit; padding: 10px 0;">
             ← Go Back
         </button>
+
         <h1>Borrow Book</h1>
         <p>Fill out the form below to borrow this book.</p>
 
         <figure class="book-cover">
-            <img id="book-img" src="" alt="" width="100" height="150" />
+            {% if book.cover %}
+                <img id="book-img" src="{{ book.cover.url }}" alt="{{ book.title }}" width="100" height="150">
+            {% else %}
+                <img id="book-img" src="{% static 'Pics/default-book.jpeg' %}" alt="{{ book.title }}" width="100" height="150">
+            {% endif %}
 
             <figcaption class="book-details">
-                <b id="book-title"></b>
-                <p id="book-author"></p>
-                <p id="book-category" style="color: #d97706;"></p>
+                <b id="book-title">{{ book.title }}</b>
+                <p id="book-author">{{ book.author }}</p>
+                <p id="book-category" style="color: #d97706;">{{ book.get_category_display }}</p>
             </figcaption>
         </figure>
 
-        <form action="" method="post">
+        {% if messages %}
+            {% for message in messages %}
+                <p style="color: red;">{{ message }}</p>
+            {% endfor %}
+        {% endif %}
 
-            <!-- Duration -->
+        <form action="{% url 'borrow_book' book.id %}" method="POST">
+            {% csrf_token %}
+
             <section class="duration">
                 <p><b><big>Borrow Duration</big></b></p>
                 <p>For how long would you like to borrow this book?</p>
@@ -62,7 +76,6 @@
                 <span id="due-date"></span>
             </section>
 
-            <!-- Payment Method -->
             <section class="payment">
                 <p><b><big>Payment Method</big></b></p>
                 <p>Select how you'd like to pay</p>
@@ -75,7 +88,6 @@
                 </select>
             </section>
 
-            <!-- Delivery Address -->
             <section class="delivery-add">
                 <p><b><big>Delivery Address</big></b></p>
                 <p>Where would you like your book delivered?</p>
@@ -85,18 +97,18 @@
                           cols="30" rows="4" required></textarea>
             </section>
 
-            <!-- Submit Button -->
             <section class="borrow-btn">
-                <button type="button">Confirm & Borrow</button>
+                <button type="submit">Confirm & Borrow</button>
             </section>
 
         </form>
+
     </main>
 
     <footer>
         <p>&copy; 2026 All rights reserved.</p>
     </footer>
 
-    <script src="../js/Borrow_Page.js"></script>
+    <script src="{% static 'js/Borrow_Page.js' %}"></script>
 </body>
 </html>

@@ -1,5 +1,4 @@
 {% load static %}
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -13,41 +12,35 @@
 <body>
 
     <header>
-        <a href="/" class="logo">
+        <a href="{% if request.user.is_admin %}{% url 'adminpage' %}{% else %}{% url 'userpage' %}{% endif %}"
+            class="logo">
             <img src="{% static 'Pics/book.svg' %}" alt="Weblogo">
-            <span>Libraria</span>
+            <span style="color: #0f172a;">Libraria</span>
         </a>
 
         <nav id="navbar">
-            <a href="/">Home</a>
-            <a href="{% url 'view_books' %}">Books</a>
-            {% if request.user.is_authenticated %}
-                {% if request.user.is_admin %}
-                <a href="{% url 'AddBook' %}">Add Book</a>
-
-                {% else %}
-                    <a href="{% url 'borrowedBooks' %}"> My Borrowed Books</a>
-
-                {% endif %}
-
-                <a href="{% url 'logout' %}" class="button"> Log out </a>
-
+            {% if request.user.is_admin %}
+            <a href="{% url 'adminpage' %}">Home</a>
+            <a href="{% url 'viewbooks' %}">Books</a>
+            <a href="{% url 'add_book' %}">Add Book</a>
+            <a href="{% url 'logout' %}" class="button">Log out</a>
             {% else %}
-                <a href="{% url 'login' %}" class="button"> Login </a>
-
+            <a href="{% url 'userpage' %}">Home</a>
+            <a href="{% url 'viewbooks' %}">Books</a>
+            <a href="{% url 'borrowed_books' %}">My Borrowed Books</a>
+            <a href="{% url 'logout' %}" class="button">Log out</a>
             {% endif %}
         </nav>
-
     </header>
 
     <main>
 
-        <h1> Browse Our Collection</h1>
-
+        <h1>Browse Our Collection</h1>
         <p>Discover your next favorite book from our curated library</p>
 
         <div class="search-section">
-            <input type="text" id="searchInput" placeholder="Search by title, author, or category..." class="search-input">
+            <input type="text" id="searchInput" placeholder="Search by title, author, or category..."
+                class="search-input">
 
             <select id="categoryFilter" class="category-filter">
                 <option value="all">All Categories</option>
@@ -75,69 +68,56 @@
                 <option value="art">Art / Photography</option>
                 <option value="health">Health / Fitness</option>
             </select>
-
         </div>
 
         <div class="books-grid" id="booksGrid">
-
             {% for book in books %}
-            <div class="book-card" data-category="{{ book.category|lower }}" data-title="{{ book.title|lower }}" data-author="{{ book.author|lower }}">
+            <div class="book-card" data-category="{{ book.category|lower }}" data-title="{{ book.title|lower }}"
+                data-author="{{ book.author|lower }}">
 
                 {% if book.cover %}
-                    <img src="{{ book.cover.url }}" alt="{{ book.title }}" class="book-cover-img">
-
+                <img src="{{ book.cover.url }}" alt="{{ book.title }}" class="book-cover-img">
                 {% else %}
-                    <img src="{% static 'Pics/default-book.jpeg' %}" alt="Default Book Cover" class="book-cover-img">
-
+                <img src="{% static 'Pics/default-book.jpeg' %}" alt="Default Book Cover" class="book-cover-img">
                 {% endif %}
 
                 <div class="book-info">
-                    <h3> {{ book.title }} </h3>
-                    <p class="author"> by {{ book.author }}</p>
-                    <p class="category"> {{ book.get_category_display }}</p>
+                    <h3>{{ book.title }}</h3>
+                    <p class="author">by {{ book.author }}</p>
+                    <p class="category">{{ book.get_category_display }}</p>
+
                     {% if book.available_copies > 0 %}
-                        <p class="available"> Available ({{ book.available_copies }})</p>
-
+                    <p class="available">Available ({{ book.available_copies }})</p>
                     {% else %}
-
-                        <p class="unavailable">Not Available</p>
-
+                    <p class="unavailable">Not Available</p>
                     {% endif %}
 
                     <div class="book-actions">
-                        <a href="{% url 'book_details' book.id %}" class="details-btn"> Details </a>
-
-                        {% if book.available_copies > 0 %}
-                            <a href="#" class="borrow-btn"> Borrow </a>
-
+                        <a href="{% url 'book_details' book.id %}" class="details-btn">Details</a>
+                        {% if request.user.is_admin %}
+                        <a href="{% url 'edit_book' book.id %}" class="borrow-btn">Edit</a>
                         {% else %}
-                            <button class="borrow-btn disabled-btn" disabled> Unavailable </button>
-
+                        {% if book.available_copies > 0 %}
+                        <a href="{% url 'borrow_book' book.id %}" class="borrow-btn">Borrow</a>
+                        {% else %}
+                        <button class="borrow-btn disabled-btn" disabled>Unavailable</button>
                         {% endif %}
-
+                        {% endif %}
                     </div>
                 </div>
             </div>
-
             {% empty %}
-                <p class="empty-message"> No books available. </p>
-
+            <p class="empty-message">No books available.</p>
             {% endfor %}
-
         </div>
 
     </main>
 
     <footer>
-
-        <p>
-            &copy; 2026 All rights reserved.
-        </p>
-
+        <p>&copy; 2026 All rights reserved.</p>
     </footer>
 
     <script src="{% static 'js/viewbooks.js' %}"></script>
-
 </body>
 
 </html>

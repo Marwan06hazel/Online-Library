@@ -1,0 +1,156 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Book</title>
+    <link rel="stylesheet" href="{% static 'css/Manage_Books_Page.css' %}">
+</head>
+
+<body>
+
+    <header>
+        <a href="{% url 'adminpage' %}" class="logo">
+            <img src="{% static 'Pics/book.svg' %}" alt="Weblogo">
+            <span style="color: #0f172a;">Libraria</span>
+        </a>
+
+        <nav id="navbar">
+            <a href="{% url 'adminpage' %}">Home</a>
+            <a href="{% url 'manage_books' %}">Books</a>
+            <a href="{% url 'add_book' %}">Add Book</a>
+            <a href="{% url 'logout' %}" class="button">Log out</a>
+        </nav>
+    </header>
+
+    <main>
+        <button type="button" class="Back-Btn" onclick="history.back()">← Go Back</button>
+        <h1>Edit Book</h1>
+        <p>Select a book to edit its details.</p>
+
+        {% if messages %}
+            {% for message in messages %}
+                <p style="color: red;">{{ message }}</p>
+            {% endfor %}
+        {% endif %}
+
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+
+            <figure class="edit-book-cover">
+                <b>Book Cover</b>
+
+                {% if book.cover %}
+                    <img class="edit-book-cover-pic"
+                         src="{{ book.cover.url }}"
+                         alt="{{ book.title }}"
+                         width="100" height="150">
+                {% else %}
+                    <img class="edit-book-cover-pic"
+                         src="{% static 'Pics/default-book.jpeg' %}"
+                         alt="Default Cover"
+                         width="100" height="150">
+                {% endif %}
+
+                <input type="file" name="cover" accept="image/*">
+            </figure>
+
+            <section class="edit-details">
+                <b>Title *</b><br>
+                <input type="text" name="title" value="{{ book.title }}" required>
+
+                <br><br>
+
+                <b>Author *</b><br>
+                <input type="text" name="author" value="{{ book.author }}" required>
+
+                <br><br>
+
+                <div class="Id-cat">
+                    <b>ID</b><br>
+                    <input class="id-input" type="text" value="{{ book.id }}" readonly>
+
+                    <br><br>
+
+                    <b class="cat-txt">Category</b><br>
+                    <select class="cat-select" name="category">
+                        <option value="romance"    {% if book.category == 'romance' %}selected{% endif %}>Romance</option>
+                        <option value="science"    {% if book.category == 'science' %}selected{% endif %}>Science</option>
+                        <option value="fiction"    {% if book.category == 'fiction' %}selected{% endif %}>Fiction</option>
+                        <option value="nonfiction" {% if book.category == 'nonfiction' %}selected{% endif %}>Non-Fiction</option>
+                        <option value="mystery"    {% if book.category == 'mystery' %}selected{% endif %}>Mystery</option>
+                        <option value="thriller"   {% if book.category == 'thriller' %}selected{% endif %}>Thriller</option>
+                        <option value="fantasy"    {% if book.category == 'fantasy' %}selected{% endif %}>Fantasy</option>
+                        <option value="horror"     {% if book.category == 'horror' %}selected{% endif %}>Horror</option>
+                        <option value="biography"  {% if book.category == 'biography' %}selected{% endif %}>Biography</option>
+                        <option value="history"    {% if book.category == 'history' %}selected{% endif %}>History</option>
+                        <option value="poetry"     {% if book.category == 'poetry' %}selected{% endif %}>Poetry</option>
+                        <option value="selfhelp"   {% if book.category == 'selfhelp' %}selected{% endif %}>Self-Help</option>
+                        <option value="philosophy" {% if book.category == 'philosophy' %}selected{% endif %}>Philosophy</option>
+                        <option value="adventure"  {% if book.category == 'adventure' %}selected{% endif %}>Adventure</option>
+                        <option value="children"   {% if book.category == 'children' %}selected{% endif %}>Children's</option>
+                        <option value="youngadult" {% if book.category == 'youngadult' %}selected{% endif %}>Young Adult</option>
+                        <option value="comics"     {% if book.category == 'comics' %}selected{% endif %}>Comics / Graphic Novels</option>
+                        <option value="religion"   {% if book.category == 'religion' %}selected{% endif %}>Religion / Spirituality</option>
+                        <option value="sciencefiction" {% if book.category == 'sciencefiction' %}selected{% endif %}>Science Fiction</option>
+                        <option value="travel"     {% if book.category == 'travel' %}selected{% endif %}>Travel</option>
+                        <option value="cookbook"   {% if book.category == 'cookbook' %}selected{% endif %}>Cookbook</option>
+                        <option value="art"        {% if book.category == 'art' %}selected{% endif %}>Art / Photography</option>
+                        <option value="health"     {% if book.category == 'health' %}selected{% endif %}>Health / Fitness</option>
+                    </select>
+                </div>
+
+                <br><br>
+
+                <b>Description</b><br>
+                <textarea name="description" cols="30">{{ book.description }}</textarea>
+            </section>
+
+            <br><br>
+
+            <section class="edit-publish-details">
+                <div class="copies">
+                    <div class="copy-item">
+                        <b>Total Copies</b>
+                        <input type="number" name="total_copies" value="{{ book.total_copies }}">
+                    </div>
+                    <div class="copy-item">
+                        <b>Available Copies</b>
+                        <input type="number" name="available_copies" value="{{ book.available_copies }}">
+                    </div>
+                </div>
+
+                <div class="dates">
+                    <div class="date-item">
+                        <b>Publisher</b>
+                        <input type="text" name="publisher" value="{{ book.publisher }}">
+                    </div>
+                    <div class="date-item">
+                        <b>Year</b>
+                        <input type="text" name="publish_date" value="{{ book.publish_date }}">
+                    </div>
+                    <div class="date-item">
+                        <b>Pages</b>
+                        <input type="number" name="pages" value="{{ book.pages }}">
+                    </div>
+                </div>
+            </section>
+
+            <br><br>
+
+            <section>
+                <button class="Edit-btn" type="submit">Save Changes</button>
+            </section>
+
+        </form>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 All rights reserved.</p>
+    </footer>
+
+    <script src="{% static 'js/managebooks.js' %}"></script>
+</body>
+</html>
