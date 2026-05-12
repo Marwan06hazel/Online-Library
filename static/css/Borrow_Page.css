@@ -334,3 +334,19 @@ footer {
     margin-top: 2rem;
     border-top: 1px solid var(--InputBorderColor);
 }
+
+.alert {
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+}
+
+.success {
+    background: #d4edda;
+    color: #155724;
+}
+
+.error {
+    background: #f8d7da;
+    color: #721c24;
+}
