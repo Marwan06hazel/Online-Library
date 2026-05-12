@@ -21,7 +21,7 @@
         <nav id="navbar">
             <a href="{% url 'userpage' %}">Home</a>
             <a href="{% url 'viewbooks' %}">Books</a>
-            <a href="{% url 'borrowed_books' %}">My Borrowed Books</a>
+            <a href="{% url 'borrowed' %}">My Borrowed Books</a>
             <a href="{% url 'logout' %}" class="button">Log out</a>
         </nav>
     </header>
@@ -36,6 +36,14 @@
 
         <h1>Borrow Book</h1>
         <p>Fill out the form below to borrow this book.</p>
+
+        {% if messages %}
+            {% for message in messages %}
+                <div class="alert {{ message.tags }}">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endif %}
 
         <figure class="book-cover">
             {% if book.cover %}
@@ -57,7 +65,7 @@
             {% endfor %}
         {% endif %}
 
-        <form action="{% url 'borrow_book' book.id %}" method="POST">
+        <form action="{% url 'borrowbook' book.id %}" method="POST">
             {% csrf_token %}
 
             <section class="duration">
