@@ -1,38 +1,3 @@
-//--- User Account Setup
-
-const uid = localStorage.getItem("currentUserId");
-function getKey(key) {
-    return `${uid}_${key}`;
-}
-
-//--- Load Book Data 
-
-const urlParams = new URLSearchParams(window.location.search);
-const CURRENT_BOOK_ID = Number(urlParams.get("id"));
-
-if (!localStorage.getItem("books")) {
-    fetch("../Storage/Books.json")
-        .then(res => res.json())
-        .then(data => {
-            localStorage.setItem("books", JSON.stringify(data.books));
-        });
-}
-
-function loadBook() {
-    const books = JSON.parse(localStorage.getItem("books")) || [];
-
-    const book = books.find(b => Number(b.id) === CURRENT_BOOK_ID);
-
-    if (!book) return;
-
-    document.getElementById("book-title").textContent = book.title;
-    document.getElementById("book-author").textContent = "by " + book.author;
-    document.getElementById("book-img").src = book.cover;
-    document.getElementById("book-category").textContent = book.Category;
-}
-
-loadBook();
-
 const durationInput = document.getElementById("duration");
 const unitSelect = document.getElementById("duration-unit");
 const dueDateSpan = document.getElementById("due-date");
@@ -40,15 +5,12 @@ const dueDateSpan = document.getElementById("due-date");
 function updateDueDate() {
     const duration = parseInt(durationInput.value);
     const unit = unitSelect.value;
-
     if (!duration || duration <= 0) {
         dueDateSpan.textContent = "";
         return;
     }
-
     const today = new Date();
     const dueDate = new Date(today);
-
     if (unit === "days") {
         dueDate.setDate(today.getDate() + duration);
     } else if (unit === "weeks") {
@@ -56,66 +18,24 @@ function updateDueDate() {
     } else if (unit === "months") {
         dueDate.setMonth(today.getMonth() + duration);
     }
-
     dueDateSpan.textContent = "Due date: " + dueDate.toDateString();
 }
 
 durationInput.addEventListener("input", updateDueDate);
 unitSelect.addEventListener("change", updateDueDate);
 
-document.querySelector(".borrow-btn button").addEventListener("click", function () {
-
+document.querySelector(".borrow-btn button").addEventListener("click", function() {
     const dueDateText = dueDateSpan.textContent;
     const addressInput = document.getElementById("delivery-address");
-
     if (!dueDateText) {
         alert("Please select a borrow duration first!");
         durationInput.focus();
         return;
     }
-
     if (!addressInput.value.trim()) {
         alert("Please fill out your delivery address!");
         addressInput.focus();
         return;
     }
-
-    let books = JSON.parse(localStorage.getItem("books")) || [];
-
-    // for making user-specified borrowed list
-    let borrowedBooks = JSON.parse(localStorage.getItem(getKey("borrowedBooks"))) || [];
-
-    let bookIndex = books.findIndex(b => Number(b.id) === CURRENT_BOOK_ID);
-    let book = books[bookIndex];
-
-    if (!book) return;
-
-    if (book["available-copies"] <= 0) {
-        alert("Sorry, no available copies left for this book!");
-        return;
-    }
-
-    if (borrowedBooks.some(b => b.id === CURRENT_BOOK_ID)) {
-        alert("This book is already borrowed!");
-        return;
-    }
-
-    const newEntry = {
-        id: CURRENT_BOOK_ID,
-        borrowDate: new Date().toLocaleDateString(),
-        dueDate: dueDateText.replace("Due date: ", ""),
-        address: addressInput.value.trim()
-    };
-
-    borrowedBooks.push(newEntry);
-
-    books[bookIndex].availableCopies -= 1;
-
-    // saving also to the user-specified list (array)
-    localStorage.setItem(getKey("borrowedBooks"),JSON.stringify(borrowedBooks));
-    localStorage.setItem("books", JSON.stringify(books));
-
-    alert("Book borrowed successfully!");
-
-    window.location.href = "listofborrowedbooks.html";
+    document.querySelector("form").submit();
 });

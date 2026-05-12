@@ -5,7 +5,6 @@ function searchBooks() {
     const cards = document.querySelectorAll(".book-card");
 
     function performFilter() {
-
         const textValue = searchInput.value.toLowerCase().trim();
         const selectedCategory = categoryFilter.value.toLowerCase();
 
@@ -18,7 +17,6 @@ function searchBooks() {
 
             if (matchesText && matchesCategory) {
                 card.style.display = "block";
-
             } else {
                 card.style.display = "none";
             }
@@ -27,7 +25,7 @@ function searchBooks() {
 
     searchInput.addEventListener("input", performFilter);
     categoryFilter.addEventListener("change", performFilter);
-};
+}
 
 // ================= START =================
 

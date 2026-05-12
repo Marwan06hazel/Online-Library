@@ -1,0 +1,85 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/borrowedBooks.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>Borrowed Page</title>
+</head>
+
+<body>
+
+    <header>
+        <a href="{% url 'userpage' %}" class="logo">
+            <img src="{% static 'Pics/book.svg' %}" alt="Weblogo">
+            <span style="color: #0f172a;">Libraria</span>
+        </a>
+
+        <nav id="navbar">
+            <a href="{% url 'userpage' %}">Home</a>
+            <a href="{% url 'viewbooks' %}">Books</a>
+            <a href="{% url 'borrowed_books' %}">My Borrowed Books</a>
+            <a href="{% url 'logout' %}" class="button">Log out</a>
+        </nav>
+    </header>
+
+    <main class="userBooks">
+
+        <h2>Currently Borrowed</h2>
+        <div class="borrowed">
+            <div class="cards">
+                {% for record in borrowed %}
+                    <div class="card">
+                        {% if record.book.cover %}
+                            <img src="{{ record.book.cover.url }}" alt="{{ record.book.title }}">
+                        {% else %}
+                            <img src="{% static 'Pics/default-book.jpeg' %}" alt="Default Cover">
+                        {% endif %}
+                        <h3>{{ record.book.title }}</h3>
+                        <p>{{ record.book.author }}</p>
+                        <p>Borrowed: {{ record.borrowed_at|date:"Y-m-d" }}</p>
+                        <a href="{% url 'book_details' record.book.id %}">Details</a>
+                    </div>
+                {% empty %}
+                    <p>No books currently borrowed.</p>
+                {% endfor %}
+            </div>
+        </div>
+
+        <h2>Reading History</h2>
+        <div class="history">
+            <div class="cards">
+                {% for record in history %}
+                    <div class="card">
+                        {% if record.book.cover %}
+                            <img src="{{ record.book.cover.url }}" alt="{{ record.book.title }}">
+                        {% else %}
+                            <img src="{% static 'Pics/default-book.jpeg' %}" alt="Default Cover">
+                        {% endif %}
+                        <h3>{{ record.book.title }}</h3>
+                        <p>{{ record.book.author }}</p>
+                        <p>Borrowed: {{ record.borrowed_at|date:"Y-m-d" }}</p>
+                        <a href="{% url 'book_details' record.book.id %}">Details</a>
+                    </div>
+                {% empty %}
+                    <p>No reading history yet.</p>
+                {% endfor %}
+            </div>
+        </div>
+
+        <h2>Favorites</h2>
+        <div class="favourites">
+            <div class="cards">
+                <p>Coming soon.</p>
+            </div>
+        </div>
+
+    </main>
+
+    <script src="{% static 'js/listofborrowedbooks.js' %}"></script>
+</body>
+
+</html>

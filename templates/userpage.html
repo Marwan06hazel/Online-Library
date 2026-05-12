@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,41 +6,40 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home Page</title>
-    <link rel="stylesheet" href="../css/userpage.css">
+    <link rel="stylesheet" href="{% static 'css/userpage.css' %}">
 </head>
 
 <body>
 
     <header>
         <a href="/" class="logo">
-            <img src="../Pics/book.svg" alt="Weblogo">
-            <span style="color: #0f172a; ">Libraria</span>
+            <img src="{% static 'Pics/book.svg' %}" alt="Weblogo">
+            <span style="color: #0f172a;">Libraria</span>
         </a>
 
         <nav id="navbar">
-            <a href="userpage.html">Home</a>
-            <a href="viewbooks.html">Books</a>
-            <a href="listofborrowedbooks.html">My Borrowed Books</a>
-            <a href="../index.html" class="button" onclick="logout()">Log out</a>
+            <a href="{% url 'userpage' %}">Home</a>
+            <a href="{% url 'viewbooks' %}">Books</a>
+            <a href="{% url 'borrowed_books' %}">My Borrowed Books</a>
+            <a href="{% url 'logout' %}" class="button">Log out</a>
         </nav>
     </header>
-    
+
     <main>
 
-        <a href="Profile.html">
-            <img id="profileImg" src="../Pics/Profile-icon.png">
+        <a href="{% url 'profile' %}">
+            <img id="profileImg" src="{% static 'Pics/Profile-icon.png' %}">
         </a>
-       
+
         <h1>Your Digital Library</h1>
 
         <h2>Discover, Borrow & Explore Books</h2>
 
-        <p>Browse our curated collection of books. Search by title, author, or category — and borrow with a single
-            click.
-        </p>
+        <p>Browse our curated collection of books. Search by title, author, 
+        or category — and borrow with a single click.</p>
 
         <div>
-            <a href="viewbooks.html" class="button">Browse Library</a>
+            <a href="{% url 'viewbooks' %}" class="button">Browse Library</a>
         </div>
 
         <div class="features">
@@ -56,13 +56,14 @@
                 <p>Admins can add, edit, and manage the entire catalog.</p>
             </section>
         </div>
+
     </main>
 
     <footer>
         <p>&copy; 2026 All rights reserved.</p>
     </footer>
 
-    <script src="../js/profileIcon.js"></script>
+    <script src="{% static 'js/profileIcon.js' %}"></script>
 </body>
 
 </html>

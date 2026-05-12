@@ -1,0 +1,89 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/signup.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <title>SignUp Page</title>
+</head>
+
+<body>
+
+    <header>
+        <a href="/" class="logo">
+            <img src="{% static 'Pics/book.svg' %}" alt="Weblogo">
+            <span style="color: #0f172a;">Libraria</span>
+        </a>
+
+        <nav id="navbar">
+            <a href="/">Home</a>
+            <a href="/books/">Books</a>
+            <a href="{% url 'login' %}" class="button">Login</a>
+            <a href="{% url 'logout' %}" class="button">Log out</a>
+        </nav>
+    </header>
+
+    <main class="signup">
+
+        <h2>Create an Account</h2>
+
+        {% if messages %}
+            {% for message in messages %}
+                <p style="color: red;">{{ message }}</p>
+            {% endfor %}
+        {% endif %}
+
+        <form action="{% url 'signup' %}" method="POST">
+            {% csrf_token %}
+
+            <div class="inputs">
+                <label for="username">Username</label>
+                <input type="text" id="username" name="username" required>
+            </div>
+
+            <div class="inputs">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+
+            <div class="inputs">
+                <label for="password">Password</label>
+                <div class="input-box">
+                    <input type="password" id="password" name="password" required>
+                    <i class="fa-solid fa-eye" style="color: rgb(228, 220, 183);" id="togglePass"></i>
+                </div>
+            </div>
+
+            <div class="inputs">
+                <label for="confirm_password">Confirm Password</label>
+                <div class="input-box">
+                    <input type="password" id="confirm" name="confirm" required>
+                    <i class="fa-solid fa-eye" style="color: rgb(228, 220, 183);" id="toggleConfirm"></i>
+                </div>
+            </div>
+
+            <div class="box">
+                <label for="admin">
+                    <input type="checkbox" id="admin" name="is_admin">
+                    Register as Admin
+                </label>
+            </div>
+
+            <div class="but1">
+                <button type="submit">Sign Up</button>
+            </div>
+        </form>
+
+        <div class="footer">
+            <p>Already have an account? <a href="{% url 'login' %}">Log in</a></p>
+        </div>
+
+    </main>
+
+    <script src="{% static 'js/signup.js' %}"></script>
+</body>
+
+</html>

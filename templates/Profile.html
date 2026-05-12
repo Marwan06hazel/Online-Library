@@ -1,0 +1,83 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile</title>
+    <link rel="stylesheet" href="{% static 'css/Profile.css' %}">
+</head>
+
+<body>
+
+    <header>
+        <a href="/" class="logo">
+            <img src="{% static 'Pics/book.svg' %}" alt="Weblogo">
+            <span style="color: #0f172a;">Libraria</span>
+        </a>
+
+        <nav id="navbar">
+            <a href="{% url 'profile' %}">My Profile</a>
+            {% if request.user.is_admin %}
+            <a href="{% url 'adminpage' %}">Home</a>
+            {% else %}
+            <a href="{% url 'userpage' %}">Home</a>
+            {% endif %}
+            <a href="{% url 'logout' %}" class="button">Log out</a>
+        </nav>
+    </header>
+
+    <h1>My Profile</h1>
+
+    <div class="profile-container">
+        <div class="profile-header">
+            {% if user.profile_image %}
+            <img id="profileImage" src="{{ user.profile_image.url }}">
+            {% else %}
+            <img id="profileImage" src="{% static 'Pics/Profile-icon.png' %}">
+            {% endif %}
+            <h2 id="username">{{ request.user.username }}</h2>
+            <p id="email">{{ request.user.email }}</p>
+            <span id="role" class="role-badge">
+                {% if request.user.is_admin %}Admin{% else %}User{% endif %}
+            </span>
+            <div class="profile-actions">
+                <div class="action-buttons">
+                    <button onclick="openEdit()">Edit Profile</button>
+                    <a href="{% url 'logout' %}"><button>Logout</button></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="profile-info">
+        <h3>Account Info</h3>
+        <p><strong>Username:</strong> <span id="infoUsername">{{ request.user.username }}</span></p>
+        <p><strong>Email:</strong> <span id="infoEmail">{{ request.user.email }}</span></p>
+        <p><strong>Role:</strong> <span id="infoRole">{% if request.user.is_admin %}Admin{% else %}User{% endif %}</span></p>
+    </div>
+
+    <div class="edit-profile" id="editBox">
+        <div>
+            <h3>Edit Profile</h3>
+            <form method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                <label>Name</label>
+                <input type="text" id="nameInput" name="username" value="{{ request.user.username }}">
+                <label>Email</label>
+                <input type="email" id="emailInput" name="email" value="{{ request.user.email }}">
+                <label>Password</label>
+                <input type="password" id="passInput" name="password">
+                <label>Profile Image</label>
+                <input type="file" id="imgInput" name="profile_image">
+                <button type="submit">Save</button>
+                <button type="button" onclick="closeEdit()">Cancel</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="{% static 'js/Profile.js' %}"></script>
+</body>
+
+</html>

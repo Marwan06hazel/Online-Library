@@ -1,46 +1,42 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Page</title>
-    <link rel="stylesheet" href="../css/adminpage.css">
+    <title>Digital Library</title>
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
 </head>
-
 <body>
-
+    
     <header>
         <a href="/" class="logo">
-            <img src="../Pics/book.svg" alt="Weblogo">
-            <span style="color: #0f172a; ">Libraria</span>
+            <img src="{% static 'Pics/book.svg' %}" alt="Weblogo">
+            <span style="color: #0f172a;">Libraria</span>
         </a>
 
         <nav id="navbar">
-            <a href="adminpage.html">Home</a>
-            <a href="viewbooks.html">Books</a>
-            <a href="addbook.html">Add Book</a>
-            <a href="../index.html" class="button" onclick="logout()">Log out</a>
+            <a href="/">Home</a>
+            <a href="/viewbooks/">Books</a>
+            <a href="/login/" class="button">Login</a>
+            <a href="/signup/" class="button">SignUp</a>
         </nav>
     </header>
 
     <main>
 
-        <a href="Profile.html">
-            <img id="profileImg" src="../Pics/Profile-icon.png">
-        </a>
-
         <h1>Your Digital Library</h1>
-
+    
         <h2>Discover, Borrow & Explore Books</h2>
-
-        <p>Browse our curated collection of books. Search by title, author, or category — and borrow with a single
-            click.
-        </p>
+    
+        <p>Browse our curated collection of books. Search by title, author, or category — and borrow with a single click.</p>
 
         <div>
-            <a href="viewbooks.html" class="button">Browse Library</a>
+            <a href="/viewbooks/" class="button">Browse Library</a>
+            <a href="/signup/" class="button">Create Account</a>
         </div>
+
+        <hr>
 
         <div class="features">
             <section>
@@ -56,13 +52,14 @@
                 <p>Admins can add, edit, and manage the entire catalog.</p>
             </section>
         </div>
+
+        <hr>
+
     </main>
 
     <footer>
         <p>&copy; 2026 All rights reserved.</p>
     </footer>
 
-    <script src="../js/profileIcon.js"></script>
 </body>
-
 </html>
