@@ -27,7 +27,7 @@
             {% else %}
             <a href="{% url 'userpage' %}">Home</a>
             <a href="{% url 'viewbooks' %}">Books</a>
-            <a href="{% url 'borrowed_books' %}">My Borrowed Books</a>
+            <a href="{% url 'borrowed' %}">My Borrowed Books</a>
             <a href="{% url 'logout' %}" class="button">Log out</a>
             {% endif %}
         </nav>
@@ -98,7 +98,7 @@
                         <a href="{% url 'edit_book' book.id %}" class="borrow-btn">Edit</a>
                         {% else %}
                         {% if book.available_copies > 0 %}
-                        <a href="{% url 'borrow_book' book.id %}" class="borrow-btn">Borrow</a>
+                        <a href="{% url 'borrowbook' book.id %}" class="borrow-btn">Borrow</a>
                         {% else %}
                         <button class="borrow-btn disabled-btn" disabled>Unavailable</button>
                         {% endif %}
