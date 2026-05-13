@@ -61,6 +61,7 @@ class BorrowRecord(models.Model):
     book = models.ForeignKey(Book, on_delete = models.CASCADE, related_name = 'borrow_records')
     borrowed_at = models.DateTimeField(auto_now_add = True)
     is_returned = models.BooleanField(default = False)
+    duration_days = models.IntegerField(default=1)
 
     def __str__(self):
         return f"{self.user.username} - {self.book.title}"
@@ -69,7 +70,8 @@ class BorrowRecord(models.Model):
 class ReadingRecord(models.Model):
     user = models.ForeignKey(User, on_delete = models.CASCADE, related_name = 'reading_records')
     book = models.ForeignKey(Book, on_delete = models.CASCADE, related_name = 'reading_records')
-    borrowed_at = models.DateTimeField(auto_now_add = True)
+    borrowed_at = models.DateTimeField()
+    returned_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return f"{self.user.username} - {self.book.title}"
