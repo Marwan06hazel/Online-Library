@@ -35,6 +35,9 @@ urlpatterns = [
 
     # Book Details
     path('details/<int:id>/', views.details, name='book_details'),
+
+     # Index
+    path('', views.home, name='home'),
 ]
 
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
