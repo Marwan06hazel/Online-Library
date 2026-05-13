@@ -238,14 +238,14 @@ h2{
     margin-left: 10px;
 }
 
-.favourites button:hover{
-    background-color: #ff646427;
-    color: #4e0c0c;
+.favourites button:hover {
+    background-color: #4a0e0e;
+    color: #f8d7d7;
 }
 
 .fav-btn:hover {
-    background-color: #ff646427;
-    color: #4e0c0c; 
+    background-color: #ff646427; 
+    color: #812e2e;
 }
 
 .but1, .but2{
