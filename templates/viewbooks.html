@@ -87,9 +87,13 @@
                     <p class="category">{{ book.get_category_display }}</p>
 
                     {% if book.available_copies > 0 %}
-                    <p class="available">Available ({{ book.available_copies }})</p>
+                    <p style="color: #15803d; background-color: #dcfce7; display: inline-block; padding: 4px 12px; border-radius: 20px; font-size: 14px; font-weight: 600; margin-bottom: 8px; margin-top: -25px;">
+                        ✓ Available ({{ book.available_copies }})
+                    </p>
                     {% else %}
-                    <p class="unavailable">Not Available</p>
+                    <p style="color: #b91c1c; background-color: #fee2e2; display: inline-block; padding: 4px 12px; border-radius: 20px; font-size: 14px; font-weight: 600; margin-bottom: 8px; margin-top: -25px;">
+                        ✕ Not Available
+                    </p>
                     {% endif %}
 
                     <div class="book-actions">
