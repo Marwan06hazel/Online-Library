@@ -59,12 +59,6 @@
             </figcaption>
         </figure>
 
-        {% if messages %}
-            {% for message in messages %}
-                <p style="color: red;">{{ message }}</p>
-            {% endfor %}
-        {% endif %}
-
         <form action="{% url 'borrowbook' book.id %}" method="POST">
             {% csrf_token %}
 
@@ -72,8 +66,8 @@
                 <p><b><big>Borrow Duration</big></b></p>
                 <p>For how long would you like to borrow this book?</p>
 
-                <input type="number" id="duration" name="duration" min="1" step="1"
-                       placeholder="Enter Duration..." required>
+                <input type="number" id="duration" name="duration"
+                       placeholder="Enter Duration...">
 
                 <select id="duration-unit" name="duration_unit">
                     <option value="days" selected>Days</option>
@@ -88,7 +82,7 @@
                 <p><b><big>Payment Method</big></b></p>
                 <p>Select how you'd like to pay</p>
 
-                <select id="payment-method" name="payment_method" required>
+                <select id="payment-method" name="payment_method">
                     <option value="cash">Cash on Delivery</option>
                     <option value="online_wallet" selected>Online Wallet</option>
                     <option value="credit_card">Credit Card</option>
@@ -102,7 +96,7 @@
 
                 <textarea id="delivery-address" name="delivery_address"
                           placeholder="Enter your full address..."
-                          cols="30" rows="4" required></textarea>
+                          cols="30" rows="4"></textarea>
             </section>
 
             <section class="borrow-btn">
