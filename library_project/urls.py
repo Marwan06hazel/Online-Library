@@ -10,7 +10,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
 
     # Home redirect
-    path('', lambda request: redirect('login'), name='home'),
+    path('', views.home, name='home'),
 
     # Auth
     path('login/', auth.login_view, name='login'),
