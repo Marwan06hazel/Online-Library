@@ -52,7 +52,7 @@
                         </form>
                         <form action="{% url 'favtoggle' borrowed.book.id %}" method="post">
                             {% csrf_token %}
-                            <button type="submit">Fav</button>
+                            <button type="submit" class="fav-btn">Fav</button>
                         </form>
                     </div>
                 </div>
@@ -84,7 +84,7 @@
                         
                         <form action="{% url 'favtoggle' read.book.id %}" method="post">
                             {% csrf_token %}
-                            <button type="submit">Fav</button>
+                            <button type="submit" class="fav-btn">Fav</button>
                         </form>
                     </div>
                 </div>
@@ -115,7 +115,7 @@
 
                         <form action="{% url 'favtoggle' fav.book.id %}" method="post">
                             {% csrf_token %}
-                            <button type="submit">Fav</button>
+                            <button type="submit">unFav</button>
                         </form>
                     </div>
                 </div>
