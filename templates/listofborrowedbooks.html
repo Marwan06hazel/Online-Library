@@ -40,9 +40,12 @@
                         {% if borrowed.book.cover %}
                         <img src="{{ borrowed.book.cover.url }}" alt="{{ borrowed.book.title }}">
                         {% endif %}
+
                         <h3>{{ borrowed.book.title }}</h3>
+                        <p>Category: {{ borrowed.book.get_category_display }}</p>
                         <p>Borrow Date: {{ borrowed.borrowed_at|date:"d M Y - H:i" }}</p>
-                        <!-- <p>Due Date: {{ dueDate }}</p> -->
+                        <p>Due Date: {{ borrowed.due_date|date:"d M Y - H:i" }}</p>
+
                         <form action="{% url 'returnbook' borrowed.id %}" method="post">
                             {% csrf_token %}
                             <button type="submit">Return</button>
@@ -60,7 +63,6 @@
             </div>
         </div>
 
-        
 
         <h2>Reading History</h2>
 
@@ -74,11 +76,12 @@
                         {% if read.book.cover %}
                         <img src="{{ read.book.cover.url }}" alt="{{ read.book.title }}">
                         {% endif %}
+
                         <h3>{{ read.book.title }}</h3>
+                        <p>Category: {{ read.book.get_category_display }}</p>
                         <p>Borrow Date: {{ read.borrowed_at|date:"d M Y - H:i" }}</p>
-                        <!-- <p>Category: ${book.Category}</p>
-                        <p>Borrow Date: ${item.borrowDate}</p>
-                        <p>Returned on: ${item.returnDate}</p>  -->
+                        <p>Return Date: {{ read.returned_at|date:"d M Y - H:i" }}</p>
+                        
                         <form action="{% url 'favtoggle' read.book.id %}" method="post">
                             {% csrf_token %}
                             <button type="submit">Fav</button>
@@ -92,6 +95,7 @@
             </div>
         </div>
 
+        
         <h2>Favorites</h2>
 
         <div class="favourites">
@@ -104,11 +108,11 @@
                         {% if fav.book.cover %}
                         <img src="{{ fav.book.cover.url }}" alt="{{ fav.book.title }}">
                         {% endif %}
+
                         <h3>{{ fav.book.title }}</h3>
+                        <p>Category: {{ fav.book.get_category_display }}</p>
                         <p>Added At: {{ fav.added_at|date:"d M Y - H:i" }}</p>
-                        <!-- <p>Category: ${book.Category}</p> -->
-                        <!--<p>Borrow Date: ${item.borrowDate}</p>
-                        <p>Returned on: ${item.returnDate}</p>  -->
+
                         <form action="{% url 'favtoggle' fav.book.id %}" method="post">
                             {% csrf_token %}
                             <button type="submit">Fav</button>
