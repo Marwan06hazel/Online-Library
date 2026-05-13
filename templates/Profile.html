@@ -12,7 +12,8 @@
 <body>
 
     <header>
-        <a href="/" class="logo">
+        <a href="{% if request.user.is_admin %}{% url 'adminpage' %}{% else %}{% url 'userpage' %}{% endif %}"
+            class="logo">
             <img src="{% static 'Pics/book.svg' %}" alt="Weblogo">
             <span style="color: #0f172a;">Libraria</span>
         </a>
