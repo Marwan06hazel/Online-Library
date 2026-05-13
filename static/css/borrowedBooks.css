@@ -175,6 +175,10 @@ h2{
 }
 
 
+.card-content form{
+    display: inline-block;
+}
+
 .card button {
     cursor: pointer;
     margin-top: 10px;  
@@ -187,10 +191,10 @@ h2{
 }
 
 
-.borrowed button{
-    width:70px;
-    padding: 5px;
-    margin-top: 13px;
+.borrowed button:not(.fav-btn){
+    font-weight: bold;
+    padding: 8px;
+    margin-top: 15px;
     border: 1px solid #6ee6b4cf;
     border-radius: 10px;
     background-color: #fffef8;
@@ -200,6 +204,7 @@ h2{
 }
 
 .favourites button{
+    font-weight: bold;
     padding: 8px;
     margin-top: 15px;
     border: 1px solid #dd02027d;
@@ -210,9 +215,21 @@ h2{
     cursor: pointer; 
 }
 
-.borrowed button:hover{
+.fav-btn {
+    font-weight: bold;
+    padding: 8px;
+    margin-top: 15px;
+    border: 1px solid #dd02027d;
+    border-radius: 10px;
+    background-color: #fffef8;
+    color: #741313; 
+    transition: all 0.3s ease; 
+    cursor: pointer; 
+}
+
+.borrowed button:not(.fav-btn):hover{
     background-color: #b0ffde3e;
-    color: black;
+    color: #044734;
 }
 
 .borrowed .card i {
@@ -223,9 +240,13 @@ h2{
 
 .favourites button:hover{
     background-color: #ff646427;
-    color: black;
+    color: #4e0c0c;
 }
 
+.fav-btn:hover {
+    background-color: #ff646427;
+    color: #4e0c0c; 
+}
 
 .but1, .but2{
     width: 200px;
