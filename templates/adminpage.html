@@ -28,7 +28,11 @@
     <main>
 
         <a href="{% url 'profile' %}">
-            <img id="profileImg" src="{% static 'Pics/Profile-icon.png' %}">
+            {% if request.user.profile_image %}
+                <img id="profileImg" src="{{ request.user.profile_image.url }}" alt="Profile">
+            {% else %}
+               <img id="profileImg" src="{% static 'Pics/Profile-icon.png' %}" alt="Profile">
+            {% endif %}
         </a>
 
         <h1>Your Digital Library</h1>
