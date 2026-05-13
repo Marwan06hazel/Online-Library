@@ -2,6 +2,7 @@ from django.shortcuts import render , redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from .models import Book, BorrowRecord, ReadingRecord, FavRecord
 from django.contrib import messages
+from datetime import timedelta
 
 
 @login_required
@@ -79,15 +80,13 @@ def delete_book(request, book_id):
         book.delete()
     return redirect('viewbooks')
 
-
-# @login_required
 def borrow(request, id):
 
     book = get_object_or_404(Book, id=id)
 
     if request.method == "POST":
 
-        duration = int(request.POST.get('duration')) 
+        duration = request.POST.get('duration')
         paymentMethod = request.POST.get('payment_method')
         address = request.POST.get('delivery_address')
         # unit = request.POST.get("duration_unit")
@@ -101,44 +100,55 @@ def borrow(request, id):
         # else:
         #     delta = timedelta(days=30 * duration)
 
-        if book.available_copies <= 0:
-            messages.error(request, "No copies available.")
-            return redirect('borrowbook', id=book.id)
-
         if BorrowRecord.objects.filter(
             user=request.user, book=book,
             is_returned=False
         ).exists():
             messages.error(request, "This book is already borrowed!")
             return redirect('borrowbook', id=book.id)
-            
-        if not duration or duration <= 0:
-            messages.error(request, "Enter a valid duration.")
+        
 
+        if book.available_copies <= 0:
+            messages.error(request, "No copies available.")
+            return redirect('borrowbook', id=book.id)
+        
         if not address.strip():
             messages.error(request, "Delivery address is required.")
+            return redirect('borrowbook', id=book.id)
         
+        if not duration:
+            messages.error(request, "Duration is required.")
+            return redirect('borrowbook', id=book.id)
         
+        durationNum = int(request.POST.get('duration'))
+
+        if durationNum <= 0:
+            messages.error(request, "Enter a valid duration.")
+            return redirect('borrowbook', id=book.id)
+
         BorrowRecord.objects.create(
             user=request.user,
-            book=book
+            book=book,
+            duration_days=durationNum
         )
 
         book.available_copies -= 1
         book.save()
 
-        messages.success(request, "Book borrowed successfully!")
-        messages.success(request, "THIS IS FROM BORROW VIEW")
+        # messages.success(request, "Book is borrowed successfully!")
         return redirect('borrowed')
         
     # show page initially    
     return render(request, 'BorrowPage.html', { 'book': book })
-# @login_required
+
 def borrowed(request):
     currUser = request.user
     borrowed = BorrowRecord.objects.filter(user=currUser, is_returned=False)
     reading = ReadingRecord.objects.filter(user=request.user)
     favorites = FavRecord.objects.filter(user=request.user)
+
+    for b in borrowed:
+        b.due_date = b.borrowed_at + timedelta(days=b.duration_days)
 
     return render(request, 'listofborrowedbooks.html', {'borrow_records': borrowed, 'reading_records': reading, 'fav_records': favorites})
 
@@ -157,7 +167,8 @@ def returnbook(request, id):
 
             ReadingRecord.objects.create(
                 user=request.user,
-                book=borrow_record.book
+                book=borrow_record.book,
+                borrowed_at=borrow_record.borrowed_at
             )
 
             return redirect('borrowed')
