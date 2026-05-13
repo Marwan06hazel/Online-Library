@@ -15,7 +15,7 @@ def adminpage(request):
 def userpage(request):
     return render(request, 'userpage.html')
 
-
+@login_required(login_url='login')
 def view_books(request):
     books = Book.objects.all()
     return render(request, 'viewbooks.html', {'books': books})
